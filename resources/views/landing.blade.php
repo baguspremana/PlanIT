@@ -114,7 +114,7 @@
 
           	<!--button header-->
           	<div class="actions wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-          		<a href="#about" class="btn-daftar"><i class="fa fa-user-plus"></i> pendaftar</a>
+          		<a href="/signup" class="btn-daftar"><i class="fa fa-user-plus"></i> pendaftar</a>
           		<a href="/login" class="btn-masuk"><i class="fa fa-sign-in fa-fw"></i> masuk</a>
           	</div>
           	<!--end button header-->

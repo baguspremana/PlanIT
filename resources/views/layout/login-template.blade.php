@@ -54,7 +54,7 @@
 		        <ul class="nav-menu">
 			        <li><a href="/">Beranda</a></li>
 			        <li><a href="/login">Masuk</a></li>
-			        <li><a href="#">Pendaftaran</a></li>
+			        <li><a href="/signup">Pendaftaran</a></li>
 			        <li><a href="#">FAQ</a></li>
 		        </ul>
       		</nav>

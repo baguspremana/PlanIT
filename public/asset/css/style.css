@@ -974,15 +974,21 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .form button[type="submit"] {
-  background: #03C4EB;
-  border: 0;
+  border: 2px solid #650802;
+  color: #650802;
+  background: transparent;
+  /*border: 0;*/
   padding: 10px 24px;
-  color: #fff;
+  /*color: #fff;*/
+  text-align: center;
+  display: inline-block;
   transition: 0.4s;
 }
 
 #contact .form button[type="submit"]:hover {
-  background: #25d8fc;
+  background: #ec6b63;
+  border: 2px solid #ec6b63;
+  color: #fff;
 }
 
 /*--------------------------------------------------------------

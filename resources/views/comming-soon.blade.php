@@ -5,15 +5,15 @@
 <section id="hero">
 	<div class="hero-container">
       	<div class="wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-        	<div class="hero-logo">
-          		<img class="" src="asset/images/logo-itcc5.png" alt="Imperial">
+        	<div class="hero-logo"> 
+          		<img class="" src="asset/images/logo-itcc5.png" style="margin-top: 50px;">
         	</div>
 
         	<h1>Comming Soon</h1>
         	<h2>Cabang Lomba <span class="rotating">Pemrograman, Desain Web, Cerdas Cermat, Pengembangan Ide Bisnis TIK, Sistem Informasi</span></h2>
-        	<div class="actions">
+        	<!--div class="actions">
           		<a href="" class="btn-services" data-toggle="modal" data-target="#myModal"><i class="fa fa-paper-plane"></i> Kirim Saran</a>
-        	</div>
+        	</div-->
         	<p style="padding-top: 80px;">&copy; Information Technology Creative Competition 2018 | <a href="http://it.unud.ac.id">Teknologi Informasi Udayana</a></p>
       	</div>
     </div>

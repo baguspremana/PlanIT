@@ -1,6 +1,6 @@
 @extends('layout.login-template')
 @section('title')
-	Masuk - ITCC 2018
+	Pendaftaran - ITCC 2018
 @endsection
 @section('content')
 <!--HEADER WEBSITE-->
@@ -25,19 +25,12 @@
 	                        
 	                     		</div>
 	                     		<div class="col-md-8" style="margin-top: 70px; padding-left: 50px; padding-right: 50px; ">
-	                        		<h1 style="text-align: center; color: #232323; margin-bottom: 50px;">Login</h1>
-	                        		<hr style="color: black;">
-	                        		<div class="input-group">
-	                           			<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-	                           			<input type="text" class="form-control" placeholder="username" name="uname">
-	                        		</div>
-	                        		<br>
-	                        		<div class="input-group">
-	                           			<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-	                           			<input type="password" class="form-control" placeholder="kata sandi" name="pword">
-	                        		</div>
-	                     
-	                     			<button class="btn-login" type="submit" style="margin: 0px;width: 100%;margin-top: 20px;"><i class="fa fa-sign-in fa-fw"></i> Masuk</button>
+	                        		<h1 style="text-align: center; color: #232323; margin-bottom: 50px;">Cabang Lomba</h1>
+	                     			<a class="btn-cabang" href="/signprog" style="width: 100%; margin-bottom: 10px;">Pemrograman</a>
+	                     			<a class="btn-cabang" href="/signweb" style="width: 100%; margin-bottom: 10px;">Desain Web</a>
+	                     			<a class="btn-cabang" href="/signlcc" style="width: 100%; margin-bottom: 10px;">Cerdas Cermat</a>
+	                     			<a class="btn-cabang" href="/signidea" style="width: 100%; margin-bottom: 10px;">Pengembangan Ide Bisnis TIK</a>
+	                     			<a class="btn-cabang" href="/signsi" style="width: 100%; margin-bottom: 20px;">Sistem Informasi</a>
 	                     		</div>
 	                     	</div>
 	                	</form>

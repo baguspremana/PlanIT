@@ -26,3 +26,29 @@ Route::get('/comming', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/signup', function () {
+    return view('sign-up');
+});
+
+Route::get('/signprog', function () {
+    return view('sign-up-prog');
+});
+
+Route::get('/signweb', function () {
+    return view('sign-up-web');
+});
+
+Route::get('/signlcc', function () {
+    return view('sign-up-lcc');
+});
+
+Route::get('/signsi', function () {
+    return view('sign-up-si');
+});
+
+Route::get('/signidea', function () {
+    return view('sign-up-idea');
+});
+
+
