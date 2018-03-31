@@ -51,4 +51,6 @@ Route::get('/signidea', function () {
     return view('sign-up-idea');
 });
 
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
