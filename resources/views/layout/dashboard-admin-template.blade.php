@@ -43,11 +43,11 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li><a href="/dashboard"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="/dashboard-admin"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Log Unggah</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span>Pembayaran</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span>Tambah Pes</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-euro"></i> <span>Pembayaran</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-plus-sign"></i> <span>Tambah Peserta</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -68,6 +68,12 @@
                         </button>
                     </div>
                     <div id="navbar-menu" class="navbar-collapse collapse">
+                        <form class="navbar-form navbar-left hidden-xs">
+                            <div class="input-group">
+                                <input type="text" value="" class="form-control" placeholder="Search dashboard...">
+                                <span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+                            </div>
+                        </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #650802"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Admin</span> <i class="icon-submenu fa fa-chevron-down"  style="color: white"></i></a>
