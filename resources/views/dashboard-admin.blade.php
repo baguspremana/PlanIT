@@ -1,7 +1,7 @@
-@extends('layout.dashboard-template')
+@extends('layout.dashboard-admin-template')
 
 @section('title')
-    Dashboard - ITCC 2018
+    Dashboard Admin - ITCC 2018
 @endsection
 
 @section('content')

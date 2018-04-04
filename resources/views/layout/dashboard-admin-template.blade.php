@@ -45,8 +45,9 @@
                     <ul class="nav">
                         <li><a href="/dashboard"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Upload Data</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Log Unggah</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span>Pembayaran</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span>Tambah Pes</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -69,7 +70,7 @@
                     <div id="navbar-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #650802"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Adikur</span> <i class="icon-submenu fa fa-chevron-down"  style="color: white"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #650802"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Admin</span> <i class="icon-submenu fa fa-chevron-down"  style="color: white"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="#"}}"
