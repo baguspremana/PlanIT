@@ -36,8 +36,8 @@
     <!-- WRAPPER -->
     <div id="wrapper">
         <!-- SIDEBAR -->
-        <div class="sidebar" style="background-color: #650802">
-            <div class="brand" style="background-color: #650802">
+        <div class="sidebar" style="background-color: #021B79">
+            <div class="brand" style="background-color: #021B79">
                 <a href="index.html"><img src="asset/images/logo-itcc5.png" alt="ITCC Logo" class="img-responsive logo" width="100px" height="100px"></a>
             </div>
             <div class="sidebar-scroll">
@@ -56,10 +56,10 @@
         <!-- MAIN -->
         <div class="main">
             <!-- NAVBAR -->
-            <nav class="navbar navbar-default" style="background-color: #650802">
+            <nav class="navbar navbar-default" style="background-color: #021B79">
                 <div class="container-fluid">
                     <div class="navbar-btn">
-                        <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-arrow-circle-left" style="color: white"></i></button>
+                        <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars" style="color: white"></i></button>
                     </div>
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
@@ -76,7 +76,7 @@
                         </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #650802"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Admin</span> <i class="icon-submenu fa fa-chevron-down"  style="color: white"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Admin</span> <i class="icon-submenu fa fa-arrow-circle-down"  style="color: white"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="#"}}"
@@ -100,7 +100,7 @@
             <!-- END MAIN CONTENT -->
             <footer>
                 <div class="container-fluid">
-                    <p class="copyright" style="color: #650802;">&copy; Information Technology Creative Competition 2018 | <a href="http://it.unud.ac.id" style="color: #ec6b63;">Teknologi Informasi Udayana</a></p>
+                    <p class="copyright" style="color: #021B79;">&copy; Information Technology Creative Competition 2018 | <a href="http://it.unud.ac.id" style="color: #0575E6;">Teknologi Informasi Udayana</a></p>
                 </div>
             </footer>
         </div>
