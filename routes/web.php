@@ -53,9 +53,5 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard-admin', function () {
     return view('dashboard-admin');
-<<<<<<< HEAD
 });
 
-=======
-});
->>>>>>> 090d54dffeec451a5cdb8bfa2f3aa3189cbb4fa5
