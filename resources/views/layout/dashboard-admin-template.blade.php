@@ -14,7 +14,6 @@
 
     <!-- CSS -->
     <link href="{{asset('asset/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('asset/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/icon-sets.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/main.min.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/demo.css')}}" rel="stylesheet">
@@ -44,10 +43,11 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li><a href="/dashboard"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="/dashboard-admin"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Upload Data</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Log Unggah</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-euro"></i> <span>Pembayaran</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-plus-sign"></i> <span>Tambah Peserta</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -59,11 +59,7 @@
             <nav class="navbar navbar-default" style="background-color: #650802">
                 <div class="container-fluid">
                     <div class="navbar-btn">
-<<<<<<< HEAD
-                        <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars" style="color: white"></i></button>
-=======
                         <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-arrow-circle-left" style="color: white"></i></button>
->>>>>>> 090d54dffeec451a5cdb8bfa2f3aa3189cbb4fa5
                     </div>
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
@@ -72,13 +68,15 @@
                         </button>
                     </div>
                     <div id="navbar-menu" class="navbar-collapse collapse">
+                        <form class="navbar-form navbar-left hidden-xs">
+                            <div class="input-group">
+                                <input type="text" value="" class="form-control" placeholder="Search dashboard...">
+                                <span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+                            </div>
+                        </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-<<<<<<< HEAD
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Adikur</span> <i class="icon-submenu fa fa-arrow-circle-down"></i></a>
-=======
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #650802"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Adikur</span> <i class="icon-submenu fa fa-chevron-down"  style="color: white"></i></a>
->>>>>>> 090d54dffeec451a5cdb8bfa2f3aa3189cbb4fa5
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #650802"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Admin</span> <i class="icon-submenu fa fa-chevron-down"  style="color: white"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="#"}}"
