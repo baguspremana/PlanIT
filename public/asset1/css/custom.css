@@ -1,0 +1,245 @@
+.justify {
+	text-align: justify;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.color-red {
+	background: linear-gradient(rgba(101, 8, 2, 0.9), rgba(101, 8, 2, 0.9)) !important;
+}
+
+.padding-lg {
+	padding-top: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .padding-lg, {
+    padding-top: 120px !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .padding-lg {
+    padding-top: 120px !important;
+  }
+}
+
+.all-shadow {
+  box-shadow: 0 0 5px #000;
+}
+
+.top-shadow {
+  box-shadow: 0 -5px 5px -5px #000;
+}
+      
+.right-shadow {
+  box-shadow: -5px 0 5px -5px #000;
+}
+      
+.bottom-shadow {
+  box-shadow: 0 5px 5px -5px #000;
+}
+
+.left-shadow {
+  box-shadow: 5px 0 5px -5px #000;
+}
+
+#bg-login {
+  display:block;
+  position:relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, rgba(2, 27, 121, 0.9), rgba(5, 117, 230, 0.9)), url(../images/unud2.jpg);
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (min-width: 1024px) {
+  #bg-login {
+    background-attachment: fixed;
+  }
+}
+
+#bg-login:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#bg-signup {
+  display:block;
+  position:relative;
+  width: 100%;
+  height: 200vh;
+  background: linear-gradient(to right, rgba(2, 27, 121, 0.9), rgba(5, 117, 230, 0.9)), url(../images/unud2.jpg);
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (min-width: 1024px) {
+  #bg-signup {
+    background-attachment: fixed;
+  }
+}
+
+#bg-signup:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Sections Header
+--------------------------------*/
+.section-header h3 {
+  font-size: 32px;
+  color: #111;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-header h3::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.section-header h3::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #021b79;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+.section-header p {
+  text-align: center;
+  padding-bottom: 30px;
+  color: #333;
+}
+
+/* Contact Section
+--------------------------------*/
+#daftar {
+  background: #fff;
+}
+
+#daftar .info {
+  color: #333333;
+}
+
+#daftar .info i {
+  font-size: 32px;
+  color: #2dc997;
+  float: left;
+}
+
+#daftar .info p {
+  padding: 0 0 10px 50px;
+  margin-bottom: 20px;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+#daftar .info .email p {
+  padding-top: 5px;
+}
+
+#daftar .social-links {
+  padding-bottom: 20px;
+}
+
+#daftar .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#daftar .social-links a:hover {
+  background: #2dc997;
+  color: #fff;
+}
+
+#daftar .form #sendmessage {
+  color: #2dc997;
+  border: 1px solid #2dc997;
+  display: none;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#daftar .form #errormessage {
+  color: red;
+  display: none;
+  border: 1px solid red;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#daftar .form #sendmessage.show, #daftar .form #errormessage.show, #daftar .form .show {
+  display: block;
+}
+
+#daftar.form .validation {
+  color: red;
+  display: none;
+  margin: 0 0 20px;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+#daftar .form input, #daftar .form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+#daftar .form button[type="submit"] {
+  background: #021b79;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+}
+
+#daftar .form button[type="submit"]:hover {
+  background: #0575e6;
+}

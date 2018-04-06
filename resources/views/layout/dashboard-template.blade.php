@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link href="{{asset('asset/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('asset/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/icon-sets.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/main.min.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/demo.css')}}" rel="stylesheet">
@@ -57,7 +58,7 @@
             <nav class="navbar navbar-default" style="background-color: #650802">
                 <div class="container-fluid">
                     <div class="navbar-btn">
-                        <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle" style="color: white"></i></button>
+                        <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars" style="color: white"></i></button>
                     </div>
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
@@ -68,12 +69,12 @@
                     <div id="navbar-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Adikur</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Adikur</span> <i class="icon-submenu fa fa-arrow-circle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                                    <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="#"}}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
                                 </ul>
 
                                 <form id="logout-form" action="#" method="POST" style="display: none;">

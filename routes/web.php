@@ -16,7 +16,7 @@
 });*/
 
 Route::get('/', function () {
-    return view('landing');
+    return view('landing.landing');
 });
 
 Route::get('/comming', function () {
@@ -24,33 +24,34 @@ Route::get('/comming', function () {
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('peserta.login');
 });
 
-Route::get('/signup', function () {
-    return view('sign-up');
+Route::get('/signup-prog', function () {
+    return view('peserta.sign-up-prog');
 });
 
-Route::get('/signprog', function () {
-    return view('sign-up-prog');
+Route::get('/signup-web', function () {
+    return view('peserta.sign-up-web');
 });
 
-Route::get('/signweb', function () {
-    return view('sign-up-web');
+Route::get('/signup-lcc', function () {
+    return view('peserta.sign-up-lcc');
 });
 
-Route::get('/signlcc', function () {
-    return view('sign-up-lcc');
+Route::get('/signup-si', function () {
+    return view('peserta.sign-up-si');
 });
 
-Route::get('/signsi', function () {
-    return view('sign-up-si');
-});
-
-Route::get('/signidea', function () {
-    return view('sign-up-idea');
+Route::get('/signup-idea', function () {
+    return view('peserta.sign-up-idea');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::get('/dashboard-admin', function () {
+    return view('dashboard-admin');
+});
+

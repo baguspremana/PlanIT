@@ -16,7 +16,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Data Tim</h3>
                     <div class="right">
-                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                        <button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
                     </div>
                 </div>
                 <div class="panel-body no-padding">
@@ -53,7 +53,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Pemberitahuan!</h3>
                     <div class="right">
-                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                        <button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
                     </div>
                 </div>
                 <div class="panel-body">
