@@ -55,3 +55,22 @@ Route::get('/dashboard-admin', function () {
     return view('dashboard-admin');
 });
 
+Route::get('/pemrograman', function () {
+    return view('landing.prog');
+});
+
+Route::get('/desain-web', function () {
+    return view('landing.web');
+});
+
+Route::get('/cerdas-cermat', function () {
+    return view('landing.lcc');
+});
+
+Route::get('/idea', function () {
+    return view('landing.idea');
+});
+
+Route::get('/sistem-informasi', function () {
+    return view('landing.si');
+});

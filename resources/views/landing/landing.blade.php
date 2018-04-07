@@ -67,7 +67,7 @@ ITCC 2018
           	<div class="col-lg-6">
             	<div class="video-container" >
               		<div onclick="thevid=document.getElementById('thevideo'); thevid.style.display='block'; this.style.display='none'">
-                 		<img class="img-responsive" src="asset1/images/imgvid2.jpg" style="margin:0 0 0 0;cursor:pointer; width: 100%">
+                 		<img class="img-responsive" src="asset1/images/imgvid3.jpg" style="margin:0 0 0 0;cursor:pointer; width: 100%">
               		</div>
               		<div id="thevideo" style="display:none;">
                  		<!--iframe width="560" height="315" src="https://www.youtube.com/embed/NU9h19h574Q" frameborder="0" allowfullscreen></iframe-->
@@ -109,7 +109,7 @@ ITCC 2018
               		<p>
                 		Cabang Lomba <b>Pemrograman</b> diperuntukan kepada siswa SMA/SMK Sederajat se-Bali. Biaya Pendaftaran Rp. 85.000,-
               		</p>
-              		<center><a href="#" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/pemrograman" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
@@ -123,7 +123,7 @@ ITCC 2018
               		<p>
                 		Cabang Lomba <b>Desain Web</b> diperuntukan kepada siswa SMA/SMK Sederajat se-Bali. Biaya Pendaftaran Rp. 85.000,-
               		</p>
-              		<center><a href="#" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/desain-web" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
@@ -137,7 +137,7 @@ ITCC 2018
               		<p>
                 		Cabang Lomba <b>Cerdas Cermat</b> diperuntukan kepada siswa SMA/SMK Sederajat se-Bali. Biaya Pendaftaran Rp. 150.000,-
               		</p>
-              		<center><a href="#" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/cerdas-cermat" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
@@ -155,7 +155,7 @@ ITCC 2018
               		<p>
                 		Cabang Lomba <b>Sistem Informasi</b> diperuntukan kepada mahasiswa maksimal jenjang S1 seluruh Universitas yang terdapat Indonesia. Biaya Pendaftaran Rp. 150.000,-
               		</p>
-              		<center><a href="#" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/sistem-informasi" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
@@ -169,7 +169,7 @@ ITCC 2018
               		<p>
                 		Cabang Lomba <b>Pengembangan Ide Bisnis TIK</b> diperuntukan kepada kalangan Umum (maksismal 28 tahun) seluruh Indonesia. Biaya Pendaftaran Rp. 200.000,-
               		</p>
-              		<center><a href="#" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/idea" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           </div>
           
@@ -277,7 +277,7 @@ ITCC 2018
     	<ol>
 	      	<li class="selected" data-date="16/01/2014">
 	        	<center>
-			        <h1>Pendaftaran</h1>
+			        <h1 class="text-black">Pendaftaran</h1>
 			        <em>January 16th, 2014</em>
 			        <p style="font-size: 15px;"><i class="fa fa-bars"></i> 
 			            Desain Web, Cerdas Cermat, Pemrograman, Pengembangan Ide Bisnis TIK, Sistem Informasi
@@ -290,7 +290,7 @@ ITCC 2018
 
 		    <li data-date="20/04/2014">
 		    	<center>
-		          	<h1>Penutupan Pendaftaran</h1>
+		          	<h1 class="text-black">Penutupan Pendaftaran</h1>
 		          	<em>March 20th, 2014</em>
 		          	<p style="font-size: 15px;"><i class="fa fa-bars"></i> 
 		            	Desain Web, Cerdas Cermat, Pemrograman, Pengembangan Ide Bisnis TIK, Sistem Informasi
@@ -303,7 +303,7 @@ ITCC 2018
 
 	      	<li data-date="09/07/2014">
 		        <center>
-		          	<h1>Pengumuman Peserta Lolos Babak Final</h1>
+		          	<h1 class="text-black">Pengumuman Peserta Lolos Babak Final</h1>
 		          	<em>July 9th, 2014</em>
 		          	<p style="font-size: 15px;"><i class="fa fa-bars"></i> 
 		             	Pengembangan Ide Bisnis TIK, Sistem Informasi
@@ -316,7 +316,7 @@ ITCC 2018
 
 	      	<li data-date="30/08/2014">
 		        <center>
-		          	<h1>Technical Meeting</h1>
+		          	<h1 class="text-black">Technical Meeting</h1>
 		          	<em>August 30th, 2014</em>
 		          	<p style="font-size: 15px;"><i class="fa fa-bars"></i> 
 		            	Desain Web, Cerdas Cermat, Pemrograman, Pengembangan Ide Bisnis TIK, Sistem Informasi
@@ -329,7 +329,7 @@ ITCC 2018
 
 	      	<li data-date="15/09/2014">
 		        <center>
-		          	<h1>Babak Penyisihan</h1>
+		          	<h1 class="text-black">Babak Penyisihan</h1>
 		          	<em>September 15th, 2014</em>
 		          	<p style="font-size: 15px;"><i class="fa fa-bars"></i> 
 		              	Desain Web, Cerdas Cermat, Pemrograman, Pengembangan Ide Bisnis TIK, Sistem Informasi
@@ -342,7 +342,7 @@ ITCC 2018
 
 	      	<li data-date="01/11/2014">
 		        <center>
-		          	<h1>Puncak Acara</h1>
+		          	<h1 class="text-black">Puncak Acara</h1>
 		          	<em>November 1st, 2014</em>
 		          	<p style="font-size: 15px;"><i class="fa fa-bars"></i> 
 		                Desain Web, Cerdas Cermat, Pemrograman, Pengembangan Ide Bisnis TIK, Sistem Informasi
