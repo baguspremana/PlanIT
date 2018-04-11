@@ -22,17 +22,18 @@
                 <div class="panel-body no-padding">
                     <table class="table table-striped">
                         <tbody>
+                            @foreach($data as $peserta)
                             <tr>
                                 <td><b>Kode</b></td>
-                                <td>kodenya</td>
+                                <td>{{ $peserta->id=1 }}</td>
                             </tr>
                             <tr>
                                 <td><b>Nama Tim</b></td>
-                                <td>nama timnya</td>
+                                <td>{{ $peserta->nama_tim }}</td>
                             </tr>
                             <tr>
                                 <td><b>Asal Institusi</b></td>
-                                <td>Asalnya</td>
+                                <td>{{ $peserta->asal }}</td>
                             </tr>
                             <tr>
                                 <td><b>Status</b></td>
@@ -41,6 +42,7 @@
                                     Telah Terverifikasi <i class="glyphicon glyphicon-ok" style="color:green"></i>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

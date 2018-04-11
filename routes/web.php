@@ -74,3 +74,5 @@ Route::get('/idea', function () {
 Route::get('/sistem-informasi', function () {
     return view('landing.si');
 });
+
+Route::resource('peserta','DasboardController');
