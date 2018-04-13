@@ -16,7 +16,7 @@ class DasboardController extends Controller
     public function index()
     {
         $data=Peserta::all();
-        return view('dashboard',$data);
+        return view('peserta.dashboard',$data);
     }
 
     /**
