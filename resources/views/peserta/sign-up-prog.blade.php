@@ -15,7 +15,7 @@
   	</ul>
 </li>
 <li><a href="/login">Masuk</a></li>
-<li><a href="#">FAQ</a></li>
+<li><a href="/faq">FAQ</a></li>
 @endsection
 
 @section('intro')

@@ -48,11 +48,11 @@ Route::get('/signup-idea', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('peserta.dashboard');
 });
 
 Route::get('/dashboard-admin', function () {
-    return view('dashboard-admin');
+    return view('admin.dashboard-admin');
 });
 
 Route::get('/pemrograman', function () {
@@ -73,4 +73,24 @@ Route::get('/idea', function () {
 
 Route::get('/sistem-informasi', function () {
     return view('landing.si');
+});
+
+Route::get('/faq', function () {
+    return view('landing.faq');
+});
+
+Route::get('/admin-login', function () {
+    return view('admin.login');
+});
+
+Route::get('/login-juri', function () {
+    return view('jury.login');
+});
+
+Route::get('/dashboard-juri', function () {
+    return view('jury.dashboard');
+});
+
+Route::get('/signup-juri', function () {
+    return view('jury.signup');
 });

@@ -30,7 +30,7 @@ ITCC 2018
   	</ul>
 </li>
 <li><a href="/login">Masuk</a></li>
-<li><a href="#">FAQ</a></li>
+<li><a href="/faq">FAQ</a></li>
 @endsection
 
 @section('intro')
@@ -102,7 +102,7 @@ ITCC 2018
           	<div class="col-md-4 wow fadeInUp">
             	<div class="about-col">
              		<div class="img">
-                		<img src="asset1/img/about-mission.jpg">
+                		<img src="asset1/LPJ/7.jpg">
                 		<div class="icon"><i class="fa fa-code"></i></div>
               		</div>
               		<h2>Pemrograman</h2>
@@ -116,7 +116,7 @@ ITCC 2018
           	<div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/img/about-plan.jpg">
+                		<img src="asset1/LPJ/8.jpg">
                 		<div class="icon"><i class="fa fa-css3"></i></div>
               		</div>
               		<h2>Desain Web</h2>
@@ -130,7 +130,7 @@ ITCC 2018
           	<div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/img/about-vision.jpg">
+                		<img src="asset1/LPJ/33.jpg">
                 	<div class="icon"><i class="fa fa-bell"></i></div>
               		</div>
               		<h2>Cerdas Cermat</h2>
@@ -148,7 +148,7 @@ ITCC 2018
           	<div class="col-md-6 wow fadeInUp">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/img/about-mission.jpg">
+                		<img src="asset1/LPJ/48.jpg">
                 		<div class="icon"><i class="fa fa-info-circle"></i></div>
               		</div>
               		<h2>Sistem Informasi</h2>
@@ -162,7 +162,7 @@ ITCC 2018
           	<div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/img/about-plan.jpg">
+                		<img src="asset1/LPJ/37.jpg">
                 		<div class="icon"><i class="fa fa-money"></i></div>
               		</div>
               		<h2>Pengembangan Ide Bisnis TIK</h2>

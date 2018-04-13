@@ -15,7 +15,7 @@
   	</ul>
 </li>
 <li><a href="/login">Masuk</a></li>
-<li><a href="#">FAQ</a></li>
+<li><a href="/faq">FAQ</a></li>
 @endsection
 
 @section('intro')
@@ -44,15 +44,18 @@
 	                        		<h1 style="text-align: center; color: #232323; margin-bottom: 50px;">Login</h1>
 	                        		<hr style="color: black;">
 	                        		<div class="input-group">
-	                           			<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-	                           			<input type="text" class="form-control" placeholder="username" name="uname">
+	                        			<div class="input-group-prepend">
+	                        				<span class="input-group-text"><i class="fa fa-user fa-fw"></i></span>
+	                        			</div>
+	                        			<input type="text" class="form-control" placeholder="username" name="uname">
 	                        		</div>
 	                        		<br>
 	                        		<div class="input-group">
-	                           			<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+	                        			<div class="input-group-prepend">
+	                        				<span class="input-group-text"><i class="fa fa-key fa-fw"></i></span>
+	                        			</div>
 	                           			<input type="password" class="form-control" placeholder="kata sandi" name="pword">
 	                        		</div>
-	                     
 	                     			<button class="btn-login" type="submit" style="margin: 0px;width: 100%;margin-top: 20px;"><i class="fa fa-sign-in fa-fw"></i> Masuk</button>
 	                     		</div>
 	                     	</div>

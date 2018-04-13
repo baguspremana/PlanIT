@@ -79,11 +79,40 @@
   right: 0;
 }
 
+#bg-content {
+  display:block;
+  position:relative;
+  width: 100%;
+  height: 150vh;
+  background: linear-gradient(to right, rgba(2, 27, 121, 0.9), rgba(5, 117, 230, 0.9)), url(../images/unud2.jpg);
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (min-width: 1024px) {
+  #bg-content {
+    background-attachment: fixed;
+  }
+}
+
+#bg-content:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 #bg-signup {
   display:block;
   position:relative;
   width: 100%;
-  height: 200vh;
+  height: 260vh;
   background: linear-gradient(to right, rgba(2, 27, 121, 0.9), rgba(5, 117, 230, 0.9)), url(../images/unud2.jpg);
   background-position: center center;
   background-size: cover;

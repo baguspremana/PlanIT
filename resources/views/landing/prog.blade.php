@@ -19,7 +19,7 @@ Pemrograman - ITCC 2018
 <li><a href="#jadwal">Jadwal</a></li>
 <li><a href="#contact">Kontak</a></li>
 <li><a href="/login">Masuk</a></li>
-<li><a href="#">FAQ</a></li>
+<li><a href="/faq">FAQ</a></li>
 @endsection
 
 @section('intro')
