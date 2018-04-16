@@ -96,3 +96,13 @@ Route::get('/signup-juri', function () {
 });
 
 Route::resource('peserta','DasboardController');
+
+Route::prefix('admin')->group(function(){
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
+    Route::get('/dashboard', 'AdminController@index')->name('admin.index');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
