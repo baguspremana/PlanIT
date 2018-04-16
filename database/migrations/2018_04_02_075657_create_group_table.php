@@ -19,6 +19,7 @@ class CreateGroupTable extends Migration
             $table->string('institution', 50);
             $table->string('username', 50);
             $table->string('password');
+            $table->string('email');
             $table->string('u_token');
             $table->boolean('online');
             $table->dateTime('last_login_at');

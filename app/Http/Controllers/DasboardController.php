@@ -8,6 +8,11 @@ use App\Dasboard;
 
 class DasboardController extends Controller
 {
+    public function __construct()
+    {
+        //defining our middleware for this controller
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +20,9 @@ class DasboardController extends Controller
      */
     public function index()
     {
-        $data=Peserta::all();
-        return view('peserta.dashboard',$data);
+       // $data=Peserta::all();
+        //return view('peserta.dashboard',$data);
+        return view('peserta.dashboard');
     }
 
     /**

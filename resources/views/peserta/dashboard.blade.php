@@ -22,6 +22,7 @@
                 <div class="panel-body no-padding">
                     <table class="table table-striped">
                         <tbody>
+                            <?php /*
                             @foreach($data as $peserta)
                             <tr>
                                 <td><b>Kode</b></td>
@@ -43,6 +44,7 @@
                                 </td>
                             </tr>
                             @endforeach
+                            */?>
                         </tbody>
                     </table>
                 </div>

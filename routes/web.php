@@ -15,16 +15,20 @@
     return view('welcome');
 });*/
 
+/* AUTH PESERTA */
+
+Route::get('/login', function () {
+    return view('peserta.login');
+})->name('login');
+Route::post('/login', 'Auth\GroupLoginController@login');
+Route::post('/logout', 'Auth\GroupLoginController@logout');
+
 Route::get('/', function () {
     return view('landing.landing');
 });
 
 Route::get('/comming', function () {
     return view('comming-soon');
-});
-
-Route::get('/login', function () {
-    return view('peserta.login');
 });
 
 Route::get('/signup-prog', function () {
@@ -100,9 +104,10 @@ Route::resource('peserta','DasboardController');
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
+    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('/dashboard', 'AdminController@index')->name('admin.index');
+    Route::get('/', 'AdminController@index')->name('admin.index');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+

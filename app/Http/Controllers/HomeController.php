@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('add');
     }
 
     /**
@@ -24,5 +24,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function add($data)
+    {
+        $data->password = bcrypt($data->pword);
+        $mhs = \App\Mahasiswa::create($data);
+        echo $mhs->nama;
     }
 }

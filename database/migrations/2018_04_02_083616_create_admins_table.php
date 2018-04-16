@@ -24,6 +24,7 @@ class CreateAdminsTable extends Migration
             $table->string('is_login');
             $table->datetime('last_login_at');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
