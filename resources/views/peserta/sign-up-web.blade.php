@@ -43,7 +43,8 @@
             		<div class="form" style="background-color: white;">
             			<div class="box" style="margin-top: 50px;">
                      		<form action="#" class="form-horizontal" method="post" accept-charset="utf-8">
-                     
+								{{ csrf_field() }}
+								<input type="hidden" value="2" name="competition_id" />
                      			<div class="box-body">
                       				<h3 style="text-align: center; font-size: 30px;">Form Pendaftaran Desain Web</h3>
                         			<div class="box-body-col">

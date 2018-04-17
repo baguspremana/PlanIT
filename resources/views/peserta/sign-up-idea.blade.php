@@ -42,8 +42,9 @@
             	<section id="daftar">
             		<div class="form" style="background-color: white;">
             			<div class="box" style="margin-top: 50px;">
-                     		<form action="#" class="form-horizontal" method="post" accept-charset="utf-8">
-                     
+                     		<form action="{{url('/daftar')}}" class="form-horizontal" method="post" accept-charset="utf-8">
+								{{ csrf_field() }}
+								<input type="hidden" value="4" name="competition_id" />
                      			<div class="box-body">
                       				<h3 style="text-align: center; font-size: 30px;">Form Pendaftaran Pengembangan Ide Bisnis TIK</h3>
                         			<div class="box-body-col">
@@ -51,13 +52,13 @@
                            				<div class="form-group row">
                              				<label for="groupname" class="col-md-3 col-form-label">Nama Tim</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. 'Team Greentea'" name="groupname" type="text">
+				                                <input value="{{old('group_name')}}" class="form-control" placeholder="ex. 'Team Greentea'" name="group_name" type="text">
 				                            </div>
                            				</div>
                            				<div class="form-group row">
                              				<label for="institution" class="col-md-3 col-form-label">Asal Institusi</label>
                              				<div class="col-md-9">
-                                 				<input class="form-control" placeholder="ex. 'Universitas Udayana'" name="institution" type="text">
+                                 				<input value="{{old('institution')}}" class="form-control" placeholder="ex. 'Universitas Udayana'" name="institution" type="text">
                              				</div>
                            				</div>
                            			</div>
@@ -67,31 +68,31 @@
                            				<div class="form-group row">
 				                            <label for="fullname" class="col-md-3 col-form-label">Nama Lengkap</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. 'Nama Brata'" name="fullname" type="text">
+				                                <input value="{{old('full_name')}}" class="form-control" placeholder="ex. 'Nama Brata'" name="full_name" type="text">
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label for="birthday" class="col-md-3 col-form-label">Tanggal Lahir</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. '1995/12/27'" name="birthday" type="date">
+				                                <input value="{{old('birthdate')}}" class="form-control" placeholder="ex. '1995/12/27'" name="birthdate" type="date">
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label for="email" class="col-md-3 col-form-label">Email</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. 'mail@site.com'" name="email" type="email">
+				                                <input value="{{old('email')}}" class="form-control" placeholder="ex. 'mail@site.com'" name="email" type="email">
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                        	<label for="contact" class="col-md-3 col-form-label">Nomor Kontak</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. '081632111111'" name="contact" type="number">
+				                                <input value="{{old('contact')}}" class="form-control" placeholder="ex. '081632111111'" name="contact" type="number">
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Vegetarian</label>
 				                            <div class="col-md-9">
-				                               <label><input type="radio" value="Y" name="vegetarian"> Ya </label> <label><input type="radio" value="N" name="vegetarian"> Tidak</label>
+				                               <label><input {{ old('vegetarian')=="1"?"checked":"" }} type="radio" value="1" name="vegetarian"> Ya </label> <label><input {{ old('vegetarian')=="0"?"checked":"" }}  type="radio" value="0" name="vegetarian"> Tidak</label>
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
@@ -104,7 +105,7 @@
 			                            <div class="form-group row">
 			                              	<label class="col-md-3 col-form-label">Baju Peserta</label>
 			                              	<div class="col-md-9">
-			                                  	<label><input type="radio" id="baju-yes" value="Y" name="baju"> Ya </label> <label><input type="radio" id="baju-no" value="N" name="baju"> Tidak</label><br>
+			                                  	<label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
 			                                  	<small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp....</small>
 			                              	</div>
 			                            </div>
@@ -127,7 +128,7 @@
 				                        <div class="form-group row">
 				                        	<label class="col-md-3 col-form-label">Username</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="nama pengguna" name="username" type="text">
+				                                <input value="{{old('username')}}" class="form-control" placeholder="nama pengguna" name="username" type="text">
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
