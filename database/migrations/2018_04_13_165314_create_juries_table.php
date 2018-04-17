@@ -16,12 +16,12 @@ class CreateJuriesTable extends Migration
         Schema::create('juries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fullname', 50);
-            $table->tinyInteger('category_id');
+            $table->tinyInteger('competition_id');
             $table->string('username', 20);
             $table->string('password');
             $table->string('email', 50);
-            $table->string('is_login');
-            $table->datetime('last_login_at');
+            $table->string('is_login')->nullable();
+            $table->datetime('last_login_at')->nullable();
             $table->timestamps();
             $table->rememberToken();
         });
