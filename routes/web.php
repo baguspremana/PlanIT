@@ -147,4 +147,3 @@ Route::post('/daftar', 'Auth\GroupRegisterController@register');
 Route::get('/log-upload', function () {
     return view('admin.uploadlogs');
 });
->>>>>>> 2fe6dc4f0f22ad7a9d9318e583251b17e243a1a5
