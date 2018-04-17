@@ -99,7 +99,6 @@ Route::get('/signup-juri', function () {
     return view('jury.signup');
 });
 
-<<<<<<< HEAD
 Route::get('/form-nilai', function () {
     return view('jury.form-nilai');
 });
@@ -120,8 +119,6 @@ Route::get('/log-upload', function () {
     return view('admin.uploadlogs');
 });
 
-/*Route::resource('peserta','DasboardController');
-=======
 Route::resource('peserta','DasboardController');
 
 Route::prefix('admin')->group(function(){
@@ -132,6 +129,12 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@index')->name('admin.index');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('juri')->group(function(){
+    Route::get('/login', 'Auth\JuryLoginController@showLoginForm')->name('jury.login');
+    Route::post('/login', 'Auth\JuryLoginController@login')->name('jury.login');
+    Route::post('/logout', 'Auth\JuryLoginController@logout')->name('jury.logout');
+    Route::get('/dashboard', 'JuryController@index')->name('jury.index');
+    Route::get('/', 'JuryController@index')->name('jury.index');
+});
 
->>>>>>> 59194e805f2f4af22a29bfbfe48fa3d70eafbfce
+Route::get('/home', 'HomeController@index')->name('home');

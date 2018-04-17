@@ -14,7 +14,8 @@
                   
                 <section id="daftar">
                   	<div class="form" style="background-color: white;">
-                  		<form method="post" action="#" class="contactForm">
+                  		<form method="post" action="{{ route('jury.login') }}" class="contactForm">
+						  	{{ csrf_field() }}
 	                        <div class="row" style="width: 100%; min-height: 450px; margin-right: 0px; margin-left: 0px; margin-top: 40px;">
 
 	                     		<div class="col-md-4 login-page" style="background: #343b40; height: 450px;">
@@ -32,14 +33,14 @@
 	                        			<div class="input-group-prepend">
 	                        				<span class="input-group-text"><i class="fa fa-user fa-fw"></i></span>
 	                        			</div>
-	                        			<input type="text" class="form-control" placeholder="username" name="uname">
+	                        			<input type="text" class="form-control" placeholder="username" name="username">
 	                        		</div>
 	                        		<br>
 	                        		<div class="input-group">
 	                        			<div class="input-group-prepend">
 	                        				<span class="input-group-text"><i class="fa fa-key fa-fw"></i></span>
 	                        			</div>
-	                           			<input type="password" class="form-control" placeholder="kata sandi" name="pword">
+	                           			<input type="password" class="form-control" placeholder="kata sandi" name="password">
 	                        		</div>
 	                     			<button class="btn-login" type="submit" style="margin: 0px;width: 100%;margin-top: 20px;"><i class="fa fa-sign-in fa-fw"></i> Masuk</button>
 	                     		</div>

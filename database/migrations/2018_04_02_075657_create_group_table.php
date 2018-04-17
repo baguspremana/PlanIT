@@ -28,6 +28,7 @@ class CreateGroupTable extends Migration
             $table->dateTime('verified_at');
             $table->tinyInteger('verifying_admin');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 

@@ -19,9 +19,11 @@ class CreateJuriesTable extends Migration
             $table->tinyInteger('category_id');
             $table->string('username', 20);
             $table->string('password');
+            $table->string('email', 50);
             $table->string('is_login');
             $table->datetime('last_login_at');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
