@@ -70,15 +70,15 @@
                     <div id="navbar-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Adikur</span> <i class="icon-submenu fa fa-arrow-circle-down"  style="color: white"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::user()->group_name}}</span> <i class="icon-submenu fa fa-arrow-circle-down"  style="color: white"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
-                                    <li><a href="#"}}"
+                                    <li><a href="#"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
                                 </ul>
 
-                                <form id="logout-form" action="#" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>

@@ -22,6 +22,11 @@
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tbody>
+<<<<<<< HEAD
+=======
+                            <?php /*
+                            @foreach($data as $peserta)
+>>>>>>> 59194e805f2f4af22a29bfbfe48fa3d70eafbfce
                             <tr>
                                 <td><b>Kode</b></td>
                                 <td><b>Kode</b></td>
@@ -41,6 +46,11 @@
                                     Telah Terverifikasi <i class="glyphicon glyphicon-ok" style="color:green"></i>
                                 </td>
                             </tr>
+<<<<<<< HEAD
+=======
+                            @endforeach
+                            */?>
+>>>>>>> 59194e805f2f4af22a29bfbfe48fa3d70eafbfce
                         </tbody>
                     </table>
                 </div>
