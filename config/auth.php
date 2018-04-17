@@ -50,6 +50,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+
+        'jury' => [
+            'driver' => 'session',
+            'provider' => 'juries',
+        ],
     ],
 
     /*
@@ -77,6 +82,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+        'juries' => [
+            'driver' => 'eloquent',
+            'model' => App\Jury::class,
         ],
 
         // 'users' => [
@@ -108,6 +117,11 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'juries' => [
+            'provider' => 'juries',
             'table' => 'password_resets',
             'expire' => 60,
         ],

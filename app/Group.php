@@ -15,7 +15,12 @@ class Group extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'group_name',
+        'institution', 
+        'username', 
+        'password',
+        'email',
+        'competition_id',
     ];
 
     /**

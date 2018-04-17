@@ -17,9 +17,7 @@
 
 /* AUTH PESERTA */
 
-Route::get('/login', function () {
-    return view('peserta.login');
-})->name('login');
+Route::get('/login', 'Auth\GroupLoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\GroupLoginController@login');
 Route::post('/logout', 'Auth\GroupLoginController@logout');
 
@@ -129,5 +127,26 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@index')->name('admin.index');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('juri')->group(function(){
+    Route::get('/login', 'Auth\JuryLoginController@showLoginForm')->name('jury.login');
+    Route::post('/login', 'Auth\JuryLoginController@login')->name('jury.login');
+    Route::post('/logout', 'Auth\JuryLoginController@logout')->name('jury.logout');
+    Route::get('/dashboard', 'JuryController@index')->name('jury.index');
+    Route::get('/', 'JuryController@index')->name('jury.index');
+});
 
+Route::prefix('daftar')->group(function(){
+    Route::get('/pemrograman', 'Auth\GroupRegisterController@showProgRegistrationForm')->name('regis.prog');
+    Route::get('/cerdascermat', 'Auth\GroupRegisterController@showLccRegistrationForm')->name('regis.lcc');
+    Route::get('/desainweb', 'Auth\GroupRegisterController@showWebRegistrationForm')->name('regis.web');
+    Route::get('/idebisnis', 'Auth\GroupRegisterController@showIdeaRegistrationForm')->name('regis.idea');
+});
+
+<<<<<<< HEAD
+=======
+Route::post('/daftar', 'Auth\GroupRegisterController@register');
+
+Route::get('/log-upload', function () {
+    return view('admin.uploadlogs');
+});
+>>>>>>> 2fe6dc4f0f22ad7a9d9318e583251b17e243a1a5

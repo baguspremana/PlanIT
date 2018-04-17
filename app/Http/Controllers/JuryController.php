@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class JuryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,9 +13,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('add');
+        $this->middleware('auth:jury');
     }
-
+ 
     /**
      * Show the application dashboard.
      *
@@ -23,13 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function add($data)
-    {
-        $data->password = bcrypt($data->pword);
-        $mhs = \App\Mahasiswa::create($data);
-        echo $mhs->nama;
+        return view('jury.dashboard');
     }
 }
