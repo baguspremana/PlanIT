@@ -99,7 +99,6 @@ Route::get('/signup-juri', function () {
     return view('jury.signup');
 });
 
-<<<<<<< HEAD
 Route::get('/form-nilai', function () {
     return view('jury.form-nilai');
 });
@@ -120,8 +119,6 @@ Route::get('/log-upload', function () {
     return view('admin.uploadlogs');
 });
 
-/*Route::resource('peserta','DasboardController');
-=======
 Route::resource('peserta','DasboardController');
 
 Route::prefix('admin')->group(function(){
@@ -134,4 +131,3 @@ Route::prefix('admin')->group(function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 
->>>>>>> 59194e805f2f4af22a29bfbfe48fa3d70eafbfce

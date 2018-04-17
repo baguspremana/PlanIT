@@ -19,7 +19,7 @@
 	                        <div class="row" style="width: 100%; min-height: 450px; margin-right: 0px; margin-left: 0px; margin-top: 40px;">
 
 	                     		<div class="col-md-4 login-page" style="background: #343b40; height: 450px;">
-				                    <img src="{{ asset('')}}asset/images/logo-itcc5.png" style="width: 70%;margin-left: 35px;margin-top: 70px;" class="img-responsive center-block ">
+				                    <img src="{{ asset('')}}asset1/images/logo-itcc5.png" style="width: 70%;margin-left: 35px;margin-top: 70px;" class="img-responsive center-block ">
 				                    <h3 style="color: white; text-align: center;">Tema ITCC 2018</h3>
 				                    <h4 style="color:#a2c8cc; text-align: center;">"Tema"</h4>
 				                    <hr style="width: 80%; color: white; margin-bottom: 5px;">

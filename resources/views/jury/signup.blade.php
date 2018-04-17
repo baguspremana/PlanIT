@@ -1,6 +1,6 @@
 @extends('layout.template')
 @section('title')
-	Login Admin - ITCC 2018
+	Pendaftaran Juri - ITCC 2018
 @endsection
 
 @section('navbar')
@@ -45,11 +45,11 @@
                            				<div class="form-group row">
                              				<label for="institution" class="col-md-3 col-form-label">Kategory Lomba</label>
                              				<div class="col-md-9">
-                                 				<select name="category" class="form-control" required="required">
-                                  					<option value="">Category Lomba</option>
+                                 				<select name="category" class="form-control">
+                                  					<option value="" disabled selected>Kategori Lomba</option>
                                   					<option value="IDEA">IDEA</option>
                                   					<option value="SI">SI</option>             
-                                  				</select>
+                                  			</select>
                              				</div>
                            				</div>
                            			</div>

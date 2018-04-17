@@ -289,7 +289,7 @@
   font-size: 13px;
 }
 
-#daftar .form input, #daftar .form textarea {
+#daftar .form input, #daftar .form textarea, #daftar .form select  {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
