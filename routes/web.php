@@ -142,8 +142,6 @@ Route::prefix('daftar')->group(function(){
     Route::get('/idebisnis', 'Auth\GroupRegisterController@showIdeaRegistrationForm')->name('regis.idea');
 });
 
-<<<<<<< HEAD
-=======
 Route::post('/daftar', 'Auth\GroupRegisterController@register');
 
 Route::get('/log-upload', function () {
