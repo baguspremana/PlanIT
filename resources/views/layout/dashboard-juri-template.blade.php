@@ -1,9 +1,8 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <title>@yield('title')</title>
-    <meta charset="utf-8">
+	<title>@yield('title')</title>
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!--fav icon-->
@@ -14,6 +13,7 @@
 
     <!-- CSS -->
     <link href="{{asset('asset/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('asset/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/icon-sets.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/main.min.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/demo.css')}}" rel="stylesheet">
@@ -29,13 +29,10 @@
     <script src="{{asset('asset/lib/jquery/jquery-2.1.0.min.js')}}"></script>
     <script src="{{asset('asset/lib/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('asset/js/klorofil.min.js')}}"></script>
-    
 </head>
-
 <body>
-    <!-- WRAPPER -->
-    <div id="wrapper">
-        <!-- SIDEBAR -->
+	<div id="wrapper">
+		<!-- SIDEBAR -->
         <div class="sidebar" style="background-color: #021B79">
             <div class="brand" style="background-color: #021B79">
                 <a href="index.html"><img src="asset/images/logo-itcc5.png" alt="ITCC Logo" class="img-responsive logo" width="100px" height="100px"></a>
@@ -43,19 +40,17 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li><a href="/dashboard-admin"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
-                        <li><a href="/log-upload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Log Unggah</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-euro"></i> <span>Pembayaran</span></a></li>
-                        <li><a href="/tambah-peserta"><i class="glyphicon glyphicon-plus-sign"></i> <span>Tambah Peserta</span></a></li>
+                        <li><a href="/dashboard-juri"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="/rekap-nilai"><i class="glyphicon glyphicon-list-alt"></i> <span>Rekap Nilai</span></a></li>
+                        <li><a href="/form-nilai"><i class="glyphicon glyphicon-list-alt"></i> <span>Form Penilaian</span></a></li>
                     </ul>
                 </nav>
             </div>
         </div>
         <!-- END SIDEBAR -->
-        <!-- MAIN -->
+
         <div class="main">
-            <!-- NAVBAR -->
+        	<!-- NAVBAR -->
             <nav class="navbar navbar-default" style="background-color: #021B79">
                 <div class="container-fluid">
                     <div class="navbar-btn">
@@ -93,21 +88,15 @@
                 </div>
             </nav>
             <!-- END NAVBAR -->
-            <!-- MAIN CONTENT -->
-            <div class="main-content">
-                @yield('content')
-            </div>
-            <!-- END MAIN CONTENT -->
+
+            @yield('content')
+
             <footer>
-                <div class="container-fluid">
-                    <p class="copyright" style="color: #021B79;">&copy; Information Technology Creative Competition 2018 | <a href="http://it.unud.ac.id" style="color: #0575E6;">Teknologi Informasi Udayana</a></p>
-                </div>
-            </footer>
+	            <div class="container-fluid">
+	                <p class="copyright" style="color: #021B79;">&copy; Information Technology Creative Competition 2018 | <a href="http://it.unud.ac.id" style="color: #0575E6;">Teknologi Informasi Udayana</a></p>
+	            </div>
+        	</footer>
         </div>
-        <!-- END MAIN -->
-    </div>
-    <!-- END WRAPPER -->
-
+	</div>
 </body>
-
 </html>

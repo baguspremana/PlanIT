@@ -47,9 +47,9 @@ Route::get('/signup-idea', function () {
     return view('peserta.sign-up-idea');
 });
 
-/*Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('peserta.dashboard');
-});*/
+});
 
 Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
@@ -95,4 +95,24 @@ Route::get('/signup-juri', function () {
     return view('jury.signup');
 });
 
-Route::resource('peserta','DasboardController');
+Route::get('/form-nilai', function () {
+    return view('jury.form-nilai');
+});
+
+Route::get('/rekap-nilai', function () {
+    return view('jury.rekap-nilai');
+});
+
+Route::get('/tambah-peserta', function () {
+    return view('admin.tambahPeserta');
+});
+
+Route::get('/tambah-peserta-lcc', function () {
+    return view('admin.tambahPesertaLCC');
+});
+
+Route::get('/log-upload', function () {
+    return view('admin.uploadlogs');
+});
+
+/*Route::resource('peserta','DasboardController');
