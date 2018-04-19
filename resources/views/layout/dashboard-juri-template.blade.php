@@ -71,7 +71,7 @@
                         </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">Admin</span> <i class="icon-submenu fa fa-arrow-circle-down"  style="color: white"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::guard('jury')->user()->fullname}}</span> <i class="icon-submenu fa fa-arrow-circle-down"  style="color: white"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="#"
