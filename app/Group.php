@@ -31,4 +31,12 @@ class Group extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    
+    /**
+     * Get the participants of the group.
+     */
+    public function participants(){
+        return $this->hasMany('App\Participant');
+    }
 }

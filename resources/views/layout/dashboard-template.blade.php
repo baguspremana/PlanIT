@@ -45,9 +45,9 @@
                 <nav>
                     <ul class="nav">
                         <li><a href="/dashboard"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Upload Data</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
+                        <li><a href="/verifikasi"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
+                        <li><a href="/upload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Upload Data</span></a></li>
+                        <li><a href="/setting"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
                     </ul>
                 </nav>
             </div>

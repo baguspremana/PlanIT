@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Dashboard;
+use Auth;
 
 class DasboardController extends Controller
 {
@@ -20,9 +21,8 @@ class DasboardController extends Controller
      */
     public function index()
     {
-       // $data=Peserta::all();
-        //return view('peserta.dashboard',$data);
-        return view('peserta.dashboard');
+        $data['participants'] = Auth::user()->participants;
+        return view('peserta.dashboard', $data);
     }
 
     /**
@@ -93,5 +93,10 @@ class DasboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showVerificationForm()
+    {
+        return view('peserta.verifikasi');
     }
 }

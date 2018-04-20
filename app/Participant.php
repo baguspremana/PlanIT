@@ -24,4 +24,11 @@ class Participant extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+        /**
+     * Get the group that owns the participant.
+     */
+    public function group(){
+        return $this->belongsTo('App\Group');
+    }
 }

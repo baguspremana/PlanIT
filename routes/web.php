@@ -117,7 +117,8 @@ Route::get('/log-upload', function () {
     return view('admin.uploadlogs');
 });
 
-Route::resource('peserta','DasboardController');
+Route::resource('dashboard','DasboardController');
+Route::get('/verifikasi','DashboardController@showVerificationForm');
 
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
