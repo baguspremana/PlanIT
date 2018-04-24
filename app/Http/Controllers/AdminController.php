@@ -25,4 +25,14 @@ class AdminController extends Controller
     {
         return view('admin.dashboard-admin');
     }
+
+    public function showFormPembayaran()
+    {
+        return view('admin.verifikasiPeserta');
+    }
+
+    public function showFormVerifikasi()
+    {
+        return view('admin.verifikasiAdmin');
+    }        
 }

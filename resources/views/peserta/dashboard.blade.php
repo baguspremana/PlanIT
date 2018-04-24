@@ -302,6 +302,91 @@
     </div>
     <!-- End Modal Delete -->
 
+    <!-- Modal Peringatan -->
+    <div id="modalInfo" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #0575e6; color: #fff;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><center>Pemberitahuan</center></h4>
+                </div>
+                <div class="modal-body">
+                    <p align="center">Setelah anda melakukan pendaftaran, lengkapi kesiapan anda untuk perlombaan dengan mengikuti langkah berikut.</p>
+
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-md-5">
+                            <center>
+                                <img src="asset/icon/11.png" style="width: 25%; margin-bottom: 5px;">
+                                <p>Lengkapi data anggota tim anda (khusus lomba LCC, SI, IDEA)</p>
+                            </center>
+                        </div>
+                        <div class="col-md-2 visible-lg">
+                            <center><img src="asset/icon/right.png" style="width: 50%;"></center>
+                        </div>
+                        <div class="col-md-5 mt-2">
+                            <center>
+                                <img src="asset/icon/12.png" style="width: 25%; margin-bottom: 5px;">
+                                <p>Lakukan pembayaran biaya lomba</p>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row visible-lg">
+                        <div class="col-md-7"></div>
+                        <div class="col-md-5">
+                            <center><img src="asset/icon/down.png" style="width: 20%;"></center>
+                        </div>
+                    </div>
+
+                    <div class="row mt-20">
+                        <div class="col-md-5">
+                            <center>
+                                <img src="asset/icon/13.png" style="width: 25%; margin-bottom: 5px;">
+                                <p>Upload berkas untuk keperluan lomba (khusus lomba desain web, SI, IDEA)</p>
+                            </center>
+                        </div>
+                        <div class="col-md-2 visible-lg">
+                            <center><img src="asset/icon/left.png" style="width: 50%;"></center>
+                        </div>
+                        <div class="col-md-5 mt-2">
+                            <center>
+                                <img src="asset/icon/9.png" style="width: 25%; margin-bottom: 5px;">
+                                <p>Konfirmasi pembayaran yang telah anda lakukan</p>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row visible-lg">
+                        <div class="col-md-5">
+                            <center><img src="asset/icon/down.png" style="width: 20%;"></center>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-md-5">
+                            <center>
+                                <img src="asset/icon/14.png" style="width: 25%; margin-bottom: 5px;">
+                                <p>Siapkan diri untuk mengikuti perlombaan</p>
+                            </center>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--End Modal content-->
+
+        </div>
+    </div>
+    <!-- End Modal Pringatan -->
+
+    <script type="text/javascript">
+         $(window).load(function(){
+            $('#modalInfo').modal('show');
+        });
+    </script>
+
 </div>
 @endsection
 
