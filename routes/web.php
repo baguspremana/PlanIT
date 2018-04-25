@@ -117,7 +117,7 @@ Route::get('/log-upload', function () {
     return view('admin.uploadlogs');
 });
 
-Route::resource('dashboard','DasboardController');
+Route::resource('dashboard','DashboardController');
 Route::get('/verifikasi','DashboardController@showVerificationForm');
 
 Route::prefix('admin')->group(function(){

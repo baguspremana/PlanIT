@@ -42,7 +42,7 @@
             	<section id="daftar">
             		<div class="form" style="background-color: white;">
             			<div class="box" style="margin-top: 50px;">
-                     		<form action="{{url('/daftar')}}" class="form-horizontal" method="post" accept-charset="utf-8">
+                     		<form action="{{url('/daftar')}}" class="form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 								{{ csrf_field() }}
 								<input type="hidden" value="4" name="competition_id" />
                      			<div class="box-body">
@@ -106,7 +106,7 @@
 			                              	<label class="col-md-3 col-form-label">Baju Peserta</label>
 			                              	<div class="col-md-9">
 			                                  	<label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
-			                                  	<small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp....</small>
+			                                  	<small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp</small><small id="harga_baju">{{$harga_baju}}</small>
 			                              	</div>
 			                            </div>
 			                            <div class="form-group row" id="ukuran-baju" style="display: none;">
@@ -167,4 +167,12 @@
     </div>
 </div>
 <!--//HEADER WEBSITE-->
+<script>
+	$('#baju-yes').click(function(e){
+		$('#ukuran-baju').show();
+	});
+	$('#baju-no').click(function(e){
+		$('#ukuran-baju').hide();
+	});
+</script>
 @endsection

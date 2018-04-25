@@ -31,7 +31,7 @@ class JuryLoginController extends Controller
         if (Auth::guard('jury')->attempt(['username' => $request->username, 'password' => $request->password], false)){
             //if successful redirect to admin dashboard
             
-            return redirect()->intended(route('jury.index'));
+            return redirect(route('jury.index'));
         }
         //if unsuccessfull redirect back to the login for with form data
         return redirect()->back()->withInput($request->only('username'));
@@ -41,6 +41,6 @@ class JuryLoginController extends Controller
     {
         Auth::guard('jury')->logout(false);
  
-        return redirect('jury/login');
+        return redirect('juri/login');
     }
 }

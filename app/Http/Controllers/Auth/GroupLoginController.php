@@ -30,7 +30,7 @@ class GroupLoginController extends Controller
         if (Auth::attempt(["username"=>$request->username,"password"=>$request->password], false)){
             //if successful redirect to admin dashboard
             
-            return redirect()->intended(route('dashboard.index'));
+            return redirect(route('dashboard.index'));
         }
         //if unsuccessfull redirect back to the login for with form data
         return redirect()->back()->withInput($request->only('username'));

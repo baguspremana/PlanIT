@@ -5,14 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Dashboard;
+use App\Participant;
 use Auth;
 
-class DasboardController extends Controller
+class DashboardController extends Controller
 {
     public function __construct()
     {
         //defining our middleware for this controller
         $this->middleware('auth');
+        
+        $this->$completeness = [
+            'email_verif' => 0,
+            'participants' => 0,
+            'identity_verif' => 0,
+            'payment' => 0,
+            'payment_verif' => 0,
+        ];
+
+        $participants = Auth::user()->participants;
+
+        if(Auth::user()->verified) 
+            $this->$completeness['email_verif'] = 1;
+
+        if($participants->count() > 1)
+            $this->$completeness['participants'] = 1;
+        
+        $this->$completeness['identity_verif'] = 1;
+        foreach($participants as $participant){
+            if(!$participant->active){
+                $this->$completeness['identity_verif'] = 0;
+            }
+        }
+
+
     }
     /**
      * Display a listing of the resource.
@@ -43,11 +69,13 @@ class DasboardController extends Controller
      */
     public function store(Request $request)
     {
-        $data=new Peserta();
-        $data->nama_tim=$request->get('nama_tim');
-        $data->asal=$request->get('asal');
-        $data->save();
-        return redirect('peserta');
+        $data = $request->all();
+        $data['captain'] = 0;
+        $data['group_id'] = Auth::user()->id;
+        $data['photo'] = $request->competition_id."_".$request->full_name.".".$request->file('photo')->getClientOriginalExtension();
+        Participant::uploadPhoto($request->file('photo'), $data['photo']);
+        Participant::create($data);
+        return redirect('dashboard');
     }
 
     /**
@@ -92,7 +120,8 @@ class DasboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Participant::destroy($id);
+        return redirect('dashboard');
     }
 
     public function showVerificationForm()

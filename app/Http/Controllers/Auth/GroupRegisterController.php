@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RedirectsUsers;
+use App\Shirt;
 
 class GroupRegisterController extends Controller
 {
@@ -65,8 +66,7 @@ class GroupRegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
-    {
-        
+    {   
         $data = $request->all();
         $data['password'] = Hash::make($data['password']);
 
@@ -76,7 +76,10 @@ class GroupRegisterController extends Controller
         $this->guard()->login($user);
 
         $data['group_id'] = $user->id;
+        $data['photo'] = $request->competition_id."_".$request->full_name.".".$request->file('photo')->getClientOriginalExtension();
+        $data['captain'] = 1;
         
+        Participant::uploadPhoto($request->file('photo'), $data['photo']);
         Participant::create($data);
 
         return $this->registered($request, $user)
@@ -128,6 +131,7 @@ class GroupRegisterController extends Controller
 
     public function showIdeaRegistrationForm()
     {
-        return view('peserta.sign-up-idea');
+        $data['harga_baju'] = Shirt::find(1)->harga;
+        return view('peserta.sign-up-idea', $data);
     }
 }

@@ -42,7 +42,7 @@
             	<section id="daftar">
             		<div class="form" style="background-color: white;">
             			<div class="box" style="margin-top: 50px;">
-                     		<form action="#" class="form-horizontal" method="post" accept-charset="utf-8">
+							<form action="{{ url('/daftar') }}" class="form-horizontal" method="post" accept-charset="utf-8">
 								{{ csrf_field() }}
 								<input type="hidden" value="3" name="competition_id" />
                      			<div class="box-body">

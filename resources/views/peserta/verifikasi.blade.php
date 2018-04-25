@@ -59,7 +59,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-warning">
-						<p style="font-weight: bold;">Hai, Nama Peserta</p>
+						<p style="font-weight: bold;">Hai, {{Auth::user()->group_name}}</p>
 						<p style="text-align: justify; text-justify: inter-word;">Apakah data anda sudah terisi lengkap? Silahkan dilanjutkan dengan pembayaran pendaftaran lomba melalui ATM pada rekening <b>Nama Bank</b><i> no rekening a.n Nama Bendahara</i>.
 							Nominal uang yang ditransfer adalah <b>Rp. Jumlah Biaya</b></p>
 						<p style="text-align: left">Rincian Biaya sebagai berikut :

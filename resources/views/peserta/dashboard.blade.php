@@ -79,7 +79,7 @@
                     
                     <!--Pemberitahuan Tambah Anggota-->
                     <div class="alert alert-danger">
-                        <p>Hai, <i>nama tim</i> pastikan jumlah anggota tim anda telah lengkap. Silakan tambahkan data anggota tim anda melalui tombol berikut</p><br>
+                        <p>Hai, <i>{{Auth::user()->group_name}}</i> pastikan jumlah anggota tim anda telah lengkap. Silakan tambahkan data anggota tim anda melalui tombol berikut</p><br>
                         <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modalTambah">Tambah Anggota Tim</button>
                     </div>
                     <!--End Pemberitahuan Tambah Anggota-->
@@ -101,7 +101,7 @@
                         <tbody>
                             @foreach($participants as $participant)
                             <tr>
-                                <td>{{$participant->id}}</td>
+                                <td><img width="200" src="{{asset('uploads\\identitas\\'.$participant->photo)}}" /></td>
                                 <td>{{($participant->code=='')?"Belum Verifikasi":$participant->code}}</td>
                                 <td>{{$participant->full_name}}</td>
                                 <td>{{$participant->birthdate}}</td>
@@ -109,8 +109,11 @@
                                 <td>{{$participant->contact}}</td>
                                 <td>{{($participant->vegetarian==1)?"Ya":"Tidak"}}</td>
                                 <td>{{($participant->buy_shirt==1)?"Ya":"Tidak"}}</td>
-                                <td><a class="btn btn-warning btn-sm edit" title="Edit" style="margin:2px;" data-toggle="modal" type="button" data-target="#modalEdit"><i class="glyphicon glyphicon-pencil"></i></a> 
-                                    <a class="btn btn-danger btn-sm" style="margin:2px;" title="Hapus" data-toggle="modal" type="button" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a>
+                                <td>
+                                    <a onclick="edit_participant(this)" data-id="{{$participant->id}}" class="btn btn-warning btn-sm edit" title="Edit" style="margin:2px;" data-toggle="modal" type="button" data-target="#modalEdit"><i class="glyphicon glyphicon-pencil"></i></a> 
+                                    @if(!$participant->captain)
+                                    <a onclick="del_participant(this)" data-post="{{ url('/dashboard', ['id' => $participant->id]) }}" class="btn btn-danger btn-sm" style="margin:2px;" title="Hapus" data-toggle="modal" type="button" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
@@ -132,17 +135,18 @@
                     <h4 class="modal-title"><center>Daftar Anggota Tim</center></h4>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" class="form-horizontal" accept-charset="utf-8">
+                    <form action="{{route('dashboard.store')}}" method="post" class="form-horizontal" accept-charset="utf-8"  enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label class="control-label col-md-3">Nama Lengkap</label>
                             <div class="col-md-9">
-                                <input type="text" name="fullname" class="form-control" placeholder="ex. 'Nama Brata'">
+                                <input type="text" name="full_name" class="form-control" placeholder="ex. 'Nama Brata'">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Tanggal Lahir</label>
                             <div class="col-md-9">
-                                <input class="form-control" type="date" name="birthday" placeholder="ex. '1995/12/27'">
+                                <input class="form-control" type="date" name="birthdate" placeholder="ex. '1995/12/27'">
                             </div>
                         </div>
                         <div class="form-group">
@@ -160,7 +164,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Vegetarian</label>
                             <div class="col-md-9">
-                                <label><input type="radio" value="Y" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="N" name="vegetarian" required="required"> Tidak</label>
+                                <label><input type="radio" value="1" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="0" name="vegetarian" required="required"> Tidak</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -173,7 +177,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Baju Peserta</label>
                             <div class="col-md-9">
-                                <label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
+                                <label><input type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
                                 <small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp....</small>
                             </div>
                         </div>
@@ -292,7 +296,9 @@
                     <p>Apakah anda yakin ingin menghapus data ini?</p>
                 </div>
                 <div class="modal-footer">
-                    <form method="post" action="#">
+                    <form id="formDelete" method="post" action="#">
+                        <input type="hidden" name="_method" value="delete" />
+                        {!! csrf_field() !!}
                         <button type="submit" class="btn btn-danger">Ya</button>
                     </form>
                 </div>
@@ -303,5 +309,25 @@
     <!-- End Modal Delete -->
 
 </div>
+<script>
+    function edit_participant(e){
+        id = $(e).attr('data-id');
+        $('#formDelete').attr('action', post);
+        $('#modalDelete').show();
+    }
+
+    function del_participant(e){
+        post = $(e).attr('data-post');
+        $('#formDelete').attr('action', post);
+        $('#modalDelete').show();
+    }
+    
+	$('#baju-yes').click(function(e){
+		$('#ukuran-baju').show();
+	});
+	$('#baju-no').click(function(e){
+		$('#ukuran-baju').hide();
+	});
+</script>
 @endsection
 
