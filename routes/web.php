@@ -98,7 +98,7 @@ Route::get('/signup-juri', function () {
 });
 
 Route::get('/form-nilai', function () {
-    return view('jury.form-nilai');
+    return view('jury.form');
 });
 
 Route::get('/rekap-nilai', function () {
@@ -119,6 +119,10 @@ Route::get('/log-upload', function () {
 
 Route::resource('dashboard','DashboardController');
 Route::get('/verifikasi','DashboardController@showVerificationForm');
+
+Route::get('/verifikasiPeserta','AdminController@showFormPembayaran');
+
+Route::get('/verifikasiAdmin','AdminController@showFormVerifikasi');
 
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -147,4 +151,8 @@ Route::post('/daftar', 'Auth\GroupRegisterController@register');
 
 Route::get('/log-upload', function () {
     return view('admin.uploadlogs');
+});
+
+Route::get('/form-nilai-si', function () {
+    return view('jury.form-nilai-si');
 });

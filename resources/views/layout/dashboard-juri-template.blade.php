@@ -42,7 +42,9 @@
                     <ul class="nav">
                         <li><a href="/dashboard-juri"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="/rekap-nilai"><i class="glyphicon glyphicon-list-alt"></i> <span>Rekap Nilai</span></a></li>
-                        <li><a href="/form-nilai"><i class="glyphicon glyphicon-list-alt"></i> <span>Form Penilaian</span></a></li>
+                        <li><a href="/form-nilai-si"><i class="glyphicon glyphicon-list-alt"></i> <span>Form Penilaian</span></a></li>
+                        <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -56,12 +58,12 @@
                     <div class="navbar-btn">
                         <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars" style="color: white"></i></button>
                     </div>
-                    <div class="navbar-header">
+                    <!--div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
                             <span class="sr-only">Toggle Navigation</span>
                             <i class="fa fa-bars icon-nav"></i>
                         </button>
-                    </div>
+                    </div-->
                     <div id="navbar-menu" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-left hidden-xs">
                             <div class="input-group">
@@ -73,18 +75,16 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::guard('jury')->user()->fullname}}</span> <i class="icon-submenu fa fa-arrow-circle-down"  style="color: white"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="#"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
                                 </ul>
-
-                                <form id="logout-form" action="{{ url('juri/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
                             </li>
                         </ul>
                     </div>
+                    <form id="logout-form" action="{{ url('juri/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </div>
             </nav>
             <!-- END NAVBAR -->
