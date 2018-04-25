@@ -45,12 +45,16 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::user()->group_name}}</span></a></li>
                         <li><a href="/dashboard"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="/verifikasi"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
                         <li><a href="/upload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Upload Data</span></a></li>
                         <li><a href="/setting"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
-                        <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
+                        <li><a href="#" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                        </form>
                     </ul>
                 </nav>
             </div>
@@ -70,23 +74,24 @@
                             <i class="fa fa-bars icon-nav"></i>
                         </button>
                     </div-->
-                    <div id="navbar-menu" class="navbar-collapse collapse">
+                    <!-- <div id="navbar-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::user()->group_name}}</span> <i class="icon-submenu fa fa-arrow-circle-down"  style="color: white"></i></a>
-                                <ul class="dropdown-menu">
-                                    <!--li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li-->
-                                    <li><a href="#"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+                                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="background-color: #021B79">
+                                    <i class="fa fa-bell" style="color: white"></i>
+                                    <span class="badge bg-danger">5</span>
+                                </a>
+                                <ul class="dropdown-menu notifications">
+                                    <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
+                                    <li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
+                                    <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
+                                    <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
+                                    <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
+                                    <li><a href="#" class="more">See all notifications</a></li>
                                 </ul>
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
             <!-- END NAVBAR -->

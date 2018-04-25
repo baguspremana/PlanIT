@@ -39,15 +39,15 @@ class DashboardController extends Controller
         $participants = Auth::user()->participants;
 
         if(Auth::user()->verified) 
-            $this->$completeness['email_verif'] = 1;
+            $this->completeness['email_verif'] = 1;
 
         if($participants->count() > 1)
-            $this->$completeness['participants'] = 1;
+            $this->completeness['participants'] = 1;
         
-        $this->$completeness['identity_verif'] = 1;
+        $this->completeness['identity_verif'] = 1;
         foreach($participants as $participant){
             if(!$participant->active){
-                $this->$completeness['identity_verif'] = 0;
+                $this->completeness['identity_verif'] = 0;
             }
         }
         
@@ -131,5 +131,15 @@ class DashboardController extends Controller
     public function showVerificationForm()
     {
         return view('peserta.verifikasi');
+    }
+
+    public function showUploadDataForm()
+    {
+        return view('peserta.upload');
+    }
+
+    public function showSettingForm()
+    {
+        return view('peserta.setting');
     }
 }

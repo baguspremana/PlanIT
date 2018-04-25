@@ -24,7 +24,7 @@ class JuryLoginController extends Controller
         //validate the form data
         $this->validate($request,[
             'username' => 'required',
-            'password' => 'required|min:6'
+            'password' => 'required'
         ]);
         //attempt to login the jury in
         
