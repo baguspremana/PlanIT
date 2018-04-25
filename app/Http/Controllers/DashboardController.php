@@ -10,12 +10,13 @@ use Auth;
 
 class DashboardController extends Controller
 {
+    private  $completeness;
     public function __construct()
     {
         //defining our middleware for this controller
         $this->middleware('auth');
         
-        $this->$completeness = [
+        $this->completeness = [
             'email_verif' => 0,
             'participants' => 0,
             'identity_verif' => 0,
@@ -23,6 +24,17 @@ class DashboardController extends Controller
             'payment_verif' => 0,
         ];
 
+        
+
+
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $participants = Auth::user()->participants;
 
         if(Auth::user()->verified) 
@@ -37,16 +49,7 @@ class DashboardController extends Controller
                 $this->$completeness['identity_verif'] = 0;
             }
         }
-
-
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+        
         $data['participants'] = Auth::user()->participants;
         return view('peserta.dashboard', $data);
     }
