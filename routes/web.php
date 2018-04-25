@@ -119,6 +119,8 @@ Route::get('/log-upload', function () {
 
 Route::resource('dashboard','DashboardController');
 Route::get('/verifikasi','DashboardController@showVerificationForm');
+Route::get('/upload','DashboardController@showUploadDataForm');
+Route::get('/setting','DashboardController@showSettingForm');
 
 Route::get('/verifikasiPeserta','AdminController@showFormPembayaran');
 

@@ -8,18 +8,17 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h3><center>Verifikasi</center></h3>
+			<h3><center>Upload Berkas Lomba</center></h3>
 		</div>
 	</div>
 
 	<div class="row">
-		
 		<div class="col-md-6">
 			<div class="panel">
 				<div class="panel">
 
 					<div class="panel-heading">
-						<h3 class="panel-title"><center>Upload Bukti Pembayaran</center></h3>
+						<h3 class="panel-title"><center>Upload File</center></h3>
 						<div class="right">
 							<button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
 						</div>
@@ -28,10 +27,10 @@
 						<form action="#" method="post">
 
 							<div class="form-group">
-								<label class="control-label col-md-3">Bukti Pembayaran</label>
+								<label class="control-label col-md-3">Berkas Lomba</label>
 								<div class="col-md-9">
 									<input type="file" name="photo" class="form-control" accept="images/*">
-									<small>Gambar dalam bentuk file .jpg</small>
+									<small>Berkas dalam bentuk file .pdf/.jpg/.png</small>
 								</div>
 							</div>
 							<div class="form-group">
@@ -59,16 +58,8 @@
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-warning">
-						<p style="font-weight: bold;">Hai, Nama Peserta</p>
-						<p style="text-align: justify; text-justify: inter-word;">Apakah data anda sudah terisi lengkap? Silahkan dilanjutkan dengan pembayaran pendaftaran lomba melalui ATM pada rekening <b>Nama Bank</b><i> no rekening a.n Nama Bendahara</i>.
-							Nominal uang yang ditransfer adalah <b>Rp. Jumlah Biaya</b></p>
-						<p style="text-align: left">Rincian Biaya sebagai berikut :
-							<ul>
-								<li style="text-align: left">Biaya Pendaftaran Rp. </li>
-								<li style="text-align: left">Baju Peserta Rp. </li>
-							</ul>
-						</p><br>
-						<p><b>INGAT! Nominal harus sesuai dengan yang disebutkan diatas. Jika tidak, maka data tidak akan diproses.</b></p>
+						<p style="font-weight: bold;">Hai, {{Auth::user()->group_name}}</p>
+						<p style="text-align: justify; text-justify: inter-word;">Data Proposal yang diunggah dalam bentuk pdf dan data poster yang diunggah dalam bentuk jpg atau png. <b>Pastikan kelengkapan data yang anda kirim.</b></p>
 					</div>
 				</div>
 
