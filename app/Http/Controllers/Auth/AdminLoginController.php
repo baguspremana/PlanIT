@@ -24,7 +24,7 @@ class AdminLoginController extends Controller
         //validate the form data
         $this->validate($request,[
             'uname' => 'required',
-            'pword' => 'required|min:6'
+            'pword' => 'required'
         ]);
         //attempt to login the admins in
         if (Auth::guard('admin')->attempt(['username' => $request->uname, 'password' => $request->pword], false)){
