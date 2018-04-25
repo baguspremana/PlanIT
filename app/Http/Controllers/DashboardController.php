@@ -35,6 +35,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        
         $participants = Auth::user()->participants;
 
         if(Auth::user()->verified) 
