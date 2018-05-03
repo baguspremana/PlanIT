@@ -29,34 +29,6 @@ Route::get('/comming', function () {
     return view('comming-soon');
 });
 
-Route::get('/signup-prog', function () {
-    return view('peserta.sign-up-prog');
-});
-
-Route::get('/signup-web', function () {
-    return view('peserta.sign-up-web');
-});
-
-Route::get('/signup-lcc', function () {
-    return view('peserta.sign-up-lcc');
-});
-
-Route::get('/signup-si', function () {
-    return view('peserta.sign-up-si');
-});
-
-Route::get('/signup-idea', function () {
-    return view('peserta.sign-up-idea');
-});
-
-Route::get('/dashboard', function () {
-    return view('peserta.dashboard');
-});
-
-Route::get('/dashboard-admin', function () {
-    return view('admin.dashboard-admin');
-});
-
 Route::get('/pemrograman', function () {
     return view('landing.prog');
 });
@@ -81,28 +53,8 @@ Route::get('/faq', function () {
     return view('landing.faq');
 });
 
-Route::get('/admin-login', function () {
-    return view('admin.login');
-});
-
-Route::get('/login-juri', function () {
-    return view('jury.login');
-});
-
-Route::get('/dashboard-juri', function () {
-    return view('jury.dashboard');
-});
-
-Route::get('/signup-juri', function () {
-    return view('jury.signup');
-});
-
 Route::get('/form-nilai', function () {
     return view('jury.form');
-});
-
-Route::get('/rekap-nilai', function () {
-    return view('jury.rekap-nilai');
 });
 
 Route::get('/tambah-peserta', function () {
@@ -134,6 +86,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@index')->name('admin.index');
 });
 
+//Juri
 Route::prefix('juri')->group(function(){
     Route::get('/login', 'Auth\JuryLoginController@showLoginForm')->name('jury.login');
     Route::post('/login', 'Auth\JuryLoginController@login')->name('jury.login');
@@ -142,6 +95,13 @@ Route::prefix('juri')->group(function(){
     Route::get('/', 'JuryController@index')->name('jury.index');
 });
 
+Route::get('/rekap-nilai','JuryController@showRekapNilai');
+
+Route::resource('/form-nilai','ScoreListController');
+
+//==============================================================
+
+//Group
 Route::prefix('daftar')->group(function(){
     Route::get('/pemrograman', 'Auth\GroupRegisterController@showProgRegistrationForm')->name('regis.prog');
     Route::get('/cerdascermat', 'Auth\GroupRegisterController@showLccRegistrationForm')->name('regis.lcc');

@@ -27,15 +27,15 @@
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
-									<td>Nama Timnya</td>
+									<td>{{$object->group->group_name}}</td>
 								</tr>
 								<tr>
 									<td>Nama Institusi</td>
-									<td>Nama Institusinya</td>
+									<td>{{$object->group->institution}}</td>
 								</tr>
 								<tr>
 									<td>Judul Karya</td>
-									<td>Judul Karyanya</td>
+									<td>{{$object->title}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -54,18 +54,12 @@
 					<div class="panel-body">
 						<table class="table table-striped">
 							<tbody>
+								@foreach($participant as $p)
 								<tr>
-									<td>Nomor Peserta</td>
-									<td>Nama Peserta</td>
+									<td>{{$p->id}}</td>
+									<td>{{$p->full_name}}</td>
 								</tr>
-								<tr>
-									<td>Nomor Peserta</td>
-									<td>Nama Peserta</td>
-								</tr>
-								<tr>
-									<td>Nomor Peserta</td>
-									<td>Nama Peserta</td>
-								</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>

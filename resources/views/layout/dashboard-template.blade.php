@@ -20,17 +20,18 @@
     <link href="{{asset('asset/css/demo.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/learn.css')}}" rel="stylesheet">
     <link href="{{asset('asset/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/css/dataTables.bootstrap.min.css')}}">
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 
     <!-- Javascript -->
-    <!--script src="{{asset('asset/lib/jquery/jquery-1.10.2.min.js')}}"></script-->
     <script src="{{asset('asset/lib/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('asset/lib/bootstrap/js/bootstrap.min.js')}}"></script>
-    <!--script src="{{asset('asset/lib/jquery/jquery-2.1.0.min.js')}}"></script-->
     <script src="{{asset('asset/lib/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('asset/js/klorofil.min.js')}}"></script>
+    <script src="{{asset('DataTables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('DataTables/js/dataTables.bootstrap.min.js')}}"></script>
     
 </head>
 
@@ -45,12 +46,12 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::user()->group_name}}</span></a></li>
+                        <li class="hidden-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::user()->group_name}}</span></a></li>
                         <li><a href="/dashboard"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="/verifikasi"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
                         <li><a href="/upload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Upload Data</span></a></li>
                         <li><a href="/setting"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
-                        <li><a href="#" onclick="event.preventDefault();
+                        <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
@@ -74,9 +75,18 @@
                             <i class="fa fa-bars icon-nav"></i>
                         </button>
                     </div-->
-                    <!-- <div id="navbar-menu" class="navbar-collapse collapse">
+                    <div id="navbar-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="background-color: #021B79">
+                                    <img class="img-circle" src="asset/images/user.png" width="30px" height="30px" alt="Avatar"> <span style="color: #fff"> {{Auth::user()->group_name}}</span>  <i class="fa fa-chevron-down" style="color: #fff; font-size: 10px;"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
+                                </ul>
+                            </li>
+                            <!--li class="dropdown">
                                 <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="background-color: #021B79">
                                     <i class="fa fa-bell" style="color: white"></i>
                                     <span class="badge bg-danger">5</span>
@@ -89,9 +99,9 @@
                                     <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
                                     <li><a href="#" class="more">See all notifications</a></li>
                                 </ul>
-                            </li>
+                            </li-->
                         </ul>
-                    </div> -->
+                    </div>
                 </div>
             </nav>
             <!-- END NAVBAR -->

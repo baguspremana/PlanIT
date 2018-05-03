@@ -17,7 +17,7 @@ class Jury extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fullname', 'privilege', 'username', 'password', 'email', 'is_login', 'last_login_at'
+        'fullname', 'privilege', 'username', 'password', 'email', 'is_login', 'last_login_at', 'competition_id',
     ];
 
     /**
@@ -28,4 +28,12 @@ class Jury extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function scoreList(){
+        return $this->hasMany('App\ScoreList');
+    }
+
+    public function competition(){
+        return $this->belongsTo('App\Competition', 'competition_id');
+    }
 }

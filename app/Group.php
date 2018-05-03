@@ -36,7 +36,17 @@ class Group extends Authenticatable
     /**
      * Get the participants of the group.
      */
+
+    public function object(){
+        return $this->hasMany('App\Object');
+    }
+
     public function participants(){
         return $this->hasMany('App\Participant');
     }
+
+    public function competition(){
+        return $this->belongsTo('App\Competition','competition_id');
+    }
+
 }

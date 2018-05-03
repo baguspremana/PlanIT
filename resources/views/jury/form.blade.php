@@ -27,15 +27,15 @@
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
-									<td>Nama Timnya</td>
+									<td>{{$object->group->group_name}}</td>
 								</tr>
 								<tr>
 									<td>Nama Institusi</td>
-									<td>Nama Institusinya</td>
+									<td>{{$object->group->institution}}</td>
 								</tr>
 								<tr>
 									<td>Judul Karya</td>
-									<td>Judul Karyanya</td>
+									<td>{{$object->title}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -54,18 +54,12 @@
 					<div class="panel-body">
 						<table class="table table-striped">
 							<tbody>
+								@foreach($participant as $p)
 								<tr>
-									<td>Nomor Peserta</td>
-									<td>Nama Peserta</td>
+									<td>{{$p->id}}</td>
+									<td>{{$p->full_name}}</td>
 								</tr>
-								<tr>
-									<td>Nomor Peserta</td>
-									<td>Nama Peserta</td>
-								</tr>
-								<tr>
-									<td>Nomor Peserta</td>
-									<td>Nama Peserta</td>
-								</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>
@@ -92,7 +86,10 @@
 							<a href="#" class="btn btn-info">Lampiran</a>
 						</div>
 
-						<form action="#" class="form-horizontal" method="post" id="form-penilaian">
+						<form action="/form-nilai" class="form-horizontal" method="post" id="form-penilaian">
+							@csrf
+							<input type="hidden" name="jury_id" value="{{Auth::user()->id}}">
+							<input type="hidden" name="object_id" value="{{$object->id}}">
 							<table class="table table-striped table-bordered">
 								<thead>
 									<th class="col-xs-1 col-sm-1">No</th>
@@ -222,7 +219,7 @@
 										</td>
 									</tr>
 									<tr>
-										<td colspan="3" align="center">Anggot Perusahaan</td>
+										<td colspan="3" align="center">Anggota Perusahaan</td>
 									</tr>
 									<tr>
 										<td>o</td>

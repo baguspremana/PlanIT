@@ -391,6 +391,10 @@
          $(window).load(function(){
             $('#modalInfo').modal('show');
         });
+
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
     </script>
 
 </div>

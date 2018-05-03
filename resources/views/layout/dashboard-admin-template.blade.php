@@ -18,17 +18,18 @@
     <link href="{{asset('asset/css/main.min.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/demo.css')}}" rel="stylesheet">
     <link href="{{asset('asset/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/css/dataTables.bootstrap.min.css')}}">
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 
     <!-- Javascript -->
-    <script src="{{asset('asset/lib/jquery/jquery-1.10.2.min.js')}}"></script>
     <script src="{{asset('asset/lib/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('asset/lib/bootstrap/js/bootstrap.js')}}"></script>
-    <script src="{{asset('asset/lib/jquery/jquery-2.1.0.min.js')}}"></script>
+    <script src="{{asset('asset/lib/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('asset/lib/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('asset/js/klorofil.min.js')}}"></script>
+    <script src="{{asset('DataTables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('DataTables/js/dataTables.bootstrap.min.js')}}"></script>
     
 </head>
 
@@ -43,13 +44,13 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::guard('admin')->user()->fullname}}</span></a></li>
+                        <li class="hidden-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::guard('admin')->user()->fullname}}</span></a></li>
                         <li><a href="/dashboard-admin"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="/verifikasiAdmin"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
                         <li><a href="/log-upload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Log Unggah</span></a></li>
                         <li><a href="/verifikasiPeserta"><i class="glyphicon glyphicon-euro"></i> <span>Pembayaran</span></a></li>
                         <li><a href="/tambah-peserta"><i class="glyphicon glyphicon-plus-sign"></i> <span>Tambah Peserta</span></a></li>
-                        <li><a href="#" onclick="event.preventDefault();
+                        <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
@@ -68,19 +69,7 @@
                     <div class="navbar-btn">
                         <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars" style="color: white"></i></button>
                     </div>
-                    <!--div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <i class="fa fa-bars icon-nav"></i>
-                        </button>
-                    </div-->
                     <div id="navbar-menu" class="navbar-collapse collapse">
-                        <form class="navbar-form navbar-left hidden-xs">
-                            <div class="input-group">
-                                <input type="text" value="" class="form-control" placeholder="Search dashboard...">
-                                <span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
-                            </div>
-                        </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="background-color: #021B79">
@@ -94,6 +83,15 @@
                                     <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
                                     <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
                                     <li><a href="#" class="more">See all notifications</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="background-color: #021B79">
+                                    <img class="img-circle" src="asset/images/user.png" width="30px" height="30px" alt="Avatar"> <span style="color: #fff"> {{Auth::guard('admin')->user()->fullname}}</span>  <i class="fa fa-chevron-down" style="color: #fff; font-size: 10px;"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
                                 </ul>
                             </li>
                         </ul>

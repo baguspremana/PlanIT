@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Competition extends Model
 {
-    //
+    protected $fillable = [
+        'short_name',
+        'long_name', 
+    ];
+
+    public function group(){
+        return $this->hasMany('App\Group');
+    }
+
+    public function juri()
+    {
+    	return $this->hasMany('App\Jury');
+    }
 }

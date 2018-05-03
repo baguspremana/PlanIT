@@ -34,7 +34,7 @@ class Participant extends Model
      * Get the group that owns the participant.
      */
     public function group(){
-        return $this->belongsTo('App\Group');
+        return $this->belongsTo('App\Group', 'group_id');
     }
 
     public static function uploadPhoto($file, $file_name){

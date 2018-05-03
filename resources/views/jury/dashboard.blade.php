@@ -16,7 +16,7 @@
                         <h3 class="panel-title"><center>Daftar Karya Peserta</center></h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="example">
                             <thead>
                                 <tr>
                                     <th>Instansi</th>
@@ -27,15 +27,28 @@
                                 </tr>
                             </thead>
                            <tbody>
+                                @foreach($group as $t)
                                 <tr>
-                                    <td>instansinya</td>
-                                    <td>nama timnya</td>
-                                    <td>judul idenya</td>
-                                    <td>total nilainya</td>
-                                    <td><a class="btn btn-warning btn-sm view" style="margin:2px;"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a class="btn btn-danger btn-sm view" style="margin:2px;"><i class="glyphicon glyphicon-trash"></i></a>
-                                    </td>
+                                    @if($t->total_nilai==null and Auth::user()->id!=$t->jury_id)
+                                        <td>{{$t->institution}}</td>
+                                        <td>{{$t->group_name}}</td>
+                                        <td>{{$t->title}}</td>
+                                        
+                                        <td>{{'Belum Nilai'}}</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm view" style="margin:2px;" data-toggle="tooltip" data-placement="right" title="Input Nilai" href="{{route('form-nilai.show',$t->id)}}"><i class="glyphicon glyphicon-plus"></i></a>
+                                        </td>
+                                    @elseif($t->total_nilai!=null and Auth::user()->id==$t->jury_id)
+                                        <td>{{$t->institution}}</td>
+                                        <td>{{$t->group_name}}</td>
+                                        <td>{{$t->title}}</td>
+                                        <td>{{$t->total_nilai}}</td>
+                                        <td>
+                                            <a href="{{route('form-nilai.edit',$t->id_score)}}" class="btn btn-warning btn-sm view" style="margin:2px;" data-toggle="tooltip" data-placement="right" title="Edit Nilai"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        </td>
+                                    @endif
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -46,4 +59,12 @@
     </div>                
 </div>
 <!-- END MAIN CONTENT -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+</script>
 @endsection

@@ -133,4 +133,14 @@ class DashboardController extends Controller
     {
         return view('peserta.verifikasi');
     }
+
+    public function showUploadDataForm()
+    {
+        return view('peserta.upload');
+    }
+
+    public function showSettingForm()
+    {
+        return view('peserta.setting');
+    }
 }

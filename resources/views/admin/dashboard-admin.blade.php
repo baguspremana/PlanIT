@@ -17,7 +17,7 @@
                     <h3 class="panel-title"><center>Data Peserta</center></h3>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="example">
                         <thead>
                             <tr>
                                <th>Kode</th>
@@ -82,5 +82,11 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
 @endsection
 

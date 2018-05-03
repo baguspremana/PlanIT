@@ -20,7 +20,11 @@
 			 						<th rowspan="2">Institusi</th>
 			 						<th rowspan="2">Tim</th>
 			 						<th rowspan="2">Judul</th>
-			 						<th colspan="20"><center>Nama Bagian</center></th>
+			 						@if(Auth::user()->competition_id==4)
+			 							<th colspan="20"><center>Nama Bagian</center></th>
+			 						@else(Auth::user()->competition_id==5)
+			 							<th colspan="10"><center>Nama Bagian</center></th>
+			 						@endif
 			 						<th rowspan="2">Total Nilai</th>
 			 					</tr>
 			 					<tr>
@@ -34,6 +38,7 @@
                                   	<th>h</th>
                                   	<th>i</th>
                                   	<th>j</th>
+                                  	@if(Auth::user()->competition_id==4)
                                   	<th>k</th>
                                   	<th>l</th>
                                   	<th>m</th>
@@ -44,6 +49,7 @@
                                   	<th>r</th>
                                   	<th>s</th>
                                   	<th>t</th>
+                                  	@endif
 			 					</tr>
 			 				</thead>
 			 			</table>
