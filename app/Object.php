@@ -18,8 +18,8 @@ class Object extends Model
         return $this->belongsTo('App\Group','group_id');
     }
 
-    public function scoreList(){
-    	return $this->hasMany('App\ScoreList');
+    public function scoreReq(){
+    	return $this->hasMany('App\ScoreReq');
     }
 
 }

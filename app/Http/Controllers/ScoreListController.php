@@ -10,6 +10,7 @@ use App\Object;
 use App\Participant;
 use DB;
 use App\DetailScoreList;
+use App\ScoreReq;
 
 class ScoreListController extends Controller
 {
@@ -49,8 +50,8 @@ class ScoreListController extends Controller
     {
         
         $score = new ScoreList();
-        $score->jury_id = $request->jury_id;
-        $score->object_id = $request->object_id;
+        $score->score_req_id = $request->score_req_id;
+        $score->stage = $request->stage;
         $score->save();
 
         foreach ($request->form as $key => $part_id) {
@@ -72,17 +73,22 @@ class ScoreListController extends Controller
      */
     public function show($id)
     {
-        $object = Object::find($id);
-        $group = Group::all();
-        $participant = Participant::with('group')
-            ->where('group_id','=',$id)
-            ->get();
-        $dataSecore = ScoreList::all()->where('object_id','=',$id);
+        $score = ScoreReq::find($id);
+        $karya = Object::with('group')->get();
+        $tim = Group::all();
+
+        $today = date('Y-m-d');
+
+        $final = date('2018-05-06');
+
+        //return $today;
+
+        //return $today;
 
         if (Auth::user()->competition_id==4) {
-            return view('jury.form', compact('group', 'object', 'participant', 'dataSecore'));
+            return view('jury.form', compact('today','final','score','karya','tim'));
         }elseif (Auth::user()->competition_id==5) {
-            return view('jury.form-nilai-si', compact('group', 'object', 'participant', 'dataSecore'));
+            return view('jury.form-nilai-si', compact('today','final','score','karya','tim'));
         }
     }
 
@@ -95,23 +101,30 @@ class ScoreListController extends Controller
     public function edit($id)
     {
         $dataSecore = ScoreList::find($id);
-        $group = Group::all();
-        $object = Object::with('group');
-        $score = DetailScoreList::all();
+        /*$group = Group::all();
+        $object = Object::with('group');*/
+        $scoreReq = ScoreReq::all();
+        $scores = ScoreList::with('scoreReq')->get();
+
+        //return $scores;
+
+        $score = DetailScoreList::with('scoreList')->where('score_list_id','=', $id)->get();
+
+        //return $scores;
 
         // $group_id = DB::table('objects')
         //     ->select('objects.group_id');
 
-        $id_group = Object::find($id);
+        /*$id_group = Object::find($id);
         $scoreList = ScoreList::with('object')
             ->get();
         
         $participant = Participant::with('group')
             ->where('group_id','=',$id)
-            ->get();
+            ->get();*/
 
         if (Auth::user()->competition_id==4) {
-            return view('jury.form-edit-nilai', compact('dataSecore','group','object','scoreList','score', 'participant'));
+            return view('jury.form-edit-nilai', compact('dataSecore','scores','score','scoreReq'));
         }elseif (Auth::user()->competition_id==5) {
             return 'aaaa';
         }
@@ -134,8 +147,7 @@ class ScoreListController extends Controller
 
         $dataSecore = ScoreList::find($id);
 
-        $dataSecore->jury_id = $request->jury_id;
-        $dataSecore->object_id = $request->object_id;
+        $dataSecore->score_req_id = $request->score_req_id;
         $dataSecore->save();
 
         foreach ($scores as $key => $score) {

@@ -15,10 +15,10 @@ class CreateDetailScoreListsTable extends Migration
     {
         Schema::create('detail_score_lists', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('score_list_id');
+            $table->Integer('score_list_id')->nullable();
             $table->enum('part',['a','b','c','d','e','f','g','h','i','j','k','l',
-                    'm','n','o','p','q','r','s','t']);
-            $table->Double('score');
+                    'm','n','o','p','q','r','s','t'])->nullable();
+            $table->Double('score')->nullable();
             $table->timestamps();
         });
     }

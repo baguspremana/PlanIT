@@ -41,14 +41,8 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li class="hidden-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img class="img-circle" src="{{asset('asset/images/user.png')}}" width="30px" height="30px" alt="Avatar"> <span style="color: white">{{Auth::guard('jury')->user()->fullname}}</span></a></li>
-                        <li><a href="/juri"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li><a href="/rekap-nilai"><i class="glyphicon glyphicon-list-alt"></i> <span>Rekap Nilai</span></a></li>
-                        <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
-                        <form id="logout-form" action="{{ url('juri/logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                        @yield('nav')
+                        
                     </ul>
                 </nav>
             </div>
@@ -64,7 +58,7 @@
                     </div>
                     <div id="navbar-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
+                            <!--li class="dropdown">
                                 <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="background-color: #021B79">
                                     <i class="fa fa-bell" style="color: white"></i>
                                     <span class="badge bg-danger">5</span>
@@ -77,7 +71,7 @@
                                     <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
                                     <li><a href="#" class="more">See all notifications</a></li>
                                 </ul>
-                            </li>
+                            </li-->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="background-color: #021B79">
                                     <img class="img-circle" src="{{asset('asset/images/user.png')}}" width="30px" height="30px" alt="Avatar"> <span style="color: #fff"> {{Auth::guard('jury')->user()->fullname}}</span>  <i class="fa fa-chevron-down" style="color: #fff; font-size: 10px;"></i>

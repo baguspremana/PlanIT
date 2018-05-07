@@ -47,7 +47,7 @@ ITCC 2018
           		<a href="#profile" class="btn-get-started">Selengkapnya</a>
         	</div>
         	<div id="logo" class="col-lg-6 wow fadeInUp hide-sm" data-wow-duration="1500ms" data-wow-delay="500ms">
-          		<img src="asset1/images/logo-itcc5.png" style="width: 100%;">
+          		<img src="{{asset('asset1/images/logo-itcc5.png')}}" style="width: 100%;">
         	</div>
       	</div>
 
@@ -67,7 +67,7 @@ ITCC 2018
           	<div class="col-lg-6">
             	<div class="video-container" >
               		<div onclick="thevid=document.getElementById('thevideo'); thevid.style.display='block'; this.style.display='none'">
-                 		<img class="img-responsive" src="asset1/images/imgvid3.jpg" style="margin:0 0 0 0;cursor:pointer; width: 100%">
+                 		<img class="img-responsive" src="{{asset('asset1/images/imgvid3.jpg')}}" style="margin:0 0 0 0;cursor:pointer; width: 100%">
               		</div>
               		<div id="thevideo" style="display:none;">
                  		<!--iframe width="560" height="315" src="https://www.youtube.com/embed/NU9h19h574Q" frameborder="0" allowfullscreen></iframe-->
@@ -102,42 +102,42 @@ ITCC 2018
           	<div class="col-md-4 wow fadeInUp">
             	<div class="about-col">
              		<div class="img">
-                		<img src="asset1/LPJ/7.jpg">
+                		<img src="{{asset('asset1/LPJ/7.jpg')}}">
                 		<div class="icon"><i class="fa fa-code"></i></div>
               		</div>
               		<h2>Pemrograman</h2>
               		<p>
                 		Cabang Lomba <b>Pemrograman</b> diperuntukan kepada siswa SMA/SMK Sederajat se-Bali. Biaya Pendaftaran Rp. 85.000,-
               		</p>
-              		<center><a href="/pemrograman" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/landing/pemrograman" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
           	<div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/LPJ/8.jpg">
+                		<img src="{{asset('asset1/LPJ/8.jpg')}}">
                 		<div class="icon"><i class="fa fa-css3"></i></div>
               		</div>
               		<h2>Desain Web</h2>
               		<p>
                 		Cabang Lomba <b>Desain Web</b> diperuntukan kepada siswa SMA/SMK Sederajat se-Bali. Biaya Pendaftaran Rp. 85.000,-
               		</p>
-              		<center><a href="/desain-web" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/landing/desainWeb" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
           	<div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/LPJ/33.jpg">
+                		<img src="{{asset('asset1/LPJ/33.jpg')}}">
                 	<div class="icon"><i class="fa fa-bell"></i></div>
               		</div>
               		<h2>Cerdas Cermat</h2>
               		<p>
                 		Cabang Lomba <b>Cerdas Cermat</b> diperuntukan kepada siswa SMA/SMK Sederajat se-Bali. Biaya Pendaftaran Rp. 150.000,-
               		</p>
-              		<center><a href="/cerdas-cermat" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/landing/cerdasCermat" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
@@ -148,28 +148,28 @@ ITCC 2018
           	<div class="col-md-6 wow fadeInUp">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/LPJ/48.jpg">
+                		<img src="{{asset('asset1/LPJ/48.jpg')}}">
                 		<div class="icon"><i class="fa fa-info-circle"></i></div>
               		</div>
               		<h2>Sistem Informasi</h2>
               		<p>
                 		Cabang Lomba <b>Sistem Informasi</b> diperuntukan kepada mahasiswa maksimal jenjang S1 seluruh Universitas yang terdapat Indonesia. Biaya Pendaftaran Rp. 150.000,-
               		</p>
-              		<center><a href="/sistem-informasi" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/landing/sistemInformasi" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           	</div>
 
           	<div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             	<div class="about-col">
               		<div class="img">
-                		<img src="asset1/LPJ/37.jpg">
+                		<img src="{{asset('asset1/LPJ/37.jpg')}}">
                 		<div class="icon"><i class="fa fa-money"></i></div>
               		</div>
               		<h2>Pengembangan Ide Bisnis TIK</h2>
               		<p>
                 		Cabang Lomba <b>Pengembangan Ide Bisnis TIK</b> diperuntukan kepada kalangan Umum (maksismal 28 tahun) seluruh Indonesia. Biaya Pendaftaran Rp. 200.000,-
               		</p>
-              		<center><a href="/idea" class="btn-get-started">Selengkapnya</a></center>
+              		<center><a href="/landing/ideBisnis" class="btn-get-started">Selengkapnya</a></center>
             	</div>
           </div>
           
@@ -394,7 +394,7 @@ ITCC 2018
             	<hr>
             	<p>CP 1<br>
             	CP 2</p><br>
-            	<p><a href="https://www.facebook.com/ITCC.Udayana"><img style="width: 30px;" src="asset1/images/facebook.png"></a><a href="https://twitter.com/ITCCUdayana"><img style="width: 30px;" src="asset1/images/twitter.png"></a><a href="https://www.instagram.com/itcc_udayana/"><img style="width: 30px;" src="asset1/images/instagram.png"></a><a href="https://ask.fm/itcc_udayana"><img style="width: 30px;" src="asset1/images/Askfm.png"></a><a href="https://bit.ly/ITCCUdayana"><img style="width: 30px;" src="asset1/images/line.png"></a></p>
+            	<p><a href="https://www.facebook.com/ITCC.Udayana"><img style="width: 30px;" src="{{asset('asset1/images/facebook.png')}}"></a><a href="https://twitter.com/ITCCUdayana"><img style="width: 30px;" src="{{asset('asset1/images/twitter.png')}}"></a><a href="https://www.instagram.com/itcc_udayana/"><img style="width: 30px;" src="{{asset('asset1/images/instagram.png')}}"></a><a href="https://ask.fm/itcc_udayana"><img style="width: 30px;" src="{{asset('asset1/images/Askfm.png')}}"></a><a href="https://bit.ly/ITCCUdayana"><img style="width: 30px;" src="{{asset('asset1/images/line.png')}}"></a></p>
                     
           	</div>
 

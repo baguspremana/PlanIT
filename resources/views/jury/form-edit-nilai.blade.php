@@ -27,15 +27,15 @@
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
-									<td>: {{$dataSecore->object->group->group_name}}</td>
+									<td>{{$dataSecore->scoreReq->object->group->group_name}}</td>
 								</tr>
 								<tr>
 									<td>Nama Institusi</td>
-									<td>: {{$dataSecore->object->group->institution}}</td>
+									<td>{{$dataSecore->scoreReq->object->group->institution}}</td>
 								</tr>
 								<tr>
 									<td>Judul Karya</td>
-									<td>: {{$dataSecore->object->title}}</td>
+									<td>{{$dataSecore->scoreReq->object->title}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -83,8 +83,7 @@
 						<form action="/form-nilai/{{$dataSecore->id}}" class="form-horizontal" method="post">
 							@csrf
 							{{method_field('PUT')}}
-							<input type="hidden" name="jury_id" value="{{Auth::user()->id}}">
-							<input type="hidden" name="object_id" value="{{$dataSecore->object->id}}">
+							<input type="hidden" name="score_req_id" value="{{$dataSecore->scoreReq->id}}">
 							<table class="table table-striped table-bordered">
 								<thead>
 									<th class="col-xs-1 col-sm-1">No</th>

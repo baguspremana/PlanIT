@@ -9,7 +9,7 @@
 	<div class="container-fluid">
 		
 		<div class="row">
-			<center><h3>Data Karya Peserta</h3></center>
+			<center><h3>Edit Penilaian Karya Peserta</h3></center>
 		</div>
 
 		<div class="row" style="margin-top: 30px;">
@@ -27,15 +27,15 @@
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
-									<td>{{$score->object->group->group_name}}</td>
+									<td>{{$dataSecore->scoreReq->object->group->group_name}}</td>
 								</tr>
 								<tr>
 									<td>Nama Institusi</td>
-									<td>{{$score->object->group->institution}}</td>
+									<td>{{$dataSecore->scoreReq->object->group->institution}}</td>
 								</tr>
 								<tr>
 									<td>Judul Karya</td>
-									<td>{{$score->object->title}}</td>
+									<td>{{$dataSecore->scoreReq->object->title}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -54,7 +54,7 @@
 					<div class="panel-body">
 						<div class="alert alert-warning">
                         	<p>Hai, {{Auth::user()->fullname}}
-                        	<br> Selamat menilai karya peserta, pastikan anda melakukan penilaian secara objektif dan sesuai dengan karya peserta. Salam hangat dari panitia ITCC 2018.</p>
+                        	<br> Pastikan Anda telah yakin untuk melakukan perubahan pada penilaian yang telah Anda berikan. Salam hangat dari panitia ITCC 2018.</p>
                      	</div>
 					</div>
 				</div>
@@ -62,14 +62,14 @@
 
 			<div class="col-md-12">
 				<div class="panel">
-						
+					
 					<div class="panel-heading">
 						<h3 class="panel-title">Form Penilaian Peserta</h3>
 						<div class="right">
 							<button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
 						</div>
 					</div>
-						
+
 					<div class="panel-body">
 
 						<div class="alert alert-success" role="center" align="center">
@@ -80,7 +80,7 @@
 						</div>
 
 						<form action="#" class="form-horizontal" method="post" id="form-penilaian">
-							<table class="table table-bordered table-striped">
+							<table class="table table-striped table-bordered">
 								<thead>
 									<th class="col-xs-1 col-sm-1">No</th>
 									<th class="col-xs-8 col-sm-9">Aspek Penilaian</th>
@@ -180,7 +180,7 @@
 							</table>
 							<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 						</form>
-					
+						
 					</div>
 
 				</div>

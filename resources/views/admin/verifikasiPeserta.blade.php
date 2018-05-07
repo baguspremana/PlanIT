@@ -15,7 +15,7 @@
 				</div>
 
 				<div class="panel-body">
-					<table class="table table-striped table-bordered table-responsive data">
+					<table class="table table-striped table-bordered table-responsive data" id="example">
 						<thead>
 							<tr>
 								<th>Nama Tim</th>
@@ -73,4 +73,9 @@
     <!-- End Modal Konfir -->
 
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
 @endsection

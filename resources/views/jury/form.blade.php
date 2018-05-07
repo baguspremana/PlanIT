@@ -27,15 +27,15 @@
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
-									<td>{{$object->group->group_name}}</td>
+									<td>{{$score->object->group->group_name}}</td>
 								</tr>
 								<tr>
 									<td>Nama Institusi</td>
-									<td>{{$object->group->institution}}</td>
+									<td>{{$score->object->group->institution}}</td>
 								</tr>
 								<tr>
 									<td>Judul Karya</td>
-									<td>{{$object->title}}</td>
+									<td>{{$score->object->title}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -46,22 +46,16 @@
 			<div class="col-md-6">
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">Data Anggota Tim</h3>
+						<h3 class="panel-title">Pemberitahuan</h3>
 						<div class="right">
 							<button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
 						</div>
 					</div>
 					<div class="panel-body">
-						<table class="table table-striped">
-							<tbody>
-								@foreach($participant as $p)
-								<tr>
-									<td>{{$p->id}}</td>
-									<td>{{$p->full_name}}</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
+						<div class="alert alert-warning">
+                        	<p>Hai, {{Auth::user()->fullname}}
+                        	<br> Selamat menilai karya peserta, pastikan anda melakukan penilaian secara objektif dan sesuai dengan karya peserta. Salam hangat dari panitia ITCC 2018.</p>
+                     	</div>
 					</div>
 				</div>
 			</div>
@@ -88,8 +82,14 @@
 
 						<form action="/form-nilai" class="form-horizontal" method="post" id="form-penilaian">
 							@csrf
-							<input type="hidden" name="jury_id" value="{{Auth::user()->id}}">
-							<input type="hidden" name="object_id" value="{{$object->id}}">
+
+							@if($today==$final)
+								<input type="hidden" name="stage" value="final">
+							@else
+								<input type="hidden" name="stage" value="elemination">
+							@endif
+						
+							<input type="hidden" name="score_req_id" value="{{$score->id}}">
 							<table class="table table-striped table-bordered">
 								<thead>
 									<th class="col-xs-1 col-sm-1">No</th>

@@ -29,8 +29,8 @@ class Jury extends Authenticatable
         'password',
     ];
 
-    public function scoreList(){
-        return $this->hasMany('App\ScoreList');
+    public function scoreReq(){
+        return $this->hasMany('App\ScoreReq');
     }
 
     public function competition(){

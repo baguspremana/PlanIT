@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScoreListsTable extends Migration
+class CreateScoreReqsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateScoreListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('score_lists', function (Blueprint $table) {
+        Schema::create('score_reqs', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('score_req_id');
-            $table->enum('stage',['elemination','final'])->nullable();
+            $table->Integer('object_id');
+            $table->Integer('jury_id');
+            $table->enum('status',[0,1])->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateScoreListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('score_lists');
+        Schema::dropIfExists('score_reqs');
     }
 }

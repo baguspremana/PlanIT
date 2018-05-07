@@ -11,6 +11,7 @@ use App\DetailScoreList;
 use App\Jury;
 use Carbon\Carbon;
 use App\ScoreList;
+use App\ScoreReq;
 class JuryController extends Controller
 {
     /**
@@ -30,67 +31,144 @@ class JuryController extends Controller
      */
     public function index()
     {
-     
-        /*$juri = DB::table('score_lists')
-            ->select('score_lists.jury_id');
+        $today = date('Y-m-d');
 
-        $group = DB::table('groups');
+        $final = date('2018-05-10');
 
-        if ($juri->count()==0) {
-           $group = $group
-            ->join('objects', 'groups.id','=','objects.group_id')
-            ->select('groups.*','objects.title', DB::raw('"Belum Dinilai" as total_nilai'))
-            ->where('groups.competition_id','=', Auth::user()->competition_id)
+        $pesan = DB::table('score_reqs')
+            ->select('score_reqs.id')
+            ->where('score_reqs.jury_id','=',Auth::user()->id)
+            ->where('score_reqs.status','=',1)
             ->get();
-            return view('jury.dashboard', compact('group','juri'));
-        }else {
-            return view('jury.dashboard', compact('group','juri'));
-        }*/
 
-        /*$today = date('Y-m-d'); //Carbon::today()->format('Y-m-d');
-        // return $today;
+        if ($today==$final) {
+            $group = DB::table('groups')
+                ->join('objects', 'groups.id','=','objects.group_id')
+                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('juries','juries.id','=','score_reqs.jury_id')
+                ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
+                ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
+                ->select('groups.institution', 'groups.group_name', 'objects.title', 'objects.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
+                ->where('groups.competition_id','=', Auth::user()->competition_id)
+                ->where('score_reqs.jury_id','=',Auth::user()->id)
+                ->where('score_lists.stage','=','final')
+                ->groupBy('objects.title', 'groups.group_name','groups.institution','objects.id', 'id_score','score_lists.score_req_id')
+                ->orderBy('total_nilai','dsc')
+                ->get();
 
-        $tanggal = date('2018-05-03');
-        //return $tanggal;
-        
-        if ($today == $tanggal) {
-            return 'a';
+                return view('jury.dashboard', compact('pesan','group'));
         }else{
-            return 'b';
-        }*/
+            $group = DB::table('groups')
+                ->join('objects', 'groups.id','=','objects.group_id')
+                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('juries','juries.id','=','score_reqs.jury_id')
+                ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
+                ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
+                ->select('groups.institution', 'groups.group_name', 'objects.title', 'objects.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
+                ->where('groups.competition_id','=', Auth::user()->competition_id)
+                ->where('score_reqs.jury_id','=',Auth::user()->id)
+                ->groupBy('objects.title', 'groups.group_name','groups.institution','objects.id', 'id_score','score_lists.score_req_id')
+                ->orderBy('total_nilai','dsc')
+                ->get();
 
-        $juri_id = DB::table('juries')
-            ->join('score_lists','juries.id','=','score_lists.jury_id')
-            ->select('score_lists.jury_id as id_juri')
-            ->where('juries.competition_id','=',Auth::user()->competition_id)
-            ->get();
-
-        //return $juri_id;
-
-        $group = DB::table('groups')
-            ->join('objects', 'groups.id','=','objects.group_id')
-            ->leftJoin('score_lists','objects.id','=','score_lists.object_id')
-            ->leftJoin('juries','juries.id','=','score_lists.jury_id')
-            ->leftJoin('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
-            ->select('groups.institution', 'groups.group_name', 'objects.title', 'objects.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.jury_id')
-            ->where('groups.competition_id','=', Auth::user()->competition_id)
-            //->where('score_lists.jury_id','=','juri_id')
-            ->groupBy('objects.title', 'groups.group_name','groups.institution','objects.id', 'id_score','score_lists.jury_id')
-            ->orderBy('total_nilai','dsc')
-            ->get();
-
+                return view('jury.dashboard', compact('pesan','group'));
+        }
         //return $group;
 
         //return $juri_id;
-        //return view('jury.dashboard', compact('group','juri_id'));
            
     }
 
     public function showRekapNilai()
     {
-        //$rekap = Auth::user()->competition_id
+        $group = DB::table('groups')
+            ->join('objects', 'groups.id','=','objects.group_id')
+            ->join('score_reqs','objects.id','=','score_reqs.object_id')
+            ->join('juries','juries.id','=','score_reqs.jury_id')
+            ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
+            ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
+            ->select('groups.institution', 'groups.group_name', 'objects.title', 'objects.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
+            ->where('groups.competition_id','=', Auth::user()->competition_id)
+            ->where('score_reqs.jury_id','=',Auth::user()->id)
+            ->groupBy('objects.title', 'groups.group_name','groups.institution','objects.id', 'id_score','score_lists.score_req_id')
+            //->orderBy('total_nilai','dsc')
+            ->get();
 
-        return view('jury.rekap-nilai');
+        // return $group;
+
+        $penilaian = DB::table('score_reqs')
+            ->select('score_reqs.id')
+            //->where('score_reqs.status','=',1)
+            ->get();
+
+        // return count($penilaian)*2;
+
+        $juri = Auth::user()->id;
+
+        // return $juri;
+
+        // $nilai = DB::select('call detail_score_ulang(?,?)',[count($penilaian)*2,$juri]);
+
+        // return $nilai;
+
+        $pesan = DB::table('score_reqs')
+            ->select('score_reqs.id')
+            ->where('score_reqs.jury_id','=',Auth::user()->id)
+            ->where('score_reqs.status','=',1)
+            ->get();
+
+        return view('jury.rekap-nilai', compact('pesan','group'));
+    }
+
+    public function showFormDetailRekap()
+    {
+        $pesan = DB::table('score_reqs')
+            ->select('score_reqs.id')
+            ->where('score_reqs.jury_id','=',Auth::user()->id)
+            ->where('score_reqs.status','=',1)
+            ->get();
+
+        $today = date('Y-m-d');
+
+        $final = date('2018-05-10');
+
+        $juri = DB::table('juries')
+            ->select('juries.id as jury_id')
+            ->where('juries.competition_id','=',Auth::user()->competition_id)
+            ->get();
+
+        // return $juri;
+
+        if ($today==$final) {
+            $hasil = DB::table('groups')
+                ->join('objects','groups.id','=','objects.group_id')
+                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
+                ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
+                ->select('groups.institution','groups.group_name','groups.id','objects.title','objects.id as karya',DB::raw('sum(detail_score_lists.score) as total_nilai'))
+                ->where('groups.competition_id','=',Auth::user()->competition_id)
+                ->where('score_lists.stage','=','final')
+                ->groupBy('groups.id','groups.group_name','groups.institution','objects.title','objects.id')
+                ->orderBy('total_nilai','dsc')
+                ->get();
+
+                return view('jury.rekap-nilai-detail',compact('pesan','hasil','juri'));
+        }else{
+            $hasil = DB::table('groups')
+                ->join('objects','groups.id','=','objects.group_id')
+                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
+                ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
+                ->select('groups.institution','groups.group_name','groups.id','objects.title','objects.id as karya',DB::raw('sum(detail_score_lists.score) as total_nilai'))
+                ->where('groups.competition_id','=',Auth::user()->competition_id)
+                ->groupBy('groups.id','groups.group_name','groups.institution','objects.title','objects.id')
+                ->orderBy('total_nilai','dsc')
+                ->limit(10)
+                ->get();
+
+                return view('jury.rekap-nilai-detail',compact('pesan','hasil','juri'));
+        }
+
     }
 
 }

@@ -33,22 +33,51 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($participant as $peserta)
                             <tr>
-                                <td>kodenya</td>
-                                <td>namanya</td>
-                                <td>timnya</td>
-                                <td><a class="btn btn-info btn-sm view" style="margin:2px;"><i class="glyphicon glyphicon-picture"></i></a></td>
-                                <td>instansinya</td>
-                                <td>emailnya</td>
-                                <td>kontaknya</td>
-                                <td><b class='label label-danger'>Tidak veget</b>
-                                       <b class='label label-success'>Veget</b>
+                                @if($peserta->code==null)
+                                <td>{{'-'}}</td>
+                                @else
+                                <td>{{$peserta->code}}</td>
+                                @endif
+                                <td>{{$peserta->full_name}}</td>
+                                <td>{{$peserta->group->group_name}}</td>
+                                <td><a class="btn btn-info btn-sm view" style="margin:2px;" data-toggle="modal" data-target="#modal-foto{{$peserta->id}}" type="button"><i class="glyphicon glyphicon-picture"></i></a></td>
+                                <!-- Modal Foto -->
+                                <div id="modal-foto{{$peserta->id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color: #0575e6; color: #fff;">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><center>Kartu Identitas Peserta</center></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="{{asset('uploads\\identitas\\'.$peserta->photo)}}" style="width: 100%" />
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- End Modal Foto -->
+                                <td>{{$peserta->group->institution}}</td>
+                                <td>{{$peserta->email}}</td>
+                                <td>{{$peserta->contact}}</td>
+                                <td>@if($peserta->vegetarian==0)<b class='label label-danger'>Tidak veget</b>@else<b class='label label-success'>Veget</b>@endif
                                 </td>
-                                <td>bajunya</td>
-                                <td align="center"><i title='Belum Terverifikasi' class='glyphicon glyphicon-remove' style='color:red'></i>
-                                    <i title='Sudah Terverifikasi' class='glyphicon glyphicon-ok' style='color:green'></i>
+                                <td>@if($peserta->buy_shirt==0)<b class='label label-danger'>Tidak</b>@else<b class='label label-success'>Ya</b>@endif</td>
+                                <td align="center">
+                                    @if($peserta->group->verified==1)
+                                    Terverifikasi <i title='Sudah Terverifikasi' class='glyphicon glyphicon-ok' style='color:green'></i>
+                                    @else
+                                    Belum Terverifikasi <i title='Belum Terverifikasi' class='glyphicon glyphicon-remove' style='color:red'></i>
+                                    @endif
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -68,12 +97,20 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>gatau</td>
-                                <td><small class="pull-right"> tes</small></td>
+                                <td>Jumlah Peserta</td>
+                                <td><small class="pull-right">{{count($jumlahPeserta)}}</small></td>
                             </tr>
                             <tr>
-                              <td>Peserta</td>
-                              <td><small class="pull-right">berapa peserta</small></td>
+                              <td>Jumlah Tim</td>
+                              <td><small class="pull-right">{{count($jumlahTim)}}</small></td>
+                            </tr>
+                            <tr>
+                                <td>Jumlah Peserta Non Veget</td>
+                                <td>@if(count($jumlahNonVeget)==null)<small class="pull-right">0</small>@else<small class="pull-right">{{count($jumlahNonVeget)}}</small>@endif</td>
+                            </tr>
+                            <tr>
+                                <td>Jumlah Peserta Veget</td>
+                                <td>@if(count($jumlahVeget)==null)<small class="pull-right">0</small>@else<small class="pull-right">{{count($jumlahVeget)}}</small>@endif</td>
                             </tr>
                         </tbody>
                     </table>
