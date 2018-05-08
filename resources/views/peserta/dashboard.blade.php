@@ -61,7 +61,8 @@
                 <div class="panel-body">
                     <div class="alert alert-warning">
                         <p style="font-weight:bold">Hai, {{Auth::user()->group_name}}.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Pastikan Anda telah melengkapi data peserta, biaya pendaftaran dan memverifikasikan data ke panitia ITCC 2018. Salam hangat dari admin ITCC 2018. Semangat dan sukses ! </p>
+                        <p style="text-align: justify;text-justify: inter-word;">Pastikan Anda telah melengkapi data peserta, biaya pendaftaran dan memverifikasikan data ke panitia ITCC 2018. Salam hangat dari admin ITCC 2018. Silakan lihat langkah-langkah yang harus anda lakukan pada tombol berikut. </p><br>
+                        <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#modalInfo">Lihat Langkah-langkah</button>
                      </div>
                 </div>
             </div>
@@ -388,7 +389,7 @@
     <!-- End Modal Pringatan -->
 
     <script type="text/javascript">
-         $(window).load(function(){
+        $(window).load(function(){
             $('#modalInfo').modal('show');
         });
 

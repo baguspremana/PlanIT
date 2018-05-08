@@ -90,5 +90,15 @@ class AdminController extends Controller
         }elseif (Auth::user()->competition_id==1 or Auth::user()->competition_id==2) {
             return view('admin.tambahPeserta');
         }
+    }
+
+    public function showFormTambahJuri()
+    {
+        return view('admin.tambahJuri');
+    }
+
+    public function showFormInputPenilaian()
+    {
+        return view('admin.inputFormNilai');
     }        
 }

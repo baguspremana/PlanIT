@@ -75,6 +75,10 @@ Route::get('/logUpload','AdminController@showFormLogUpload');
 
 Route::get('/tambahPeserta','AdminController@showFormTambahPeserta');
 
+Route::get('/tambahJuri','AdminController@showFormTambahJuri');
+
+Route::get('/inputFormPenilaian','AdminController@showFormInputPenilaian');
+
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
