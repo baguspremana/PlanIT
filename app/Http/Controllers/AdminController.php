@@ -7,6 +7,7 @@ use Auth;
 use App\Group;
 use App\Participant;
 use DB;
+use App\UserMessageTemporary;
 
 class AdminController extends Controller
 {
@@ -30,9 +31,14 @@ class AdminController extends Controller
         $group = Group::where('competition_id','=',Auth::user()->competition_id)
             ->get();
 
-        $participant = Participant::with('group')->get();
+        /*$participant = Participant::with('group')->where('competition_id','=',Auth::user()->competition_id)->get();*/
 
-        // return $participan;
+        $participant = DB::table('participants')
+            ->join('groups', 'groups.id','=','participants.group_id')
+            ->where('groups.competition_id','=',Auth::user()->competition_id)
+            ->get();
+
+        // return $participant;
 
         $jumlahPeserta = DB::table('participants')
             ->join('groups','groups.id','=','participants.group_id')
@@ -65,40 +71,69 @@ class AdminController extends Controller
 
         // return $jumlahNonVeget;
 
-        return view('admin.dashboard-admin', compact('group','participant','jumlahPeserta','jumlahTim','jumlahVeget','jumlahNonVeget'));
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
+        return view('admin.dashboard-admin', compact('group','participant','jumlahPeserta','jumlahTim','jumlahVeget','jumlahNonVeget','jumlahPesan'));
     }
 
     public function showFormPembayaran()
     {
-        return view('admin.verifikasiPeserta');
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
+        return view('admin.verifikasiPeserta', compact('jumlahPesan'));
     }
 
     public function showFormVerifikasi()
     {
-        return view('admin.verifikasiAdmin');
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
+        return view('admin.verifikasiAdmin', compact('jumlahPesan'));
     }
 
     public function showFormLogUpload()
     {
-        return view('admin.uploadlogs');
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
+        return view('admin.uploadlogs', compact('jumlahPesan'));
     }
 
     public function showFormTambahPeserta()
     {
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
         if (Auth::user()->competition_id==3) {
-            return view('admin.tambahPesertaLCC');
+            return view('admin.tambahPesertaLCC', compact('jumlahPesan'));
         }elseif (Auth::user()->competition_id==1 or Auth::user()->competition_id==2) {
-            return view('admin.tambahPeserta');
+            return view('admin.tambahPeserta', compact('jumlahPesan'));
         }
     }
 
     public function showFormTambahJuri()
     {
-        return view('admin.tambahJuri');
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
+        return view('admin.tambahJuri', compact('jumlahPesan'));
     }
 
     public function showFormInputPenilaian()
     {
-        return view('admin.inputFormNilai');
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
+        return view('admin.inputFormNilai', compact('jumlahPesan'));
     }        
+
 }

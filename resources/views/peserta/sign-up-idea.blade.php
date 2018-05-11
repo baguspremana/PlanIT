@@ -42,7 +42,7 @@
             	<section id="daftar">
             		<div class="form" style="background-color: white;">
             			<div class="box" style="margin-top: 50px;">
-                     		<form action="{{url('/daftar')}}" class="form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                     		<form action="{{url('/daftar')}}" class="needs-validation" novalidate method="post" accept-charset="utf-8" enctype="multipart/form-data">
 								{{ csrf_field() }}
 								<input type="hidden" value="4" name="competition_id" />
                      			<div class="box-body">
@@ -50,15 +50,22 @@
                         			<div class="box-body-col">
                            				<h4>Data Tim</h4>
                            				<div class="form-group row">
-                             				<label for="groupname" class="col-md-3 col-form-label">Nama Tim</label>
+                             				<label for="group_name" class="col-md-3 col-form-label">Nama Tim</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('group_name')}}" class="form-control" placeholder="ex. 'Team Greentea'" name="group_name" type="text">
+				                                <input value="{{old('group_name')}}" class="form-control" placeholder="ex. 'Team Greentea'" name="group_name" type="text" id="group_name" required>
+
+				                                <div class="invalid-feedback">
+        											Input nama tim
+      											</div>
 				                            </div>
                            				</div>
                            				<div class="form-group row">
                              				<label for="institution" class="col-md-3 col-form-label">Asal Institusi</label>
                              				<div class="col-md-9">
-                                 				<input value="{{old('institution')}}" class="form-control" placeholder="ex. 'Universitas Udayana'" name="institution" type="text">
+                                 				<input value="{{old('institution')}}" class="form-control" placeholder="ex. 'Universitas Udayana'" name="institution" type="text" required>
+                                 				<div class="invalid-feedback">
+        											Input nama institusi
+      											</div>
                              				</div>
                            				</div>
                            			</div>
@@ -68,13 +75,16 @@
                            				<div class="form-group row">
 				                            <label for="fullname" class="col-md-3 col-form-label">Nama Lengkap</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('full_name')}}" class="form-control" placeholder="ex. 'Nama Brata'" name="full_name" type="text">
+				                                <input value="{{old('full_name')}}" class="form-control" placeholder="ex. 'Nama Brata'" name="full_name" type="text" required>
+				                                <div class="invalid-feedback">
+        											Input Nama Lengkap
+      											</div>
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label for="birthday" class="col-md-3 col-form-label">Tanggal Lahir</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('birthdate')}}" class="form-control" placeholder="ex. '1995/12/27'" name="birthdate" type="date">
+				                                <input value="{{old('birthdate')}}" class="form-control" placeholder="ex. '1995/12/27'" name="birthdate" type="date" required>
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">

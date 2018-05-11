@@ -4,6 +4,12 @@
     Log Unggah - Admin
 @endsection
 
+@section('pesan')
+@if(count($jumlahPesan)!=0)
+	<span class="badge bg-danger">{{count($jumlahPesan)}}</span>
+@endif
+@endsection
+
 @section('content')
 <div class="container-fluid">
 	<div class="row">
@@ -47,9 +53,4 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#example').DataTable();
-    } );
-</script>
 @endsection

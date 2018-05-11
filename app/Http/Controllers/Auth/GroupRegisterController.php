@@ -42,9 +42,18 @@ class GroupRegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'group_name' => 'required|string',
+            'institution' => 'required|string',
+            'full_name' => 'required|string',
+            'birthdate' => 'required|date(Y:m:d)',
+            'contact' => 'required|numeric',
+            'vegetarian' => 'required',
+            'photo' => 'required',
+            'buy_shirt' => 'required',
+            'size' => 'required',
+            'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:groups',
-            //'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 

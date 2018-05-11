@@ -4,9 +4,20 @@
     Dashboard - ITCC 2018
 @endsection
 
+@section('pesan')
+    <span class="badge bg-danger">{{count($jumlahPesan)}}</span>
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <!-- OVERVIEW -->
+
+    @if (\Session::has('success'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-check"></i> <strong>{{ \Session::get('success') }}</strong>
+    </div>
+    @endif
     
     <!-- END OVERVIEW -->
     <div class="row">
@@ -78,12 +89,16 @@
                 </div>
                 <div class="panel-body">
                     
+                    @if(Auth::user()->competition_id == 3 or Auth::user()->competition_id == 4 or Auth::user()->competition_id == 5)
+                    @if(count($jumlah)!=3)
                     <!--Pemberitahuan Tambah Anggota-->
                     <div class="alert alert-danger">
                         <p>Hai, <i>{{Auth::user()->group_name}}</i> pastikan jumlah anggota tim anda telah lengkap. Silakan tambahkan data anggota tim anda melalui tombol berikut</p><br>
                         <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modalTambah">Tambah Anggota Tim</button>
                     </div>
                     <!--End Pemberitahuan Tambah Anggota-->
+                    @endif
+                    @endif
 
                     <table class="table table-striped">
                         <thead>
@@ -392,10 +407,6 @@
         $(window).load(function(){
             $('#modalInfo').modal('show');
         });
-
-        $(document).ready(function() {
-            $('#example').DataTable();
-        } );
     </script>
 
 </div>

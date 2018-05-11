@@ -49,4 +49,24 @@ class Group extends Authenticatable
         return $this->belongsTo('App\Competition','competition_id');
     }
 
+    public function adminMassage()
+    {
+        return $this->hasMany('App\AdminMassage');
+    }
+
+    public function adminMessageTemporary()
+    {
+        return $this->hasMany('App\AdminMessageTemporary');
+    }
+
+    public function userMassage()
+    {
+        return $this->hasMany('App\UserMassage');
+    }
+
+    public function userMessageTemporary()
+    {
+        return $this->hasMany('App\UserMessageTemporary');
+    }
+
 }

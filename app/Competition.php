@@ -19,4 +19,9 @@ class Competition extends Model
     {
     	return $this->hasMany('App\Jury');
     }
+
+    public function admin()
+    {
+        return $this->hasMany('App\Admin');
+    }
 }
