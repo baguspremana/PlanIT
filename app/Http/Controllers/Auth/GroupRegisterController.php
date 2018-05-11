@@ -42,9 +42,17 @@ class GroupRegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:groups',
-            //'password' => 'required|string|min:6|confirmed',
+            'group_name' => 'required|string|max:255',
+            'institution' => 'required|string|max:255',
+            'full_name' => 'required|string|max:255',
+            'birthdate' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'contact' => 'required|string|max:255',
+            'vegetarian' => 'required|string|max:255',
+            'photo' => 'required|string|email|max:255|unique:groups',
+            'buy_shirt' => 'required|string|min:6|confirmed',
+            'username' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -70,7 +78,7 @@ class GroupRegisterController extends Controller
         $data = $request->all();
         $data['password'] = Hash::make($data['password']);
 
-        //$this->validator($request->all())->validate();
+        $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($data)));
 
         $this->guard()->login($user);
@@ -81,6 +89,7 @@ class GroupRegisterController extends Controller
         
         Participant::uploadPhoto($request->file('photo'), $data['photo']);
         Participant::create($data);
+        
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
