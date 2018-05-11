@@ -4,9 +4,20 @@
     Dashboard - ITCC 2018
 @endsection
 
+@section('pesan')
+    <span class="badge bg-danger">{{count($jumlahPesan)}}</span>
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <!-- OVERVIEW -->
+
+    @if (\Session::has('success'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-check"></i> <strong>{{ \Session::get('success') }}</strong>
+    </div>
+    @endif
     
     <!-- END OVERVIEW -->
     <div class="row">
@@ -61,7 +72,8 @@
                 <div class="panel-body">
                     <div class="alert alert-warning">
                         <p style="font-weight:bold">Hai, {{Auth::user()->group_name}}.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Pastikan Anda telah melengkapi data peserta, biaya pendaftaran dan memverifikasikan data ke panitia ITCC 2018. Salam hangat dari admin ITCC 2018. Semangat dan sukses ! </p>
+                        <p style="text-align: justify;text-justify: inter-word;">Pastikan Anda telah melengkapi data peserta, biaya pendaftaran dan memverifikasikan data ke panitia ITCC 2018. Salam hangat dari admin ITCC 2018. Silakan lihat langkah-langkah yang harus anda lakukan pada tombol berikut. </p><br>
+                        <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#modalInfo">Lihat Langkah-langkah</button>
                      </div>
                 </div>
             </div>
@@ -77,12 +89,16 @@
                 </div>
                 <div class="panel-body">
                     
+                    @if(Auth::user()->competition_id == 3 or Auth::user()->competition_id == 4 or Auth::user()->competition_id == 5)
+                    @if(count($jumlah)!=3)
                     <!--Pemberitahuan Tambah Anggota-->
                     <div class="alert alert-danger">
                         <p>Hai, <i>{{Auth::user()->group_name}}</i> pastikan jumlah anggota tim anda telah lengkap. Silakan tambahkan data anggota tim anda melalui tombol berikut</p><br>
                         <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modalTambah">Tambah Anggota Tim</button>
                     </div>
                     <!--End Pemberitahuan Tambah Anggota-->
+                    @endif
+                    @endif
 
                     <table class="table table-striped">
                         <thead>
@@ -388,13 +404,9 @@
     <!-- End Modal Pringatan -->
 
     <script type="text/javascript">
-         $(window).load(function(){
+        $(window).load(function(){
             $('#modalInfo').modal('show');
         });
-
-        $(document).ready(function() {
-            $('#example').DataTable();
-        } );
     </script>
 
 </div>

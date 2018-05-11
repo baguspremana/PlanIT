@@ -9,8 +9,8 @@ ITCC 2018
 <link rel="stylesheet" href="{{asset('asset1/timeline/css/reset.css')}}"> <!-- CSS reset -->
 <link rel="stylesheet" href="{{asset('asset1/timeline/css/style.css')}}"> <!-- Resource style -->
 <script src="{{asset('asset1/timeline/js/modernizr.js')}}"></script> <!-- Modernizr -->
-<script src="{{asset('asset1/timeline/js/jquery-2.1.4.js')}}"></script>
-<script src="{{asset('asset1/timeline/js/jquery.mobile.custom.min.j')}}s"></script>
+<!--script src="{{asset('asset1/timeline/js/jquery-2.1.4.js')}}"></script>
+<script src="{{asset('asset1/timeline/js/jquery.mobile.custom.min.js')}}"></script-->
 <script src="{{asset('asset1/timeline/js/main.js')}}"></script> <!-- Resource jQuery -->
 @endsection
 

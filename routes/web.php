@@ -62,6 +62,13 @@ Route::get('/verifikasi','DashboardController@showVerificationForm');
 Route::get('/upload','DashboardController@showUploadDataForm');
 Route::get('/setting','DashboardController@showSettingForm');
 
+Route::resource('/pesanUser','UserMassageController');
+
+Route::get('/pesanUserKeluar','UserMassageController@pesanTerkirim');
+
+Route::get('/pesanUserKeluarShow/{pesanUserKeluarShow}','UserMassageController@showMsgOut');
+
+Route::delete('/pesanUserKeluar/{pesanUserKeluar}','UserMassageController@deletUserMsg');
 
 /*=========================================================================================
                                     ADMIN ROUTE
@@ -74,6 +81,18 @@ Route::get('/verifikasiAdmin','AdminController@showFormVerifikasi');
 Route::get('/logUpload','AdminController@showFormLogUpload');
 
 Route::get('/tambahPeserta','AdminController@showFormTambahPeserta');
+
+Route::get('/tambahJuri','AdminController@showFormTambahJuri');
+
+Route::get('/inputFormPenilaian','AdminController@showFormInputPenilaian');
+
+Route::resource('/pesanAdmin','AdminMassageController');
+
+Route::get('/pesanAdminKeluar','AdminMassageController@showMsgOut');
+
+Route::get('/pesanAdminKeluar/{pesanAdminKeluar}','AdminMassageController@msgOutShow');
+
+Route::delete('/pesanAdminKeluar/{pesanAdminKeluar}','AdminMassageController@deleteMsg');
 
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

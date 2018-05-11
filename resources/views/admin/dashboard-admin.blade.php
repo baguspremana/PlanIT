@@ -4,6 +4,12 @@
     Dashboard Admin - ITCC 2018
 @endsection
 
+@section('pesan')
+@if(count($jumlahPesan)!=0)
+    <span class="badge bg-danger">{{count($jumlahPesan)}}</span>
+@endif
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <!-- OVERVIEW -->
@@ -41,7 +47,7 @@
                                 <td>{{$peserta->code}}</td>
                                 @endif
                                 <td>{{$peserta->full_name}}</td>
-                                <td>{{$peserta->group->group_name}}</td>
+                                <td>{{$peserta->group_name}}</td>
                                 <td><a class="btn btn-info btn-sm view" style="margin:2px;" data-toggle="modal" data-target="#modal-foto{{$peserta->id}}" type="button"><i class="glyphicon glyphicon-picture"></i></a></td>
                                 <!-- Modal Foto -->
                                 <div id="modal-foto{{$peserta->id}}" class="modal fade" role="dialog">
@@ -63,14 +69,14 @@
                                     </div>
                                 </div>
                                 <!-- End Modal Foto -->
-                                <td>{{$peserta->group->institution}}</td>
+                                <td>{{$peserta->institution}}</td>
                                 <td>{{$peserta->email}}</td>
                                 <td>{{$peserta->contact}}</td>
                                 <td>@if($peserta->vegetarian==0)<b class='label label-danger'>Tidak veget</b>@else<b class='label label-success'>Veget</b>@endif
                                 </td>
                                 <td>@if($peserta->buy_shirt==0)<b class='label label-danger'>Tidak</b>@else<b class='label label-success'>Ya</b>@endif</td>
                                 <td align="center">
-                                    @if($peserta->group->verified==1)
+                                    @if($peserta->verified==1)
                                     Terverifikasi <i title='Sudah Terverifikasi' class='glyphicon glyphicon-ok' style='color:green'></i>
                                     @else
                                     Belum Terverifikasi <i title='Belum Terverifikasi' class='glyphicon glyphicon-remove' style='color:red'></i>
@@ -119,11 +125,5 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#example').DataTable();
-    } );
-</script>
 @endsection
 

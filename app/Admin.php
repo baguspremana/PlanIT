@@ -17,7 +17,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fullname', 'privilege', 'username', 'password', 'email', 'is_login', 'last_login_at'
+        'fullname', 'competition_id', 'privilege', 'username', 'password', 'email', 'is_login', 'last_login_at'
     ];
 
     /**
@@ -28,4 +28,29 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function competition()
+    {
+        return $this->belongsTo('App\Competition','competition_id');
+    }
+
+    public function adminMassage()
+    {
+        return $this->hasMany('App\AdminMassage');
+    }
+
+    public function adminMessageTemporary()
+    {
+        return $this->hasMany('App\AdminMessageTemporary');
+    }
+
+    public function userMassage()
+    {
+        return $this->hasMany('App\UserMassage');
+    }
+
+    public function userMessageTemporary()
+    {
+        return $this->hasMany('App\UserMessageTemporary');
+    }
 }

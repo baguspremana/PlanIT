@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Dashboard;
 use App\Participant;
 use Auth;
+use DB;
+use App\AdminMessageTemporary;
 
 class DashboardController extends Controller
 {
@@ -51,9 +53,20 @@ class DashboardController extends Controller
                 $this->$completeness['identity_verif'] = 0;
             }
         }
+
+        $jumlah = DB::table('participants')
+            ->select('participants.id')
+            ->where('participants.group_id','=',Auth::user()->id)
+            ->get();
+
+        // return $jumlah;
+
+        $jumlahPesan = AdminMessageTemporary::where('group_id','=', Auth::user()->id)
+            ->where('view','=', 0)
+            ->get();
         
         $data['participants'] = Auth::user()->participants;
-        return view('peserta.dashboard', $data);
+        return view('peserta.dashboard', $data, compact('jumlah','jumlahPesan'));
     }
 
     /**
@@ -80,7 +93,8 @@ class DashboardController extends Controller
         $data['photo'] = $request->competition_id."_".$request->full_name.".".$request->file('photo')->getClientOriginalExtension();
         Participant::uploadPhoto($request->file('photo'), $data['photo']);
         Participant::create($data);
-        return redirect('dashboard');
+
+        return redirect('dashboard')->with('success', 'Berhasil menambah anggota');
     }
 
     /**
@@ -126,21 +140,34 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         Participant::destroy($id);
-        return redirect('dashboard');
+        return redirect('dashboard')->with('success', 'Berhasil menghapus data anggota');
     }
 
     public function showVerificationForm()
     {
-        return view('peserta.verifikasi');
+        $jumlahPesan = AdminMessageTemporary::where('group_id','=', Auth::user()->id)
+            ->where('view','=', 0)
+            ->get();
+
+        return view('peserta.verifikasi', compact('jumlahPesan'));
     }
 
     public function showUploadDataForm()
     {
-        return view('peserta.upload');
+        $jumlahPesan = AdminMessageTemporary::where('group_id','=', Auth::user()->id)
+            ->where('view','=', 0)
+            ->get();
+
+        return view('peserta.upload', compact('jumlahPesan'));
     }
 
     public function showSettingForm()
     {
-        return view('peserta.setting');
+        $jumlahPesan = AdminMessageTemporary::where('group_id','=', Auth::user()->id)
+            ->where('view','=', 0)
+            ->get();
+
+        return view('peserta.setting', compact('jumlahPesan'));
     }
+    
 }

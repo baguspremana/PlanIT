@@ -20,6 +20,7 @@
   	<link href="{{asset('asset1/css/style.css')}}" rel="stylesheet">
   	<link href="{{asset('asset1/css/custom.css')}}" rel="stylesheet">
   	<link href="{{asset('asset1/css/myStyle.css')}}" rel="stylesheet">
+  	<!--link href="{{ asset('css/app.css') }}" rel="stylesheet"-->
 
   	<!--meta-->
     <meta name       ="description" content="Information Technology Creative Competition (ITCC) adalah kompetisi bidang Teknologi Informasi yang diselenggarakan oleh Himpunan Mahasiswa Teknologi Informasi (HMTI), Fakultas Teknik, Universitas Udayana.">
@@ -45,10 +46,12 @@
 	<script src="{{asset('asset1/lib/superfish/superfish.min.js')}}"></script>
 
 	<!-- Contact Form JavaScript File -->
-	<script src="{{asset('asset1/contactform/contactform.js')}}"></script>
+	<!--script src="{{asset('asset1/contactform/contactform.js')}}"></script-->
 
 	<!-- Template Main Javascript File -->
 	<script src="{{asset('asset1/js/main.js')}}"></script>
+	<!--script src="{{asset('js/app.js')}}" defer></script>
+	<script src="{{asset('js/validator.min.js')}}" defer></script-->
 
 	@yield('head')
 
@@ -107,6 +110,27 @@
 	        
 	      	</div>
 	    </section>
+
+	<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 
   	</main>
 

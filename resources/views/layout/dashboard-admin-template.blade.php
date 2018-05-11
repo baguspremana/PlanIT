@@ -39,12 +39,15 @@
         <!-- SIDEBAR -->
         <div class="sidebar" style="background-color: #021B79">
             <div class="brand" style="background-color: #021B79">
-                <a href="index.html"><img src="asset/images/logo-itcc5.png" alt="ITCC Logo" class="img-responsive logo" width="100px" height="100px"></a>
+                <a href="index.html"><img src="{{asset('asset/images/logo-itcc5.png')}}" alt="ITCC Logo" class="img-responsive logo" width="100px" height="100px"></a>
             </div>
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li class="hidden-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::guard('admin')->user()->fullname}}</span></a></li>
+                        <li class="hidden-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="{{asset('asset/images/user.png')}}" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::guard('admin')->user()->fullname}}</span></a></li>
+                        <li><a><i class="glyphicon glyphicon-tags"></i> 
+                            <span>Admin {{Auth::guard('admin')->user()->competition->short_name}}</span>
+                        </a></li>
                         <li><a href="/admin"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="/verifikasiAdmin"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
                         <li><a href="/logUpload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Log Unggah</span></a></li>
@@ -52,6 +55,12 @@
                         <li><a href="/verifikasiPeserta"><i class="glyphicon glyphicon-euro"></i> <span>Pembayaran</span></a></li>
                         <li><a href="/tambahPeserta"><i class="glyphicon glyphicon-plus-sign"></i> <span>Tambah Peserta</span></a></li>
                         @endif
+                        @if(Auth::user()->competition_id==4 or Auth::user()->competition_id==5)
+                        <li><a href="/tambahJuri"><i class="glyphicon glyphicon-plus-sign"></i> <span>Tambah Juri</span></a></li>
+                        <li><a href="/inputFormPenilaian"><i class="glyphicon glyphicon-plus-sign"></i> <span>Input Form Penilaian</span></a></li>
+                        @endif
+                        <li><a href="/pesanAdmin"><i class="glyphicon glyphicon-envelope"></i> <span>Pesan Masuk</span> @yield('pesan')</a></li>
+                        <li><a href="/pesanAdminKeluar"><i class="glyphicon glyphicon-envelope"></i> <span>Pesan Keluar</span></a></li>
                         <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
@@ -73,7 +82,7 @@
                     </div>
                     <div id="navbar-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
+                            <!--li class="dropdown">
                                 <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="background-color: #021B79">
                                     <i class="fa fa-bell" style="color: white"></i>
                                     <span class="badge bg-danger">5</span>
@@ -86,10 +95,10 @@
                                     <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
                                     <li><a href="#" class="more">See all notifications</a></li>
                                 </ul>
-                            </li>
+                            </li-->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="background-color: #021B79">
-                                    <img class="img-circle" src="asset/images/user.png" width="30px" height="30px" alt="Avatar"> <span style="color: #fff"> {{Auth::guard('admin')->user()->fullname}}</span>  <i class="fa fa-chevron-down" style="color: #fff; font-size: 10px;"></i>
+                                    <img class="img-circle" src="{{asset('asset/images/user.png')}}" width="30px" height="30px" alt="Avatar"> <span style="color: #fff"> {{Auth::guard('admin')->user()->fullname}}</span>  <i class="fa fa-chevron-down" style="color: #fff; font-size: 10px;"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#" onclick="event.preventDefault();
@@ -115,6 +124,12 @@
         <!-- END MAIN -->
     </div>
     <!-- END WRAPPER -->
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
 
 </body>
 

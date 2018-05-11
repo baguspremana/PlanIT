@@ -41,16 +41,20 @@
         <!-- SIDEBAR -->
         <div class="sidebar" style="background-color: #021B79">
             <div class="brand" style="background-color: #021B79">
-                <a href="index.html"><img src="asset/images/logo-itcc5.png" alt="ITCC Logo" class="img-responsive logo" width="100px" height="100px"></a>
+                <a href="index.html"><img src="{{asset('asset/images/logo-itcc5.png')}}" alt="ITCC Logo" class="img-responsive logo" width="100px" height="100px"></a>
             </div>
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li class="hidden-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="asset/images/user.png" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::user()->group_name}}</span></a></li>
+                        <li class="hidden-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: #021B79"><img src="{{asset('asset/images/user.png')}}" width="30px" height="30px" class="img-circle" alt="Avatar"> <span style="color: white">{{Auth::user()->group_name}}</span></a></li>
                         <li><a href="/dashboard"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="/verifikasi"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
+                        @if(Auth::user()->competition_id==3 or Auth::user()->competition_id==4 or Auth::user()->competition_id==4)
                         <li><a href="/upload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Upload Data</span></a></li>
+                        @endif
                         <li><a href="/setting"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
+                        <li><a href="/pesanUser"><i class="glyphicon glyphicon-envelope"></i> <span>Pesan Masuk</span> @yield('pesan')</a></li>
+                        <li><a href="/pesanUserKeluar"><i class="glyphicon glyphicon-envelope"></i> <span>Pesan Keluar</span></a></li>
                         <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -79,7 +83,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="background-color: #021B79">
-                                    <img class="img-circle" src="asset/images/user.png" width="30px" height="30px" alt="Avatar"> <span style="color: #fff"> {{Auth::user()->group_name}}</span>  <i class="fa fa-chevron-down" style="color: #fff; font-size: 10px;"></i>
+                                    <img class="img-circle" src="{{asset('asset/images/user.png')}}" width="30px" height="30px" alt="Avatar"> <span style="color: #fff"> {{Auth::user()->group_name}}</span>  <i class="fa fa-chevron-down" style="color: #fff; font-size: 10px;"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#" onclick="event.preventDefault();
@@ -119,6 +123,12 @@
         <!-- END MAIN -->
     </div>
     <!-- END WRAPPER -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
 
 </body>
 
