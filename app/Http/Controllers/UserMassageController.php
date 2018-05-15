@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\UserMassage;
 use App\UserMessageTemporary;
 use Illuminate\Http\Request;
-
 use App\AdminMessageTemporary;
 use Auth;
 use App\Admin;
+use App\Notifications\NotifToInboxAdmin;
 
 class UserMassageController extends Controller
 {
@@ -101,6 +101,7 @@ class UserMassageController extends Controller
         $pesantemp->message = $request->message;
         $pesantemp->save();
 
+        Admin::find($request->admin_id)->notify(new NotifToInboxAdmin);
         return redirect('/pesanUserKeluar')->with('success', 'Pesan berhasil terkirim');
 
 
