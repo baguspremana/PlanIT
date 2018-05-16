@@ -24,45 +24,45 @@
 				<div class="panel-body">
 					<div class="box" style="margin-top: 30px;">
 						<div class="box-body">
-							<form action="#" class="form-horizontal" method="post">
-
+							<form action="/simpan" class="form-horizontal" method="post" enctype="multipart/form-data">
+                @csrf
 								<div style="border-style: solid; border-width: 1px;padding: 8px 8px;">
 									<h4><center>Data Diri</center></h4>
 
 									<div class="form-group">
                     <label class="control-label col-md-3">Asal Sekolah</label>
                     <div class="col-md-9">
-                    	<input class="form-control" placeholder="ex. 'SMA/SMK Permata'" name="institution" required="required" type="text">
+                    	<input class="form-control" placeholder="ex. 'SMA/SMK Permata'" name="institution" type="text">
                     </div>
                   </div>
                       <div class="form-group">
                       		<label class="control-label col-md-3">Nama Lengkap</label>
                       		<div class="col-md-9">
-                         			<input class="form-control" placeholder="ex. 'Nama Brata'" name="fullname" required="required" type="text">
+                         			<input class="form-control" placeholder="ex. 'Nama Brata'" name="fullname" type="text">
                       		</div>
                       </div>
                       <div class="form-group">
                       		<label class="control-label col-md-3">Tanggal Lahir</label>
                       		<div class="col-md-9">
-                         			<input class="form-control" placeholder="ex. '1995/12/27'" name="birthday" required="required" type="date" >
+                         			<input class="form-control" placeholder="ex. '1995/12/27'" name="birthday" type="date" >
                       		</div>
                       </div>
                       <div class="form-group">
                       		<label class="control-label col-md-3">Email</label>
                       		<div class="col-md-9">
-                         			<input class="form-control" placeholder="ex. 'mail@site.com'" name="email" required="required" type="email">
+                         			<input class="form-control" placeholder="ex. 'mail@site.com'" name="email" type="email">
                       		</div>
                       </div>
                       <div class="form-group">
                       	<label class="control-label col-md-3">Nomor Kontak</label>
                       		<div class="col-md-9">
-                         			<input class="form-control" placeholder="ex. '081632111111'" name="contact" required="required" type="number" >
+                         			<input class="form-control" placeholder="ex. '081632111111'" name="contact" type="number" >
                       		</div>
                       </div>
                       <div class="form-group">
                       		<label class="control-label col-md-3">Vegetarian</label>
                       		<div class="col-md-9">
-                        			<label><input type="radio" value="Y" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="N" name="vegetarian" required="required"> Tidak</label>
+                        			<label><input type="radio" value="1" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="0" name="vegetarian"> Tidak</label>
                       		</div>
                       </div>
                       <div class="form-group">
@@ -81,19 +81,19 @@
 									<div class="form-group">
                              			<label class="control-label col-md-3">Username</label>
                              			<div class="col-md-9">
-                                 			<input class="form-control" placeholder="nama pengguna" name="username" required="required" type="text">
+                                 			<input class="form-control" placeholder="nama pengguna" name="username" type="text">
                              			</div>
                            			</div>
                            			<div class="form-group">
                              			<label class="control-label col-md-3">Password</label>
                              			<div class="col-md-9">
-                                 			<input class="form-control" placeholder="kata sandi" name="password" id="pass" required="required" type="password">
+                                 			<input class="form-control" placeholder="kata sandi" name="password" id="pass" type="password">
                              			</div>
                            			</div>
                            			<div class="form-group">
                              			<label class="control-label col-md-3">Konfirmasi Password</label>
                              			<div class="col-md-9">
-                                 			<input class="form-control" placeholder="ulangi kata sandi" name="passconf" id="pass2nd" required="required" type="password">
+                                 			<input class="form-control" placeholder="ulangi kata sandi" name="password_confirmation" id="pass2nd" type="password">
                                  			<!--span id='message'></span-->
                              			</div>
 									</div>

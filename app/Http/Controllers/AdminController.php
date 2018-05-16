@@ -8,6 +8,7 @@ use App\Group;
 use App\Participant;
 use DB;
 use App\UserMessageTemporary;
+use App\Jury;
 
 class AdminController extends Controller
 {
@@ -134,6 +135,136 @@ class AdminController extends Controller
             ->get();
 
         return view('admin.inputFormNilai', compact('jumlahPesan'));
+    }
+
+    public function storeJury(Request $request)
+    {
+        $juri = $this->validate($request, [
+            'fullname' => 'required|string',
+            'email' => 'required|email',
+            'competition_id' => 'required',
+            'username' => 'required',
+            'password' => 'required|confirmed',
+        ],[
+            'fullname.required' => 'Kolom nama harus diisi',
+            'email.required' => 'Kolom email harus diisi',
+            'competition_id.required' => 'Kolom kategori harus diisi',
+            'username.required' => 'Kolom username harus diisi',
+            'password.required' => 'Kolom password harus diisi',
+            'password.confirmed' => 'Konfirmasi password harus diisi',
+        ]);
+
+        $juri = new Jury();
+        $juri->fullname = $request->fullname;
+        $juri->email = $request->email;
+        $juri->competition_id = $request->competition_id;
+        $juri->username = $request->username;
+        $juri->password = bcrypt($request->password);
+        $juri->save();
+
+        return redirect('/admin')->with('success', 'Berhasil menambahkan juri');
     }        
 
+    public function storeGroup(Request $request)
+    {
+        $data = $this->validate($request, [
+            'groupname' => 'required|string',
+            'institution' => 'required|string',
+            'fullname' => 'required|string',
+            'birthday' => 'required|date',
+            'email' => 'required|email',
+            'contact' => 'required|numeric',
+            'vegetarian' => 'required',
+            'photo' => 'required',
+            'username' => 'required|string',
+            'password' => 'required|confirmed',
+        ],[
+            'groupname.required' => 'Kolom nama group harus diisi',
+            'institution.required' => 'Kolom institusi harus diisi',
+            'fullname.required' => 'Kolom nama harus diisi',
+            'birthday.required' => 'Kolom tanggal lahir harus diisi',
+            'email.required' => 'Kolom email harus diisi',
+            'contact.required' => 'Kolom kontak harus diisi',
+            'vegetarian.required' => 'Kolom vegetarian harus diisi',
+            'photo.required' => 'Kolom identitas harus diisi',
+            'username.required' => 'Kolom username harus diisi',
+            'password.required' => 'Kolom password harus diisi',
+            'password.confirmed' => 'Kolom konfirmasi password harus diisi',
+        ]);
+
+        $data = new Group();
+        $data->group_name = $request->groupname;
+        $data->institution = $request->institution;
+        $data->username = $request->username;
+        $data->password = bcrypt($request->password);
+        $data->email = $request->email;
+        $data->competition_id = Auth::user()->competition_id;
+        $data->save();
+
+        $peserta = new Participant();
+        $peserta->captain = 1;
+        $peserta->group_id = $data->id;
+        $peserta->full_name = $request->fullname;
+        $peserta->birthdate = $request->birthday;
+        $peserta->email = $data->email;
+        $peserta->contact = $request->contact;
+        $peserta->vegetarian = $request->vegetarian;
+        $peserta->buy_shirt = $request->buy_shirt;
+        $peserta->photo = $data->competition_id."_".$request->fullname.".".$request->file('photo')->getClientOriginalExtension();
+        Participant::uploadPhoto($request->file('photo'), $peserta->photo);
+        $peserta->save();
+
+        return redirect('/admin')->with('success', 'Berhasil menambahkan peserta');
+    }
+
+    public function storePeserta(Request $request)
+    {
+        $data = $this->validate($request, [
+            'institution' => 'required|string',
+            'fullname' => 'required|string',
+            'birthday' => 'required|date',
+            'email' => 'required|email',
+            'contact' => 'required|numeric',
+            'vegetarian' => 'required',
+            'photo' => 'required',
+            'username' => 'required|string',
+            'password' => 'required|string|confirmed',
+        ],[
+            'institution.required' => 'Kolom institusi harus diisi',
+            'fullname.required' => 'Kolom nama harus diisi',
+            'birthday.required' => 'Kolom tanggal lahir harus diisi',
+            'email.required' => 'Kolom email harus diisi',
+            'contact.required' => 'Kolom kontak harus diisi',
+            'vegetarian.required' => 'Kolom vegetarian harus diisi',
+            'photo.required' => 'Kolom kartu identitas harus diisi',
+            'username.required' => 'Kolom username harus diisi',
+            'password.required' => 'Kolom password harus diisi',
+            'password.confirmed' => 'Kolom konfirmasi password harus diisi',
+        ]);
+
+        $data = new Group();
+        $data->group_name = $request->fullname;
+        $data->institution = $request->institution;
+        $data->username = $request->username;
+        $data->password = bcrypt($request->password); 
+        $data->email = $request->email;
+        $data->competition_id = Auth::user()->competition_id;
+        $data->save();
+
+        $peserta = new Participant();
+        $peserta->captain = 1;
+        $peserta->group_id = $data->id;
+        $peserta->full_name = $request->fullname;
+        $peserta->birthdate = $request->birthday;
+        $peserta->email = $data->email;
+        $peserta->contact = $request->contact;
+        $peserta->vegetarian = $request->vegetarian;
+        $peserta->buy_shirt = 0;
+        $peserta->photo = $data->competition_id."_".$request->fullname.".".$request->file('photo')->getClientOriginalExtension();
+        Participant::uploadPhoto($request->file('photo'), $peserta->photo);
+        $peserta->save();
+
+        return redirect('/admin')->with('success', 'Berhasil menambahkan peserta');
+
+    }
 }

@@ -17,6 +17,14 @@
 		<div class="col-md-2 hidden-sm hidden-xs"></div>
 		
 		<div class="col-md-8">
+			@foreach($errors->all() as $error)
+			<ul>
+				<div class="alert alert-danger">
+					<li class="text-danger">{{$error}}</li>
+				</div>
+			</ul>
+			@endforeach
+
 			<div class="panel">
 				<div class="panel-heading">
 					<h3 class="panel-title"><center>Form Pendaftaran Juri</center></h3>
@@ -24,8 +32,8 @@
 				<div class="panel-body">
 					<div class="box" style="margin-top: 30px;">
 						<div class="box-body">
-							<form action="#" class="form-horizontal" method="post">
-
+							<form action="/tambahJuriSimpan" class="form-horizontal" method="post">
+								@csrf
 								<div style="border-style: solid; border-width: 1px; padding: 8px 8px;">
 									<h4><center>Data Diri</center></h4>
 
@@ -79,7 +87,7 @@
 									<div class="form-group">
 										<label class="control-label col-md-3">Konfirmasi Password</label>
 										<div class="col-md-9">
-											<input type="password" name="passconf" class="form-control" placeholder="ulangi kata sandi">
+											<input type="password" name="password_confirmation" class="form-control" placeholder="ulangi kata sandi">
 										</div>
 									</div>
 

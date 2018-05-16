@@ -171,4 +171,34 @@ class JuryController extends Controller
 
     }
 
+    public function showFormSetting()
+    {
+        $pesan = DB::table('score_reqs')
+            ->select('score_reqs.id')
+            ->where('score_reqs.jury_id','=',Auth::user()->id)
+            ->where('score_reqs.status','=',1)
+            ->get();
+
+        return view('jury.setting', compact('pesan'));
+    }
+
+    public function updateJuri(Request $request, $id)
+    {
+        $juri = $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required|confirmed',
+        ],[
+            'username.required' => 'Kolom username harus diisi',
+            'password.required' => 'Kolom password harus diisi',
+            'password.confirmed' => 'Konfirmasi password tidak sesuai',
+        ]);
+
+        $juri = Jury::find($id);
+        $juri->username = $request->username;
+        $juri->password = bcrypt($request->password);
+        $juri->save();
+
+        return redirect('/juri')->with('success', 'Data autentikasi berhasil diperbarui');
+    }
+
 }

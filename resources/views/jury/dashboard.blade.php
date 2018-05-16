@@ -10,6 +10,7 @@
     <li><a href="/pesan"><i class="glyphicon glyphicon-envelope"></i> <span>Pesan</span> @if(count($pesan)==0)<span class="badge bg-danger" style="display: none;">{{count($pesan)}}</span> @else<span class="badge bg-danger">{{count($pesan)}}</span>@endif</a></li>
     <!--li><a href="/rekap-nilai"><i class="glyphicon glyphicon-list-alt"></i> <span>Detail Penilaian</span></a></li-->
     <li><a href="/rekap-nilai-detail"><i class="glyphicon glyphicon-list-alt"></i> <span>Rekap Nilai</span></a></li>
+    <li><a href="/juriSetting"><i class="glyphicon glyphicon-cog"></i> <span>Setting</span></a></li>
     <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
     <form id="logout-form" action="{{ url('juri/logout') }}" method="POST" style="display: none;">
@@ -21,6 +22,14 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
     <div class="container-fluid">
+
+        @if (\Session::has('success'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <i class="fa fa-check"></i> <strong>{{ \Session::get('success') }}</strong>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-md-12">
                 <!-- DATA ANGGOTA -->
