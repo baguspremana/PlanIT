@@ -8,6 +8,7 @@ use App\UserMessageTemporary;
 use Auth;
 use App\AdminMessageTemporary;
 use App\Group;
+use App\Notifications\NotifToInboxGroup;
 
 class AdminMassageController extends Controller
 {
@@ -100,6 +101,7 @@ class AdminMassageController extends Controller
         $pesantmp->save();
 
         // return 'a';
+        Group::find($request->group_id)->notify(new NotifToInboxGroup);
         return redirect('/pesanAdminKeluar')->with('success', 'Pesan berhasil terkirim');
     }
 

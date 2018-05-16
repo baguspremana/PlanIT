@@ -94,6 +94,12 @@ Route::get('/pesanAdminKeluar/{pesanAdminKeluar}','AdminMassageController@msgOut
 
 Route::delete('/pesanAdminKeluar/{pesanAdminKeluar}','AdminMassageController@deleteMsg');
 
+Route::post('/tambahJuriSimpan','AdminController@storeJury');
+
+Route::post('/simpanPeserta','AdminController@storeGroup');
+
+Route::post('/simpan','AdminController@storePeserta');
+
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
@@ -121,3 +127,7 @@ Route::resource('/form-nilai','ScoreListController');
 Route::get('/rekap-nilai-detail','JuryController@showFormDetailRekap');
 
 Route::resource('/pesan','ScoreReqController');
+
+Route::get('/juriSetting','JuryController@showFormSetting');
+
+Route::put('/juriSetting/{juriSetting}','JuryController@updateJuri');

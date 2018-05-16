@@ -24,8 +24,8 @@
 				<div class="panel-body">
 					<div class="box" style="margin-top: 30px;">
 						<div class="box-body">
-							<form action="#" class="form-horizontal" method="post">
-
+							<form action="/simpanPeserta" class="form-horizontal" method="post" enctype="multipart/form-data">
+                @csrf
 								<div style="border-style: solid; border-width: 1px;padding: 8px 8px;">
 									<h4><center>Data Tim</center></h4>
 
@@ -46,6 +46,7 @@
 
 								<div style="border-style: solid; border-width: 1px;padding: 8px 8px;margin-top: 20px;">
 									<h4><center>Data Ketua Tim</center></h4>
+                  <input type="hidden" name="buy_shirt" value="0">
 
                            			<div class="form-group">
                              			<label class="control-label col-md-3">Nama Lengkap</label>
@@ -74,7 +75,7 @@
                            			<div class="form-group">
                              			<label class="control-label col-md-3">Vegetarian</label>
                              			<div class="col-md-9">
-                                			<label><input type="radio" value="Y" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="N" name="vegetarian" required="required"> Tidak</label>
+                                			<label><input type="radio" value="1" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="0" name="vegetarian" required="required"> Tidak</label>
                              			</div>
                            			</div>
                            			<div class="form-group">
@@ -105,7 +106,7 @@
                            			<div class="form-group">
                              			<label class="control-label col-md-3">Konfirmasi Password</label>
                              			<div class="col-md-9">
-                                 			<input class="form-control" placeholder="ulangi kata sandi" name="passconf" id="pass2nd" required="required" type="password">
+                                 			<input class="form-control" placeholder="ulangi kata sandi" name="password_confirmation" id="pass2nd" required="required" type="password">
                                  			<!--span id='message'></span-->
                              			</div>
 									</div>

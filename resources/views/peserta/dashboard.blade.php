@@ -5,7 +5,9 @@
 @endsection
 
 @section('pesan')
+@if(count($jumlahPesan)!=0)
     <span class="badge bg-danger">{{count($jumlahPesan)}}</span>
+@endif
 @endsection
 
 @section('content')
