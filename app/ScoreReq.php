@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ScoreReq extends Model
 {
 	protected $fillable = [
-        'object_id',
+        'file_id',
         'jury_id',
         'status', 
     ];

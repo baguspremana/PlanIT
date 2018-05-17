@@ -8,16 +8,15 @@ use App\Dashboard;
 use App\Participant;
 use App\Verified_req;
 use App\File;
+use App\Competition;
+use App\ScoreReq;
 use Auth;
 use DB;
 use App\AdminMessageTemporary;
-<<<<<<< HEAD
 use Carbon\Carbon;
-=======
 use Illuminate\Support\Facades\Input as input;
 use Illuminate\Support\Facades\Hash;
 use App\Group;
->>>>>>> 744c55baef0c0997377366cb6b11b140fc41fa6c
 
 class DashboardController extends Controller
 {
@@ -205,10 +204,23 @@ class DashboardController extends Controller
     public function uploadData(Request $request){
         $data = $request->all();
         $data['group_id'] = Auth::user()->id;
-        $data['link'] = "berkas_".Auth::user()->id.".".$request->file('photo')->getClientOriginalExtension();
-        $data['status'] = 0;
-        File::upload($request->file('photo'), $data['link']);
-        File::create($data);
+        $data['link'] = "berkas_".Auth::user()->id.".".$request->file('file')->getClientOriginalExtension();
+        $data['status'] = "N";
+        File::upload($request->file('file'), $data['link']);
+        $file = File::create($data);
+
+        //if Ide bisnis/ SI
+        if(Auth::user()->competition_id == 4){
+            $competition = Competition::find(Auth::user()->competition_id);
+
+            foreach ($competition->juri as $juri) {
+                $data['status'] = '0';
+                $data['file_id'] = $file->id;
+                $data['jury_id'] = $juri->id;
+                ScoreReq::create($data);
+            }
+        }
+
 
         return redirect('dashboard')->with('success', 'Berhasil upload verifikasi!');
     }

@@ -42,7 +42,7 @@
 							<div class="form-group">
 								<label class="control-label col-md-3">Berkas Lomba</label>
 								<div class="col-md-9">
-									<input type="file" name="file" class="form-control" accept="images/*">
+									<input type="file" name="file" class="form-control" accept=".pdf,.jpg,.png">
 									<small>Berkas dalam bentuk file .pdf/.jpg/.png</small>
 								</div>
 							</div>
