@@ -19,6 +19,12 @@
 @endsection
 
 @section('content')
+<style>
+	.has-error {
+		border: 1px solid red;
+	}
+</style>
+
 <!--HEADER WEBSITE-->
 <div id="bg-signup">
     <div class="container">
@@ -42,7 +48,7 @@
             	<section id="daftar">
             		<div class="form" style="background-color: white;">
             			<div class="box" style="margin-top: 50px;">
-                     		<form action="{{url('/daftar')}}" class="needs-validation" novalidate method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                     		<form action="{{url('/daftar')}}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 								{{ csrf_field() }}
 								<input type="hidden" value="4" name="competition_id" />
                      			<div class="box-body">
@@ -52,20 +58,24 @@
                            				<div class="form-group row">
                              				<label for="group_name" class="col-md-3 col-form-label">Nama Tim</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('group_name')}}" class="form-control" placeholder="ex. 'Team Greentea'" name="group_name" type="text" id="group_name" required>
+				                                <input value="{{old('group_name')}}" class="form-control{{ $errors->has('group_name') ? ' is-invalid' : '' }}" placeholder="ex. 'Team Greentea'" name="group_name" type="text" id="group_name" required autofocus>
 
-				                                <div class="invalid-feedback">
-        											Input nama tim
-      											</div>
+				                                @if ($errors->has('group_name'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('group_name') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
                            				</div>
                            				<div class="form-group row">
                              				<label for="institution" class="col-md-3 col-form-label">Asal Institusi</label>
                              				<div class="col-md-9">
-                                 				<input value="{{old('institution')}}" class="form-control" placeholder="ex. 'Universitas Udayana'" name="institution" type="text" required>
-                                 				<div class="invalid-feedback">
-        											Input nama institusi
-      											</div>
+                                 				<input value="{{old('institution')}}" class="form-control{{ $errors->has('institution') ? ' is-invalid' : '' }}" placeholder="ex. 'Universitas Udayana'" name="institution" type="text" required autofocus>
+                                 				@if ($errors->has('institution'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('institution') }}</strong>
+				                                    </span>
+				                                @endif
                              				</div>
                            				</div>
                            			</div>
@@ -75,41 +85,68 @@
                            				<div class="form-group row">
 				                            <label for="fullname" class="col-md-3 col-form-label">Nama Lengkap</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('full_name')}}" class="form-control" placeholder="ex. 'Nama Brata'" name="full_name" type="text" required>
-				                                <div class="invalid-feedback">
-        											Input Nama Lengkap
-      											</div>
+				                                <input value="{{old('full_name')}}" class="form-control{{ $errors->has('full_name') ? ' is-invalid' : '' }}" placeholder="ex. 'Nama Brata'" name="full_name" type="text" required autofocus>
+				                                @if ($errors->has('full_name'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('full_name') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label for="birthday" class="col-md-3 col-form-label">Tanggal Lahir</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('birthdate')}}" class="form-control" placeholder="ex. '1995/12/27'" name="birthdate" type="date" required>
+				                                <input value="{{old('birthdate')}}" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" placeholder="ex. '1995/12/27'" name="birthdate" type="date" required autofocus>
+				                                @if ($errors->has('birthdate'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('birthdate') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label for="email" class="col-md-3 col-form-label">Email</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('email')}}" class="form-control" placeholder="ex. 'mail@site.com'" name="email" type="email">
+				                                <input value="{{old('email')}}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="ex. 'mail@site.com'" name="email" type="email" required autofocus>
+				                                @if ($errors->has('email'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('email') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                        	<label for="contact" class="col-md-3 col-form-label">Nomor Kontak</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('contact')}}" class="form-control" placeholder="ex. '081632111111'" name="contact" type="number">
+				                                <input value="{{old('contact')}}" class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" placeholder="ex. '081632111111'" name="contact" type="number" required autofocus>
+				                                @if ($errors->has('contact'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('contact') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Vegetarian</label>
 				                            <div class="col-md-9">
 				                               <label><input {{ old('vegetarian')=="1"?"checked":"" }} type="radio" value="1" name="vegetarian"> Ya </label> <label><input {{ old('vegetarian')=="0"?"checked":"" }}  type="radio" value="0" name="vegetarian"> Tidak</label>
+				                               @if ($errors->has('vegetarian'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('vegetarian') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Kartu Identitas</label>
 				                            <div class="col-md-9">
-				                                <input name="photo" type="file" class="form-control" accept="image/*">
+				                                <input name="photo" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" accept="image/*" required autofocus>
 				                                <small>Gambar dalam bentuk file .jpg</small>
+				                                @if ($errors->has('photo'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('photo') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 			                            <div class="form-group row">
@@ -117,6 +154,11 @@
 			                              	<div class="col-md-9">
 			                                  	<label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
 			                                  	<small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp</small><small id="harga_baju">{{$harga_baju}}</small>
+			                                  	@if ($errors->has('buy_shirt'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('buy_shirt') }}</strong>
+				                                    </span>
+				                                @endif
 			                              	</div>
 			                            </div>
 			                            <div class="form-group row" id="ukuran-baju" style="display: none;">
@@ -130,6 +172,11 @@
 					                                <option value="xl">Extra Large</option>          
 				                                </select>
 				                                <small>*peserta yang lolos babak penyisihan akan mendapatkan baju official ITCC 2017. Size Chart dapat dilihat</small> <a data-toggle="modal" data-target="#sizeChart">DISINI</a>
+				                                @if ($errors->has('size'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('size') }}</strong>
+				                                    </span>
+				                                @endif
 			                              </div>
 			                            </div>
                         			</div>
@@ -138,20 +185,34 @@
 				                        <div class="form-group row">
 				                        	<label class="col-md-3 col-form-label">Username</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('username')}}" class="form-control" placeholder="nama pengguna" name="username" type="text">
+				                                <input value="{{old('username')}}" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="nama pengguna" name="username" type="text" required autofocus>
+				                                @if ($errors->has('username'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('username') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Password</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="kata sandi" name="password" id="pass" type="password">
+				                                <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="kata sandi" name="password" id="pass" type="password" required autofocus>
+				                                @if ($errors->has('password'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('password') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Konfirmasi Password</label>
 				                        	<div class="col-md-9">
-				                                <input class="form-control" placeholder="ulangi kata sandi" name="passconf" id="pass2nd" type="password">
-				                                 <span id='message'></span>
+				                                <input class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" placeholder="ulangi kata sandi" name="password_confirmation" type="password">
+				                                @if ($errors->has('password_confirmation'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
                            			</div>

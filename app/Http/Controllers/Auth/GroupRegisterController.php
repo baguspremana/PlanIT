@@ -13,6 +13,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use App\Shirt;
 
+use Mail;
+use App\Mail\EmailVerification;
+
 class GroupRegisterController extends Controller
 {
     use RedirectsUsers;
@@ -50,7 +53,6 @@ class GroupRegisterController extends Controller
             'vegetarian' => 'required',
             'photo' => 'required',
             'buy_shirt' => 'required',
-            'size' => 'required',
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:groups',
             'password' => 'required|string|min:6|confirmed',
@@ -81,10 +83,16 @@ class GroupRegisterController extends Controller
 
         $data['password'] = Hash::make($data['password']);
 
+        $data['email_token'] = bin2hex(openssl_random_pseudo_bytes(30));
+
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($data)));
 
         //$this->guard()->login($user);
+
+        $email = new EmailVerification($user);
+
+        Mail::to($user->email)->send($email);
 
         $data['group_id'] = $user->id;
         $data['photo'] = $request->competition_id."_".$request->full_name.".".$request->file('photo')->getClientOriginalExtension();
@@ -94,10 +102,34 @@ class GroupRegisterController extends Controller
         Participant::create($data);
         
 
-        return redirect()->to('login'); 
+        return redirect()->to('login')->with('success','Kami telah mengirim link untuk aktivasi akun anda, silakan cek email anda'); 
 
         /*return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());*/
+    }
+
+    public function verify($token)
+    {
+    	if (!$token) {
+    		return redirect('login')->with('error','Kode aktivasi tidak ditemukan');
+    	}
+
+    	$user = Group::where('email_token',$token)->first();
+
+    	if ($user->verified_email==1) {
+    		return redirect('login')->with('warning','Akun anda telah diaktivasi');
+    	}
+
+    	if (!$user) {
+    		return redirect('login')->with('error','Kode aktivasi salah');
+    	}
+
+    	$user->verified_email = 1;
+
+    	if ($user->save()) {
+    		return redirect('login')->with('success','Aktivasi akun berhasil');
+    	}
+
     }
 
     /**
