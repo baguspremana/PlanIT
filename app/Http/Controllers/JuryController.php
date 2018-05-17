@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Group;
-use App\Object;
+use App\File;
 use Auth;
 use DB;
 use App\DetailScoreList;
@@ -43,31 +43,31 @@ class JuryController extends Controller
 
         if ($today==$final) {
             $group = DB::table('groups')
-                ->join('objects', 'groups.id','=','objects.group_id')
-                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('files', 'groups.id','=','files.group_id')
+                ->join('score_reqs','files.id','=','score_reqs.file_id')
                 ->join('juries','juries.id','=','score_reqs.jury_id')
                 ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
                 ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
-                ->select('groups.institution', 'groups.group_name', 'objects.title', 'objects.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
+                ->select('groups.institution', 'groups.group_name', 'files.title', 'files.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
                 ->where('groups.competition_id','=', Auth::user()->competition_id)
                 ->where('score_reqs.jury_id','=',Auth::user()->id)
                 ->where('score_lists.stage','=','final')
-                ->groupBy('objects.title', 'groups.group_name','groups.institution','objects.id', 'id_score','score_lists.score_req_id')
+                ->groupBy('files.title', 'groups.group_name','groups.institution','files.id', 'id_score','score_lists.score_req_id')
                 ->orderBy('total_nilai','dsc')
                 ->get();
 
                 return view('jury.dashboard', compact('pesan','group'));
         }else{
             $group = DB::table('groups')
-                ->join('objects', 'groups.id','=','objects.group_id')
-                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('files', 'groups.id','=','files.group_id')
+                ->join('score_reqs','files.id','=','score_reqs.file_id')
                 ->join('juries','juries.id','=','score_reqs.jury_id')
                 ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
                 ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
-                ->select('groups.institution', 'groups.group_name', 'objects.title', 'objects.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
+                ->select('groups.institution', 'groups.group_name', 'files.title', 'files.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
                 ->where('groups.competition_id','=', Auth::user()->competition_id)
                 ->where('score_reqs.jury_id','=',Auth::user()->id)
-                ->groupBy('objects.title', 'groups.group_name','groups.institution','objects.id', 'id_score','score_lists.score_req_id')
+                ->groupBy('files.title', 'groups.group_name','groups.institution','files.id', 'id_score','score_lists.score_req_id')
                 ->orderBy('total_nilai','dsc')
                 ->get();
 
@@ -82,15 +82,15 @@ class JuryController extends Controller
     public function showRekapNilai()
     {
         $group = DB::table('groups')
-            ->join('objects', 'groups.id','=','objects.group_id')
-            ->join('score_reqs','objects.id','=','score_reqs.object_id')
+            ->join('files', 'groups.id','=','files.group_id')
+            ->join('score_reqs','files.id','=','score_reqs.file_id')
             ->join('juries','juries.id','=','score_reqs.jury_id')
             ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
             ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
-            ->select('groups.institution', 'groups.group_name', 'objects.title', 'objects.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
+            ->select('groups.institution', 'groups.group_name', 'files.title', 'files.id',DB::raw('sum(detail_score_lists.score) as total_nilai'), 'score_lists.id as id_score', 'score_lists.score_req_id')
             ->where('groups.competition_id','=', Auth::user()->competition_id)
             ->where('score_reqs.jury_id','=',Auth::user()->id)
-            ->groupBy('objects.title', 'groups.group_name','groups.institution','objects.id', 'id_score','score_lists.score_req_id')
+            ->groupBy('files.title', 'groups.group_name','groups.institution','files.id', 'id_score','score_lists.score_req_id')
             //->orderBy('total_nilai','dsc')
             ->get();
 
@@ -141,27 +141,27 @@ class JuryController extends Controller
 
         if ($today==$final) {
             $hasil = DB::table('groups')
-                ->join('objects','groups.id','=','objects.group_id')
-                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('files','groups.id','=','files.group_id')
+                ->join('score_reqs','files.id','=','score_reqs.file_id')
                 ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
                 ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
-                ->select('groups.institution','groups.group_name','groups.id','objects.title','objects.id as karya',DB::raw('sum(detail_score_lists.score) as total_nilai'))
+                ->select('groups.institution','groups.group_name','groups.id','files.title','files.id as karya',DB::raw('sum(detail_score_lists.score) as total_nilai'))
                 ->where('groups.competition_id','=',Auth::user()->competition_id)
                 ->where('score_lists.stage','=','final')
-                ->groupBy('groups.id','groups.group_name','groups.institution','objects.title','objects.id')
+                ->groupBy('groups.id','groups.group_name','groups.institution','files.title','files.id')
                 ->orderBy('total_nilai','dsc')
                 ->get();
 
                 return view('jury.rekap-nilai-detail',compact('pesan','hasil','juri'));
         }else{
             $hasil = DB::table('groups')
-                ->join('objects','groups.id','=','objects.group_id')
-                ->join('score_reqs','objects.id','=','score_reqs.object_id')
+                ->join('files','groups.id','=','files.group_id')
+                ->join('score_reqs','files.id','=','score_reqs.file_id')
                 ->join('score_lists','score_reqs.id','=','score_lists.score_req_id')
                 ->join('detail_score_lists','score_lists.id','=','detail_score_lists.score_list_id')
-                ->select('groups.institution','groups.group_name','groups.id','objects.title','objects.id as karya',DB::raw('sum(detail_score_lists.score) as total_nilai'))
+                ->select('groups.institution','groups.group_name','groups.id','files.title','files.id as karya',DB::raw('sum(detail_score_lists.score) as total_nilai'))
                 ->where('groups.competition_id','=',Auth::user()->competition_id)
-                ->groupBy('groups.id','groups.group_name','groups.institution','objects.title','objects.id')
+                ->groupBy('groups.id','groups.group_name','groups.institution','files.title','files.id')
                 ->orderBy('total_nilai','dsc')
                 ->limit(10)
                 ->get();

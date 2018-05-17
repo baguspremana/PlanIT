@@ -70,4 +70,8 @@ class Group extends Authenticatable
         return $this->hasMany('App\UserMessageTemporary');
     }
 
+    public function verif()
+    {
+        return $this->hasOne('App\Verified_req')->latest();
+    }
 }
