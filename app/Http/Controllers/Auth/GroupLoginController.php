@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Group;
 use Illuminate\Support\Facades\Hash;
 
 class GroupLoginController extends Controller
@@ -19,6 +20,7 @@ class GroupLoginController extends Controller
     public function showLoginForm() {
         return view('peserta.login');
     }
+
     //function to login admins
     public function login(Request $request) {
         //validate the form data
@@ -26,6 +28,8 @@ class GroupLoginController extends Controller
             'username' => 'required',
             'password' => 'required|min:6'
         ]);
+
+        // return $activ;
         //attempt to login the admins in
         if (Auth::attempt(["username"=>$request->username,"password"=>$request->password], false)){
             //if successful redirect to admin dashboard

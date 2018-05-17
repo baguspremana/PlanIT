@@ -75,6 +75,8 @@ Route::get('/pesanUserKeluarShow/{pesanUserKeluarShow}','UserMassageController@s
 
 Route::delete('/pesanUserKeluar/{pesanUserKeluar}','UserMassageController@deletUserMsg');
 
+Route::post('/change/password', 'DashboardController@gantiPassword');
+
 /*=========================================================================================
                                     ADMIN ROUTE
 =========================================================================================*/

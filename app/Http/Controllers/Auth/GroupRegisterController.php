@@ -77,12 +77,14 @@ class GroupRegisterController extends Controller
     public function register(Request $request)
     {   
         $data = $request->all();
+        //$validator = $this->validator($data);
+
         $data['password'] = Hash::make($data['password']);
 
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($data)));
 
-        $this->guard()->login($user);
+        //$this->guard()->login($user);
 
         $data['group_id'] = $user->id;
         $data['photo'] = $request->competition_id."_".$request->full_name.".".$request->file('photo')->getClientOriginalExtension();
@@ -92,8 +94,10 @@ class GroupRegisterController extends Controller
         Participant::create($data);
         
 
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+        return redirect()->to('login'); 
+
+        /*return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());*/
     }
 
     /**
@@ -144,4 +148,5 @@ class GroupRegisterController extends Controller
         $data['harga_baju'] = Shirt::find(1)->harga;
         return view('peserta.sign-up-idea', $data);
     }
+    
 }

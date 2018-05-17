@@ -11,7 +11,13 @@ use App\File;
 use Auth;
 use DB;
 use App\AdminMessageTemporary;
+<<<<<<< HEAD
 use Carbon\Carbon;
+=======
+use Illuminate\Support\Facades\Input as input;
+use Illuminate\Support\Facades\Hash;
+use App\Group;
+>>>>>>> 744c55baef0c0997377366cb6b11b140fc41fa6c
 
 class DashboardController extends Controller
 {
@@ -171,6 +177,18 @@ class DashboardController extends Controller
             ->get();
 
         return view('peserta.setting', compact('jumlahPesan'));
+    }
+
+    public function gantiPassword()
+    {
+        $Group = Group::find(Auth::user()->id);
+        if (Hash::check(Input::get('passwordold'), $Group['password']) && Input::get('password') == Input::get('password_confirmation')) {
+            $Group->password = bcrypt(Input::get('password'));
+            $Group->save();
+            return back()->with('success', 'Password berhasil diganti');
+        }else{
+            return back()->with('error', 'Gagal mengganti password');
+        }
     }
     
     public function uploadVerification(Request $request){

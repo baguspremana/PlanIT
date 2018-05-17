@@ -12,48 +12,59 @@
 
 @section('content')
 <div class="container-fluid">
+
+	@if (\Session::has('success'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-check"></i> <strong>{{ \Session::get('success') }}</strong>
+    </div>
+    @elseif(\Session::has('error'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-check"></i> <strong>{{ \Session::get('error') }}</strong>
+    </div>
+    @endif
+
 	<div class="row">
 		<div class="col-md-12">
 			<h3><center>Setting</center></h3>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row" style="margin-top: 30px;">
 		<div class="col-md-6">
 			<div class="panel">
-				<div class="panel">
 
-					<div class="panel-heading">
-						<h3 class="panel-title"><center>Ubah Password</center></h3>
-						<div class="right">
-							<button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
-						</div>
+				<div class="panel-heading">
+					<h3 class="panel-title"><center>Ubah Password</center></h3>
+					<div class="right">
+						<button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
 					</div>
-					<div class="panel-body">
-						<form action="#" method="post">
+				</div>
+				<div class="panel-body">
+					<form action="{{url('/change/password')}}" method="post" role="form">
+						@csrf
+						<div class="form-group row">
+                            <label class="col-form-label col-md-3">Lama</label>
+                            <div class="col-md-9">
+                                <input class="form-control" placeholder="Kata Sandi Lama" name="passwordold" type="password">
+                            </div>
+                        </div>
+						<div class="form-group row">
+                            <label class="col-form-label col-md-3">Baru</label>
+                            <div class="col-md-9">
+                                <input class="form-control" placeholder="Kata Sandi Baru" name="password" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-3">Konfirmasi Password</label>
+                            <div class="col-md-9">
+                                <input class="form-control" placeholder="Ulangi Kata Sandi Baru" name="password_confirmation" type="password">
+                            </div>
+                        </div>
+						<button type="submit" class="btn btn-success">Ganti</button>
 
-							<div class="form-group row">
-                                <label class="col-form-label col-md-3">Lama</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" placeholder="Kata Sandi Lama" name="groupname" type="text">
-                                </div>
-                            </div>
-							<div class="form-group row">
-                                <label class="col-form-label col-md-3">Baru</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" placeholder="Kata Sandi Baru" name="groupname" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label col-md-3"> </label>
-                                <div class="col-md-9">
-                                    <input class="form-control" placeholder="Ulangi Kata Sandi Baru" name="groupname" type="text">
-                                </div>
-                            </div>
-							<button type="submit" class="btn btn-success">Ganti</button>
-
-						</form>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
