@@ -191,6 +191,11 @@ class DashboardController extends Controller
     }
     
     public function uploadVerification(Request $request){
+        $file = Auth::user()->verif;
+        if($file != null){
+            $file->delete();
+        }
+
         $data = $request->all();
         $data['group_id'] = Auth::user()->id;
         $data['request_at'] = Carbon::now();

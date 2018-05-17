@@ -94,6 +94,8 @@ class AdminController extends Controller
             ->where('view','=',0)
             ->get();
 
+        
+
         return view('admin.verifikasiAdmin', compact('jumlahPesan'));
     }
 

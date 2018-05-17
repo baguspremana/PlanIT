@@ -83,8 +83,6 @@ Route::post('/change/password', 'DashboardController@gantiPassword');
 
 Route::get('/verifikasiPeserta','AdminController@showFormPembayaran');
 
-Route::get('/verifikasiAdmin','AdminController@showFormVerifikasi');
-
 Route::get('/logUpload','AdminController@showFormLogUpload');
 
 Route::get('/tambahPeserta','AdminController@showFormTambahPeserta');
@@ -113,6 +111,9 @@ Route::prefix('admin')->group(function(){
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('/dashboard', 'AdminController@index')->name('admin.index');
     Route::get('/', 'AdminController@index')->name('admin.index');
+    
+    Route::get('/verif_group','AdminController@showFormVerifikasi');
+    Route::post('/verif_group','AdminController@showFormVerifikasi');
 });
 
 /*=========================================================================================

@@ -49,7 +49,7 @@
                             <span>Admin {{Auth::guard('admin')->user()->competition->short_name}}</span>
                         </a></li>
                         <li><a href="/admin"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li><a href="/verifikasiAdmin"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
+                        <li><a href="/admin/verif_group"><i class="glyphicon glyphicon-list-alt"></i> <span>Verifikasi</span></a></li>
                         <li><a href="/logUpload"><i class="glyphicon glyphicon-cloud-upload"></i> <span>Log Unggah</span></a></li>
                         @if(Auth::user()->competition_id==1 or Auth::user()->competition_id==2 or Auth::user()->competition_id==3)
                         <li><a href="/verifikasiPeserta"><i class="glyphicon glyphicon-euro"></i> <span>Pembayaran</span></a></li>
