@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Group;
+use App\Verified_req;
 use App\Participant;
 use DB;
 use App\UserMessageTemporary;
 use App\Jury;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -94,9 +96,24 @@ class AdminController extends Controller
             ->where('view','=',0)
             ->get();
 
-        
+        $verif_reqs = Verified_req::whereHas('Group',function($q){
+            $q->where('verified','!=',1)->orWhereNull('verified');
+        })->with('Group')->get();
 
-        return view('admin.verifikasiAdmin', compact('jumlahPesan'));
+        $dir_file = Verified_req::$dir_verifikasi;
+
+
+        return view('admin.verifikasiAdmin', compact('jumlahPesan','verif_reqs', 'dir_file'));
+    }
+
+    public function verifikasi(Request $request){
+        $group = Group::find($request->group_id);
+        $group->verified = 1;
+        $group->verified_at = Carbon::now();
+        $group->verifying_admin = Auth::user()->id;
+        $group->save();
+        
+        return redirect('/admin')->with('success', 'Berhasil melakukan verifikasi peserta');
     }
 
     public function showFormLogUpload()

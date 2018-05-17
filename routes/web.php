@@ -113,7 +113,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@index')->name('admin.index');
     
     Route::get('/verif_group','AdminController@showFormVerifikasi');
-    Route::post('/verif_group','AdminController@showFormVerifikasi');
+    Route::post('/verif_group','AdminController@verifikasi');
 });
 
 /*=========================================================================================

@@ -36,17 +36,24 @@
 							</tr>
 						</thead>
 						<tbody>
+							@unless(count($verif_reqs))
 							<tr>
-								<td>Nama Tim</td>
-								<td>Instansi</td>
+								<td colspan=9>Belum ada data</td>
+							</tr>
+							@endunless
+							@foreach($verif_reqs as $verif_req)
+							<tr>
+								<td>{{$verif_req->group->group_name}}</td>
+								<td>{{$verif_req->group->institution}}</td>
 								<td>Biaya Pendaftaran (Rp)</td>
 								<td>Biaya Baju (Rp)</td>
 								<td>Total (Rp)</td>
-								<td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalGambar"><i class="glyphicon glyphicon-picture"></i></button></td>
-								<td>Tanggal</td>
-								<td>Note</td>
-								<td><input type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalKonfir" value="Verifikasi"></td>
+								<td><button onclick="showImage(this)" type="button" class="btn btn-info btn-sm" data-url="{{asset($dir_file.'/'.$verif_req->filename)}}" data-toggle="modal" data-target="#modalGambar"><i class="glyphicon glyphicon-picture"></i></button></td>
+								<td>{{$verif_req->created_at}}</td>
+								<td>{{$verif_req->note}}</td>
+								<td><input onclick="setConfirm(this)" type="button" class="btn btn-success btn-sm" data-id="{{$verif_req->group->id}}" data-toggle="modal" data-target="#modalKonfir" value="Verifikasi"></td>
 							</tr>
+                            @endforeach
 						</tbody>
 					</table>
 				</div>
@@ -70,7 +77,9 @@
                     <p>Apakah anda yakin ingin melakukan verifikasi?</p>
                 </div>
                 <div class="modal-footer">
-                    <form method="post" action="#">
+                    <form method="post" action="{{url('admin/verif_group')}}">
+					{{ csrf_field() }}
+						<input id="group_id" type="hidden" name="group_id" />
                         <button type="submit" class="btn btn-primary">Ya</button>
                     </form>
                 </div>
@@ -90,7 +99,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"><center>Bukti Pembayaran</center></h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="verif_image">
                     <img src="{{asset('asset1/img/portfolio/card1.jpg')}}" style="width: 100%;">
                 </div>
                 <div class="modal-footer" style="background-color: #0575e6;">
@@ -103,4 +112,17 @@
     <!-- End Modal Gambar -->
 
 </div>
+<script>
+	function setConfirm(e){
+		group_id = $(e).attr('data-id');
+		$('#group_id').val(group_id);
+	}
+
+	function showImage(e){
+		url = $(e).attr('data-url');
+		$('#verif_image').html(
+			'<img src="'+ url +'" style="width: 100%;" alt="Verif Image" />'
+		);
+	}
+</script>
 @endsection
