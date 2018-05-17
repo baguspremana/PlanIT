@@ -58,8 +58,13 @@ Route::prefix('daftar')->group(function(){
 Route::post('/daftar', 'Auth\GroupRegisterController@register');
 
 Route::resource('dashboard','DashboardController');
+
 Route::get('/verifikasi','DashboardController@showVerificationForm');
+Route::post('/verifikasi','DashboardController@uploadVerification');
+
 Route::get('/upload','DashboardController@showUploadDataForm');
+Route::post('/upload','DashboardController@uploadData');
+
 Route::get('/setting','DashboardController@showSettingForm');
 
 Route::resource('/pesanUser','UserMassageController');

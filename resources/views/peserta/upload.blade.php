@@ -30,19 +30,26 @@
 						</div>
 					</div>
 					<div class="panel-body">
-						<form action="#" method="post">
-
+						<form action="{{url('upload')}}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+						
+							<div class="form-group">
+								<label class="control-label col-md-3">Judul</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="title" placeholder="Judul"/>
+								</div>
+							</div>	
 							<div class="form-group">
 								<label class="control-label col-md-3">Berkas Lomba</label>
 								<div class="col-md-9">
-									<input type="file" name="photo" class="form-control" accept="images/*">
+									<input type="file" name="file" class="form-control" accept="images/*">
 									<small>Berkas dalam bentuk file .pdf/.jpg/.png</small>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3">Komen</label>
+								<label class="control-label col-md-3">Keterangan</label>
 								<div class="col-md-9">
-									<textarea class="form-control" name="komen" placeholder="Input Komen"></textarea>
+									<textarea class="form-control" name="etc" placeholder="Input Keterangan"></textarea>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary">Submit</button>

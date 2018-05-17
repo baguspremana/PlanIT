@@ -31,8 +31,8 @@
 						</div>
 					</div>
 					<div class="panel-body">
-						<form action="#" method="post">
-
+						<form action="{{url('verifikasi')}}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
 							<div class="form-group">
 								<label class="control-label col-md-3">Bukti Pembayaran</label>
 								<div class="col-md-9">
@@ -41,9 +41,9 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3">Komen</label>
+								<label class="control-label col-md-3">Keterangan</label>
 								<div class="col-md-9">
-									<textarea class="form-control" name="komen" placeholder="Input Komen"></textarea>
+									<textarea class="form-control" name="note" placeholder="Input Keterangan"></textarea>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary">Submit</button>

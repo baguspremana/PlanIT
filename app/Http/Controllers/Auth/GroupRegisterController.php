@@ -45,7 +45,7 @@ class GroupRegisterController extends Controller
             'group_name' => 'required|string',
             'institution' => 'required|string',
             'full_name' => 'required|string',
-            'birthdate' => 'required|date(Y:m:d)',
+            'birthdate' => 'required|date',
             'contact' => 'required|numeric',
             'vegetarian' => 'required',
             'photo' => 'required',

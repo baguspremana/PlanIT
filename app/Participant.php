@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Participant extends Model
 {
     public static $dir_photo = "uploads/identitas";
+
     protected $fillable = [
         'group_id',
         'code',
@@ -41,4 +42,5 @@ class Participant extends Model
         $destinationPath = public_path(self::$dir_photo);
         $file->move($destinationPath, $file_name);
     }
+
 }

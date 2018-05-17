@@ -19,9 +19,6 @@
 @endsection
 
 @section('content')
-<<<<<<< HEAD
-	@extends('peserta.form.sign-up-group')
-=======
 <!--HEADER WEBSITE-->
 <div id="bg-signup">
     <div class="container">
@@ -188,5 +185,4 @@
 		$('#ukuran-baju').hide();
 	});
 </script>
->>>>>>> b2e24974c74c103334d4a916cc07c287296072e0
 @endsection

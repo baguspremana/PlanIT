@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Dashboard;
 use App\Participant;
+use App\Verified_req;
+use App\File;
 use Auth;
 use DB;
 use App\AdminMessageTemporary;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -170,4 +173,25 @@ class DashboardController extends Controller
         return view('peserta.setting', compact('jumlahPesan'));
     }
     
+    public function uploadVerification(Request $request){
+        $data = $request->all();
+        $data['group_id'] = Auth::user()->id;
+        $data['request_at'] = Carbon::now();
+        $data['filename'] = "verif_".Auth::user()->id.".".$request->file('photo')->getClientOriginalExtension();
+        Verified_req::uploadVerification($request->file('photo'), $data['filename']);
+        Verified_req::create($data);
+
+        return redirect('dashboard')->with('success', 'Berhasil upload verifikasi!');
+    }
+
+    public function uploadData(Request $request){
+        $data = $request->all();
+        $data['group_id'] = Auth::user()->id;
+        $data['link'] = "berkas_".Auth::user()->id.".".$request->file('photo')->getClientOriginalExtension();
+        $data['status'] = 0;
+        File::upload($request->file('photo'), $data['link']);
+        File::create($data);
+
+        return redirect('dashboard')->with('success', 'Berhasil upload verifikasi!');
+    }
 }
