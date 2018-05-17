@@ -22,10 +22,28 @@
 <!--HEADER WEBSITE-->
 <div id="bg-login" >
     <div class="container">
+
         <div class="row pendaftaran-body">
            
             <div class="col-md-2 hidden-sm hidden-xs"></div>
             <div class="col-md-8 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+
+            	@if (\Session::has('success'))
+				    <div class="alert alert-success alert-dismissible" role="alert">
+				        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <i class="fa fa-check"></i> <strong>{{ \Session::get('success') }}</strong>
+				    </div>
+				@elseif(\Session::has('error'))
+					<div class="alert alert-danger alert-dismissible" role="alert">
+				        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <i class="fa fa-check"></i> <strong>{{ \Session::get('error') }}</strong>
+				    </div>
+				@elseif(\Session::has('warning'))
+					<div class="alert alert-warning alert-dismissible" role="alert">
+				        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <i class="fa fa-check"></i> <strong>{{ \Session::get('warning') }}</strong>
+				    </div>
+				@endif
                   
                 <section id="daftar">
                   	<div class="form" style="background-color: white;">
@@ -42,6 +60,7 @@
 	                        
 	                     		</div>
 	                     		<div class="col-md-8" style="margin-top: 70px; padding-left: 50px; padding-right: 50px; ">
+
 	                        		<h1 style="text-align: center; color: #232323; margin-bottom: 50px;">Login</h1>
 	                        		<hr style="color: black;">
 	                        		<div class="input-group">

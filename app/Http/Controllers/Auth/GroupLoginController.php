@@ -31,13 +31,13 @@ class GroupLoginController extends Controller
 
         // return $activ;
         //attempt to login the admins in
-        if (Auth::attempt(["username"=>$request->username,"password"=>$request->password], false)){
+        if (Auth::attempt(["username"=>$request->username,"password"=>$request->password, "verified_email"=>1], false)){
             //if successful redirect to admin dashboard
             
             return redirect(route('dashboard.index'));
         }
         //if unsuccessfull redirect back to the login for with form data
-        return redirect()->back()->withInput($request->only('username'));
+        return redirect()->back()->withInput($request->only('username'))->with('error','Username atau Password Tidak Ditemukan');
     }
  
     public function logout()

@@ -77,6 +77,8 @@ Route::delete('/pesanUserKeluar/{pesanUserKeluar}','UserMassageController@deletU
 
 Route::post('/change/password', 'DashboardController@gantiPassword');
 
+Route::get('/verifyemail/{token}','Auth\GroupRegisterController@verify');
+
 /*=========================================================================================
                                     ADMIN ROUTE
 =========================================================================================*/

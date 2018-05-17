@@ -21,8 +21,7 @@ class Group extends Authenticatable
         'password',
         'email',
         'competition_id',
-        'verifyToken',
-        'status',
+        'email_token',
     ];
 
     /**
