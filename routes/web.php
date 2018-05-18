@@ -141,3 +141,5 @@ Route::resource('/pesan','ScoreReqController');
 Route::get('/juriSetting','JuryController@showFormSetting');
 
 Route::put('/juriSetting/{juriSetting}','JuryController@updateJuri');
+
+Route::get('/showform','JuryController@showFormDinamis');

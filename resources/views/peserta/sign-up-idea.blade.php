@@ -19,12 +19,6 @@
 @endsection
 
 @section('content')
-<style>
-	.has-error {
-		border: 1px solid red;
-	}
-</style>
-
 <!--HEADER WEBSITE-->
 <div id="bg-signup">
     <div class="container">
@@ -58,7 +52,7 @@
                            				<div class="form-group row">
                              				<label for="group_name" class="col-md-3 col-form-label">Nama Tim</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('group_name')}}" class="form-control{{ $errors->has('group_name') ? ' is-invalid' : '' }}" placeholder="ex. 'Team Greentea'" name="group_name" type="text" id="group_name" required autofocus>
+				                                <input value="{{old('group_name')}}" class="form-control{{ $errors->has('group_name') ? ' is-invalid' : '' }}" placeholder="ex. 'Team Greentea'" name="group_name" type="text" id="group_name">
 
 				                                @if ($errors->has('group_name'))
 				                                    <span class="invalid-feedback">
@@ -70,7 +64,7 @@
                            				<div class="form-group row">
                              				<label for="institution" class="col-md-3 col-form-label">Asal Institusi</label>
                              				<div class="col-md-9">
-                                 				<input value="{{old('institution')}}" class="form-control{{ $errors->has('institution') ? ' is-invalid' : '' }}" placeholder="ex. 'Universitas Udayana'" name="institution" type="text" required autofocus>
+                                 				<input value="{{old('institution')}}" class="form-control{{ $errors->has('institution') ? ' is-invalid' : '' }}" placeholder="ex. 'Universitas Udayana'" name="institution" type="text">
                                  				@if ($errors->has('institution'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('institution') }}</strong>
@@ -85,7 +79,7 @@
                            				<div class="form-group row">
 				                            <label for="fullname" class="col-md-3 col-form-label">Nama Lengkap</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('full_name')}}" class="form-control{{ $errors->has('full_name') ? ' is-invalid' : '' }}" placeholder="ex. 'Nama Brata'" name="full_name" type="text" required autofocus>
+				                                <input value="{{old('full_name')}}" class="form-control{{ $errors->has('full_name') ? ' is-invalid' : '' }}" placeholder="ex. 'Nama Brata'" name="full_name" type="text">
 				                                @if ($errors->has('full_name'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('full_name') }}</strong>
@@ -96,7 +90,7 @@
 				                        <div class="form-group row">
 				                            <label for="birthday" class="col-md-3 col-form-label">Tanggal Lahir</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('birthdate')}}" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" placeholder="ex. '1995/12/27'" name="birthdate" type="date" required autofocus>
+				                                <input value="{{old('birthdate')}}" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" placeholder="ex. '1995/12/27'" name="birthdate" type="date">
 				                                @if ($errors->has('birthdate'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('birthdate') }}</strong>
@@ -107,7 +101,7 @@
 				                        <div class="form-group row">
 				                            <label for="email" class="col-md-3 col-form-label">Email</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('email')}}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="ex. 'mail@site.com'" name="email" type="email" required autofocus>
+				                                <input value="{{old('email')}}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="ex. 'mail@site.com'" name="email" type="email">
 				                                @if ($errors->has('email'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('email') }}</strong>
@@ -118,7 +112,7 @@
 				                        <div class="form-group row">
 				                        	<label for="contact" class="col-md-3 col-form-label">Nomor Kontak</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('contact')}}" class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" placeholder="ex. '081632111111'" name="contact" type="number" required autofocus>
+				                                <input value="{{old('contact')}}" class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" placeholder="ex. '081632111111'" name="contact" type="number">
 				                                @if ($errors->has('contact'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('contact') }}</strong>
@@ -129,7 +123,7 @@
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Vegetarian</label>
 				                            <div class="col-md-9">
-				                               <label><input {{ old('vegetarian')=="1"?"checked":"" }} type="radio" value="1" name="vegetarian"> Ya </label> <label><input {{ old('vegetarian')=="0"?"checked":"" }}  type="radio" value="0" name="vegetarian"> Tidak</label>
+				                               <label><input {{ old('vegetarian')=="1"?"checked":"" }} class="{{ $errors->has('vegetarian') ? ' is-invalid' : '' }}" type="radio" value="1" name="vegetarian"> Ya </label> <label><input {{ old('vegetarian')=="0"?"checked":"" }}  type="radio" value="0" class="{{ $errors->has('vegetarian') ? ' is-invalid' : '' }}" name="vegetarian"> Tidak</label>
 				                               @if ($errors->has('vegetarian'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('vegetarian') }}</strong>
@@ -140,7 +134,7 @@
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Kartu Identitas</label>
 				                            <div class="col-md-9">
-				                                <input name="photo" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" accept="image/*" required autofocus>
+				                                <input name="photo" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" accept="image/*">
 				                                <small>Gambar dalam bentuk file .jpg</small>
 				                                @if ($errors->has('photo'))
 				                                    <span class="invalid-feedback">
@@ -152,7 +146,7 @@
 			                            <div class="form-group row">
 			                              	<label class="col-md-3 col-form-label">Baju Peserta</label>
 			                              	<div class="col-md-9">
-			                                  	<label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
+			                                  	<label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" class="{{ $errors->has('buy_shirt') ? ' is-invalid' : '' }}" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" class="{{ $errors->has('buy_shirt') ? ' is-invalid' : '' }}" value="0" name="buy_shirt"> Tidak</label><br>
 			                                  	<small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp</small><small id="harga_baju">{{$harga_baju}}</small>
 			                                  	@if ($errors->has('buy_shirt'))
 				                                    <span class="invalid-feedback">
@@ -185,7 +179,7 @@
 				                        <div class="form-group row">
 				                        	<label class="col-md-3 col-form-label">Username</label>
 				                            <div class="col-md-9">
-				                                <input value="{{old('username')}}" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="nama pengguna" name="username" type="text" required autofocus>
+				                                <input value="{{old('username')}}" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="nama pengguna" name="username" type="text">
 				                                @if ($errors->has('username'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('username') }}</strong>
@@ -196,7 +190,7 @@
 				                        <div class="form-group row">
 				                            <label class="col-md-3 col-form-label">Password</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="kata sandi" name="password" id="pass" type="password" required autofocus>
+				                                <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="kata sandi" name="password" id="pass" type="password">
 				                                @if ($errors->has('password'))
 				                                    <span class="invalid-feedback">
 				                                        <strong>{{ $errors->first('password') }}</strong>

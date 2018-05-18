@@ -52,51 +52,97 @@
                            				<div class="form-group row">
                              				<label class="col-form-label col-md-3">Asal Sekolah</label>
                              				<div class="col-md-9">
-                                 				<input class="form-control" placeholder="ex. 'SMA/SMK Permata'" name="institution" type="text">
+                                 				<input class="form-control{{ $errors->has('institution') ? ' is-invalid' : '' }}" placeholder="ex. 'SMA/SMK Permata'" name="institution" type="text" value="{{old('institution')}}">
+
+                                 				@if ($errors->has('institution'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('institution') }}</strong>
+				                                    </span>
+				                                @endif
                              				</div>
                            				</div>
 				                        <div class="form-group row">
 				                            <label class="col-form-label col-md-3">Nama Lengkap</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. 'Nama Brata'" name="fullname" type="text">
+				                                <input class="form-control{{ $errors->has('fullname') ? ' is-invalid' : '' }}" placeholder="ex. 'Nama Brata'" name="fullname" type="text" value="{{old('fullname')}}">
+
+				                                @if ($errors->has('fullname'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('fullname') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-form-label col-md-3">Tanggal Lahir</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. '1995/12/27'" name="birthday" type="date">
+				                                <input class="form-control {{ $errors->has('birthdate') ? ' is-invalid' : '' }}" placeholder="ex. '1995/12/27'" name="birthdate" type="date" value="{{old('birthdate')}}">
+
+				                                @if ($errors->has('birthdate'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('birthdate') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-form-label col-md-3">Email</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. 'mail@site.com'" name="email" type="email">
+				                                <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="ex. 'mail@site.com'" name="email" type="email" value="{{old('email')}}">
+
+				                                @if ($errors->has('email'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('email') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                        	<label class="col-form-label col-md-3">Nomor Kontak</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="ex. '081632111111'" name="contact" type="text">
+				                                <input class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" placeholder="ex. '081632111111'" name="contact" type="text" value="{{old('contact')}}">
+
+				                                @if ($errors->has('contact'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('contact') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-form-label col-md-3">Vegetarian</label>
 				                            <div class="col-md-9">
-				                               <label><input type="radio" value="Y" name="vegetarian"> Ya </label> <label><input type="radio" value="N" name="vegetarian"> Tidak</label>
+				                               <label><input {{ old('vegetarian')=="1"?"checked":"" }} class="{{ $errors->has('vegetarian') ? ' is-invalid' : '' }}" type="radio" value="1" name="vegetarian"> Ya </label> <label><input {{ old('vegetarian')=="0"?"checked":"" }}  type="radio" value="0" class="{{ $errors->has('vegetarian') ? ' is-invalid' : '' }}" name="vegetarian"> Tidak</label>
+				                               @if ($errors->has('vegetarian'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('vegetarian') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-form-label col-md-3">Kartu Identitas</label>
 				                            <div class="col-md-9">
-				                                <input name="photo" type="file" class="form-control" accept="image/*">
+				                                <input name="photo" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" accept="image/*">
 				                                <small>Gambar dalam bentuk file .jpg</small>
+
+				                                @if ($errors->has('photo'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('photo') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 			                            <div class="form-group row">
 			                              	<label class="col-form-label col-md-3">Baju Peserta</label>
 			                              	<div class="col-md-9">
-			                                  	<label><input type="radio" id="baju-yes" value="Y" name="baju"> Ya </label> <label><input type="radio" id="baju-no" value="N" name="baju"> Tidak</label><br>
-			                                  	<small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp....</small>
+			                                  	<label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" class="{{ $errors->has('buy_shirt') ? ' is-invalid' : '' }}" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" class="{{ $errors->has('buy_shirt') ? ' is-invalid' : '' }}" value="0" name="buy_shirt"> Tidak</label><br>
+			                                  	<small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp</small><small id="harga_baju">{{$harga_baju}}</small>
+			                                  	@if ($errors->has('buy_shirt'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('buy_shirt') }}</strong>
+				                                    </span>
+				                                @endif
 			                              	</div>
 			                            </div>
 			                            <div class="form-group row" id="ukuran-baju" style="display: none;">
@@ -118,20 +164,37 @@
 				                        <div class="form-group row">
 				                        	<label class="col-form-label col-md-3">Username</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="nama pengguna" name="username" type="text">
+				                                <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="nama pengguna" name="username" type="text" value="{{old('username')}}">
+
+				                                @if ($errors->has('username'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('username') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-form-label col-md-3">Password</label>
 				                            <div class="col-md-9">
-				                                <input class="form-control" placeholder="kata sandi" name="password" id="pass" type="password">
+				                                <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="kata sandi" name="password" id="pass" type="password">
+
+				                                @if ($errors->has('password'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('password') }}</strong>
+				                                    </span>
+				                                @endif
 				                            </div>
 				                        </div>
 				                        <div class="form-group row">
 				                            <label class="col-form-label col-md-3">Konfirmasi Password</label>
 				                        	<div class="col-md-9">
-				                                <input class="form-control" placeholder="ulangi kata sandi" name="passconf" id="pass2nd" type="password">
-				                                 <span id='message'></span>
+				                                <input class="form-control" placeholder="ulangi kata sandi" name="password_confirmation" id="pass2nd" type="password">
+				                                @if ($errors->has('password_confirmation'))
+				                                    <span class="invalid-feedback">
+				                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+				                                    </span>
+				                                @endif
+				                                 <!-- <span id='message'></span> -->
 				                            </div>
 				                        </div>
                         			</div>
@@ -155,4 +218,12 @@
     </div>
 </div>
 <!--//HEADER WEBSITE-->
+<script>
+	$('#baju-yes').click(function(e){
+		$('#ukuran-baju').show();
+	});
+	$('#baju-no').click(function(e){
+		$('#ukuran-baju').hide();
+	});
+</script>
 @endsection

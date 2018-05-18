@@ -52,6 +52,11 @@
 	<script src="{{asset('asset1/js/main.js')}}"></script>
 	<!--script src="{{asset('js/app.js')}}" defer></script>
 	<script src="{{asset('js/validator.min.js')}}" defer></script-->
+  <style>
+    .has-error {
+      border: 1px solid red;
+    }
+  </style>
 
 	@yield('head')
 

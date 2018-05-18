@@ -201,4 +201,9 @@ class JuryController extends Controller
         return redirect('/juri')->with('success', 'Data autentikasi berhasil diperbarui');
     }
 
+    public function showFormDinamis()
+    {
+        return view('jury/form-dinamis-manipulation');
+    }
+
 }

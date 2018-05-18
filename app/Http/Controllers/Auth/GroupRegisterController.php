@@ -162,17 +162,20 @@ class GroupRegisterController extends Controller
      */
     public function showProgRegistrationForm()
     {
-        return view('peserta.sign-up-prog');
+        $data['harga_baju'] = Shirt::find(1)->harga;
+        return view('peserta.sign-up-prog', $data);
     } 
 
     public function showWebRegistrationForm()
     {
-        return view('peserta.sign-up-web');
+        $data['harga_baju'] = Shirt::find(1)->harga;
+        return view('peserta.sign-up-web', $data);
     }
 
     public function showLccRegistrationForm()
     {
-        return view('peserta.sign-up-lcc');
+        $data['harga_baju'] = Shirt::find(1)->harga;
+        return view('peserta.sign-up-lcc', $data);
     }
 
     public function showIdeaRegistrationForm()
