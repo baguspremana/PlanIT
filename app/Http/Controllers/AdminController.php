@@ -96,9 +96,23 @@ class AdminController extends Controller
             ->where('view','=',0)
             ->get();
 
-        $verif_reqs = Verified_req::whereHas('Group',function($q){
-            $q->where('verified','!=',1)->orWhereNull('verified');
-        })->with('Group')->get();
+        // $verif_reqs = Verified_req::whereHas('Group',function($q){
+        //     $q->where('verified','!=',1)->orWhereNull('verified');
+        // })->with('Group')->get();
+
+
+        $verif_reqs = DB::table('verified_reqs')
+            ->join('groups','verified_reqs.group_id','=','groups.id')
+            ->join('competitions','groups.competition_id','=','competitions.id')
+            ->join('participants','participants.group_id','=','groups.id')
+            ->leftJoin('shirts','shirts.size','=','participants.size')
+            ->select('verified_reqs.*',
+                    'groups.group_name',
+                    'groups.institution', 
+                    'competitions.regist_cost',
+                    DB::raw('sum(IFNULL(shirts.price,0)) as shirt_total'))
+            ->groupBy('group_id')
+            ->get();
 
         $dir_file = Verified_req::$dir_verifikasi;
 

@@ -43,15 +43,15 @@
 							@endunless
 							@foreach($verif_reqs as $verif_req)
 							<tr>
-								<td>{{$verif_req->group->group_name}}</td>
-								<td>{{$verif_req->group->institution}}</td>
-								<td>Biaya Pendaftaran (Rp)</td>
-								<td>Biaya Baju (Rp)</td>
-								<td>Total (Rp)</td>
+								<td>{{$verif_req->group_name}}</td>
+								<td>{{$verif_req->institution}}</td>
+								<td>{{number_format($verif_req->regist_cost,2)}}</td>
+								<td>{{number_format($verif_req->shirt_total,2)}}</td>
+								<td>{{number_format($verif_req->regist_cost + $verif_req->shirt_total,2)}}</td>
 								<td><button onclick="showImage(this)" type="button" class="btn btn-info btn-sm" data-url="{{asset($dir_file.'/'.$verif_req->filename)}}" data-toggle="modal" data-target="#modalGambar"><i class="glyphicon glyphicon-picture"></i></button></td>
 								<td>{{$verif_req->created_at}}</td>
 								<td>{{$verif_req->note}}</td>
-								<td><input onclick="setConfirm(this)" type="button" class="btn btn-success btn-sm" data-id="{{$verif_req->group->id}}" data-toggle="modal" data-target="#modalKonfir" value="Verifikasi"></td>
+								<td><input onclick="setConfirm(this)" type="button" class="btn btn-success btn-sm" data-id="{{$verif_req->group_id}}" data-toggle="modal" data-target="#modalKonfir" value="Verifikasi"></td>
 							</tr>
                             @endforeach
 						</tbody>
