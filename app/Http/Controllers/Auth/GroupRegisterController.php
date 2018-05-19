@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use App\Shirt;
+use App\Competition;
 
 use Mail;
 use App\Mail\EmailVerification;
@@ -59,6 +60,22 @@ class GroupRegisterController extends Controller
         ]);
     }
 
+    protected function single_validator(array $data)
+    {
+        return Validator::make($data, [
+            'institution' => 'required|string',
+            'full_name' => 'required|string',
+            'birthdate' => 'required|date',
+            'contact' => 'required|numeric',
+            'vegetarian' => 'required',
+            'photo' => 'required',
+            'buy_shirt' => 'required',
+            'username' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:groups',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -84,8 +101,16 @@ class GroupRegisterController extends Controller
         $data['password'] = Hash::make($data['password']);
 
         $data['email_token'] = bin2hex(openssl_random_pseudo_bytes(30));
+        
+        if(!(array_key_exists("group_name",$data))){
+            //single competition
+            $data['group_name'] = $data['full_name'];
+            $this->single_validator($request->all())->validate();
+        } else {
+            //group competition
+            $this->validator($request->all())->validate();
+        }
 
-        $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($data)));
 
         //$this->guard()->login($user);
@@ -163,24 +188,28 @@ class GroupRegisterController extends Controller
     public function showProgRegistrationForm()
     {
         $data['harga_baju'] = Shirt::find(1)->harga;
+        $data['competition'] = Competition::find(1);
         return view('peserta.sign-up-prog', $data);
     } 
 
     public function showWebRegistrationForm()
     {
         $data['harga_baju'] = Shirt::find(1)->harga;
+        $data['competition'] = Competition::find(2);
         return view('peserta.sign-up-web', $data);
     }
 
     public function showLccRegistrationForm()
     {
         $data['harga_baju'] = Shirt::find(1)->harga;
+        $data['competition'] = Competition::find(3);
         return view('peserta.sign-up-lcc', $data);
     }
 
     public function showIdeaRegistrationForm()
     {
         $data['harga_baju'] = Shirt::find(1)->harga;
+        $data['competition'] = Competition::find(4);
         return view('peserta.sign-up-idea', $data);
     }
     
