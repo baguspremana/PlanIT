@@ -124,7 +124,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -136,7 +136,17 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $participant =  Participant::find($id);
+        $data = $request->all();
+        $participant->full_name = $request->full_name;
+        $participant->birthdate = $request->birthdate;
+        $participant->email = $request->email;
+        $participant->contact = $request->contact;
+        $participant->vegetarian = $request->vegetarian;
+        $participant->buy_shirt = $request->buy_shirt;
+        $participant->save();
+
+        return redirect('dashboard')->with('success', 'Berhasil mengubah data anggota');
     }
 
     /**

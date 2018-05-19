@@ -232,35 +232,38 @@
                     <h4 class="modal-title"><center>Edit Data Anggota Tim</center></h4>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" class="form-horizontal" accept-charset="utf-8">
+                    <form id="formUpdate" action="dashboard/" method="post" class="form-horizontal" accept-charset="utf-8">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="_method" value="put" />
+                        <input id="participant_id" type="hidden" name="id" />
                         <div class="form-group">
                             <label class="control-label col-md-3">Nama Lengkap</label>
                             <div class="col-md-9">
-                                <input type="text" name="fullname" class="form-control" placeholder="ex. 'Nama Brata'">
+                                <input id="full_name" type="text" name="full_name" class="form-control" placeholder="ex. 'Nama Brata'">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Tanggal Lahir</label>
                             <div class="col-md-9">
-                                <input class="form-control" type="date" name="birthday" placeholder="ex. '1995/12/27'">
+                                <input id="birthdate" class="form-control" type="date" name="birthdate" placeholder="ex. '1995/12/27'">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Email</label>
                             <div class="col-md-9">
-                                <input class="form-control" placeholder="ex. 'mail@site.com'" name="email" required="required" type="email">
+                                <input id="email" class="form-control" placeholder="ex. 'mail@site.com'" name="email" required="required" type="email">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Nomor Kontak</label>
                             <div class="col-md-9">
-                                <input class="form-control" placeholder="ex. '081632111111'" name="contact" required="required" type="number" >
+                                <input id="contact" class="form-control" placeholder="ex. '081632111111'" name="contact" required="required" type="number" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Vegetarian</label>
                             <div class="col-md-9">
-                                <label><input type="radio" value="Y" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="N" name="vegetarian" required="required"> Tidak</label>
+                                <label><input id="veget_yes" type="radio" value="1" name="vegetarian" required="required"> Ya </label> <label><input id="veget_no" type="radio" value="0" name="vegetarian" required="required"> Tidak</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -273,14 +276,14 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Baju Peserta</label>
                             <div class="col-md-9">
-                                <label><input {{ old('buy_shirt')=="1"?"checked":"" }} type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input {{ old('buy_shirt')=="0"?"checked":"" }} type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
+                                <label><input type="radio" id="baju_yes" value="1" name="buy_shirt"> Ya </label> <label><input type="radio" id="baju_no" value="0" name="buy_shirt"> Tidak</label><br>
                                 <small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp....</small>
                             </div>
                         </div>
                         <div class="form-group" id="ukuran-baju" style="display: none;">
                             <label class="control-label col-md-3">Ukuran Baju</label>
                             <div class="col-md-9">
-                                <select id="select-ukuran" name="size" class="form-control" >
+                                <select id="size" name="size" class="form-control" >
                                     <option disabled selected>Pilih Ukuran Baju</option>
                                     <option value="s">Small</option>
                                     <option value="m">Medium</option> 
@@ -415,8 +418,41 @@
 <script>
     function edit_participant(e){
         id = $(e).attr('data-id');
-        $('#formDelete').attr('action', post);
-        $('#modalDelete').show();
+        $('#formUpdate').attr('action', "dashboard/"+id);
+        $('#modalEdit').show();
+
+        $("#participant_id").val(id);
+
+        $.ajax({
+            url: "{{url('participant')}}/"+id,
+            method: "GET",
+            dataType: "json"
+        })
+        .done(function(data) {
+            console.log(data);
+            $('#full_name').val(data.full_name);
+            $('#birthdate').val(data.birthdate);
+            $('#email').val(data.email);
+            $('#contact').val(data.contact);
+            if(data.vegetarian = 0) {
+                $('#veget_yes').prop('checked', true)
+                $('#veget_no').prop('checked', false)
+            } else {
+                $('#veget_yes').prop('checked', false)
+                $('#veget_no').prop('checked', true)
+            }
+
+            if(data.buy_shirt = 0) {
+                $('#baju_yes').prop('checked', true)
+                $('#baju_no').prop('checked', false)
+            } else {
+                $('#baju_yes').prop('checked', false)
+                $('#baju_no').prop('checked', true)
+            }
+        })
+        .fail(function() {
+            alert( "error" );
+        })
     }
 
     function del_participant(e){

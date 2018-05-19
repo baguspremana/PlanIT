@@ -47,6 +47,7 @@ class ParticipantController extends Controller
     public function show($id)
     {
         $participant = Participant::find($id);
+        echo $participant->toJson();
     }
 
     /**

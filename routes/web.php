@@ -44,6 +44,9 @@ Route::prefix('landing')->group(function(){
 =========================================================================================*/
 /* AUTH PESERTA */
 
+//response for ajax
+Route::get('/participant/{id}', 'ParticipantController@show');
+
 Route::get('/login', 'Auth\GroupLoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\GroupLoginController@login');
 Route::post('/logout', 'Auth\GroupLoginController@logout');
