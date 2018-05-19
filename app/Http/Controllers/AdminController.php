@@ -109,8 +109,11 @@ class AdminController extends Controller
             ->select('verified_reqs.*',
                     'groups.group_name',
                     'groups.institution', 
+                    'groups.verified',
                     'competitions.regist_cost',
                     DB::raw('sum(IFNULL(shirts.price,0)) as shirt_total'))
+            ->where('groups.verified','!=',1)
+            ->orWhereNull('groups.verified')
             ->groupBy('group_id')
             ->get();
 
