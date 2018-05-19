@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Competition;
 
 class Participant extends Model
 {
@@ -43,4 +44,21 @@ class Participant extends Model
         $file->move($destinationPath, $file_name);
     }
 
+    public function generate_code(){
+        $competition = Competition::find($this->group->competition_id);
+
+        $code = strtoupper($competition->short_name) . "_";
+
+        $last_code = Participant::where('code','LIKE',$code."%")->orderBy('code','desc')->first();
+
+        if($last_code == null) {
+            $code .= "01";
+        } else {
+            $num = (int) substr($last_code->code,-2);
+            $num++;
+            $code .= sprintf('%02d',$num);
+        }
+
+        return $code;
+    }
 }

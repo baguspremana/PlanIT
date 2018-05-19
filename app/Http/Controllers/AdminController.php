@@ -126,6 +126,11 @@ class AdminController extends Controller
         $group->verified_at = Carbon::now();
         $group->verifying_admin = Auth::user()->id;
         $group->save();
+
+        foreach ($group->participants as $participant){
+            $participant->code = $participant->generate_code();
+            $participant->save();
+        }
         
         return redirect('/admin')->with('success', 'Berhasil melakukan verifikasi peserta');
     }
