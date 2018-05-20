@@ -62,7 +62,7 @@
 									                    <form action="/pesan/{{$tim->id}}" method="post">
 									                    	@csrf
 															{{method_field('PUT')}}
-									                    	<input type="hidden" name="object_id" value="{{$tim->object_id}}">
+									                    	<input type="hidden" name="file_id" value="{{$tim->file_id}}">
 									                    	<input type="hidden" name="jury_id" value="{{$tim->jury_id}}">
 									                    	<input type="hidden" name="status" value="1">
 									                    	<div class="modal-footer">

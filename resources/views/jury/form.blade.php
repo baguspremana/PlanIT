@@ -27,15 +27,15 @@
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
-									<td>{{$score->object->group->group_name}}</td>
+									<td>{{$score->file->group->group_name}}</td>
 								</tr>
 								<tr>
 									<td>Nama Institusi</td>
-									<td>{{$score->object->group->institution}}</td>
+									<td>{{$score->file->group->institution}}</td>
 								</tr>
 								<tr>
 									<td>Judul Karya</td>
-									<td>{{$score->object->title}}</td>
+									<td>{{$score->file->title}}</td>
 								</tr>
 							</tbody>
 						</table>

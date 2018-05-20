@@ -110,6 +110,10 @@ Route::post('/simpanPeserta','AdminController@storeGroup');
 
 Route::post('/simpan','AdminController@storePeserta');
 
+Route::get('/kelolakompetisi/{kelolakompetisi}','AdminController@showKelolaKompetisi');
+
+Route::put('/simpanKompetisi/{simpanKompetisi}','AdminController@updateKompetisi');
+
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');

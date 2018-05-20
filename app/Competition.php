@@ -8,7 +8,9 @@ class Competition extends Model
 {
     protected $fillable = [
         'short_name',
-        'long_name', 
+        'long_name',
+        'regist_cost',
+        'description', 
     ];
 
     public function group(){

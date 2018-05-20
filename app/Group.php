@@ -38,8 +38,8 @@ class Group extends Authenticatable
      * Get the participants of the group.
      */
 
-    public function object(){
-        return $this->hasMany('App\Object');
+    public function file(){
+        return $this->hasMany('App\File');
     }
 
     public function participants(){

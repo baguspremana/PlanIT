@@ -12,9 +12,9 @@ class ScoreReq extends Model
         'status', 
     ];
 
-    public function object()
+    public function file()
     {
-    	return $this->belongsTo('App\Object','object_id');
+    	return $this->belongsTo('App\File','file_id');
     }
 
     public function jury()

@@ -24,10 +24,10 @@ class ScoreReqController extends Controller
     public function index()
     {
         $groups = DB::table('groups')
-            ->join('objects','groups.id','=','objects.group_id')
-            ->join('score_reqs','objects.id','=','score_reqs.object_id')
+            ->join('files','groups.id','=','files.group_id')
+            ->join('score_reqs','files.id','=','score_reqs.file_id')
             ->join('juries','juries.id','=','score_reqs.jury_id')
-            ->select('groups.institution','groups.group_name','objects.title','score_reqs.status','score_reqs.id','score_reqs.object_id','score_reqs.jury_id')
+            ->select('groups.institution','groups.group_name','files.title','score_reqs.status','score_reqs.id','score_reqs.file_id','score_reqs.jury_id')
             ->where('juries.id','=',Auth::user()->id)
             ->where('score_reqs.status','=',1)
             ->get();
@@ -97,7 +97,7 @@ class ScoreReqController extends Controller
     {
         $score = ScoreReq::find($id);
 
-        $score->object_id = $request->object_id;
+        $score->file_id = $request->file_id;
         $score->jury_id = $request->jury_id;
         $score->status = $request->status;
         $score->save();

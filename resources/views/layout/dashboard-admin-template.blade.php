@@ -57,10 +57,11 @@
                         @endif
                         @if(Auth::user()->competition_id==4 or Auth::user()->competition_id==5)
                         <li><a href="/tambahJuri"><i class="glyphicon glyphicon-plus-sign"></i> <span>Tambah Juri</span></a></li>
-                        <li><a href="/inputFormPenilaian"><i class="glyphicon glyphicon-plus-sign"></i> <span>Input Form Penilaian</span></a></li>
+                        <!-- <li><a href="/inputFormPenilaian"><i class="glyphicon glyphicon-plus-sign"></i> <span>Input Form Penilaian</span></a></li> -->
                         @endif
                         <li><a href="/pesanAdmin"><i class="glyphicon glyphicon-envelope"></i> <span>Pesan Masuk</span> @yield('pesan')</a></li>
                         <li><a href="/pesanAdminKeluar"><i class="glyphicon glyphicon-envelope"></i> <span>Pesan Keluar</span></a></li>
+                        <li><a href="/kelolakompetisi/{{Auth::user()->competition_id}}"><i class="glyphicon glyphicon-tower"></i> <span>Kelola Kompetisi</span></a></li>
                         <li class="hidden-lg"><a href="#" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="glyphicon glyphicon-log-out"></i> <span>Log Out</span></a></li>
                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">

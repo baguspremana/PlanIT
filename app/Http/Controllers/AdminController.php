@@ -11,6 +11,7 @@ use DB;
 use App\UserMessageTemporary;
 use App\Jury;
 use Carbon\Carbon;
+use App\Competition;
 
 class AdminController extends Controller
 {
@@ -307,5 +308,29 @@ class AdminController extends Controller
 
         return redirect('/admin')->with('success', 'Berhasil menambahkan peserta');
 
+    }
+
+    public function showKelolaKompetisi($id)
+    {
+        $jumlahPesan = UserMessageTemporary::where('admin_id','=',Auth::user()->id)
+            ->where('view','=',0)
+            ->get();
+
+        $kompetisi = Competition::find($id);
+
+        return view('admin.kelola-kompetisi', compact('jumlahPesan','kompetisi'));
+    }
+
+    public function updateKompetisi(Request $request, $id)
+    {
+        $kompetisi = Competition::find($id);
+
+        $kompetisi->short_name = $request->short_name;
+        $kompetisi->long_name = $request->long_name;
+        $kompetisi->regist_cost = $request->regist_cost;
+        $kompetisi->description = $request->description;
+        $kompetisi->save();
+
+        return redirect()->back()->with('success', 'Berhasil memperbaharui data kompetisi');
     }
 }

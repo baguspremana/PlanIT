@@ -27,15 +27,15 @@
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
-									<td>{{$dataSecore->scoreReq->object->group->group_name}}</td>
+									<td>{{$dataSecore->scoreReq->file->group->group_name}}</td>
 								</tr>
 								<tr>
 									<td>Nama Institusi</td>
-									<td>{{$dataSecore->scoreReq->object->group->institution}}</td>
+									<td>{{$dataSecore->scoreReq->file->group->institution}}</td>
 								</tr>
 								<tr>
 									<td>Judul Karya</td>
-									<td>{{$dataSecore->scoreReq->object->title}}</td>
+									<td>{{$dataSecore->scoreReq->file->title}}</td>
 								</tr>
 							</tbody>
 						</table>

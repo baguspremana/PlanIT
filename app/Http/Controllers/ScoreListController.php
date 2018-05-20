@@ -6,7 +6,7 @@ use App\ScoreList;
 use Illuminate\Http\Request;
 use Auth;
 use App\Group;
-use App\Object;
+use App\File;
 use App\Participant;
 use DB;
 use App\DetailScoreList;
@@ -74,8 +74,10 @@ class ScoreListController extends Controller
     public function show($id)
     {
         $score = ScoreReq::find($id);
-        $karya = Object::with('group')->get();
-        $tim = Group::all();
+        $karya = File::with('group')->get();
+        $group = Group::all();
+
+        // return $karya;
 
         $today = date('Y-m-d');
 
