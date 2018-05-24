@@ -18,6 +18,13 @@
 		</div>
 	</div>
 
+    @if (\Session::has('success'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-cross"></i> <strong>{{ \Session::get('success') }}</strong>
+    </div>
+    @endif
+
 	<div class="row">
 		
 		<div class="col-md-6">
@@ -67,11 +74,11 @@
 					<div class="alert alert-warning">
 						<p style="font-weight: bold;">Hai, {{Auth::user()->group_name}}</p>
 						<p style="text-align: justify; text-justify: inter-word;">Apakah data anda sudah terisi lengkap? Silahkan dilanjutkan dengan pembayaran pendaftaran lomba melalui ATM pada rekening <b>Nama Bank</b><i> no rekening a.n Nama Bendahara</i>.
-							Nominal uang yang ditransfer adalah <b>Rp. Jumlah Biaya</b></p>
+							Nominal uang yang ditransfer adalah <b>Rp{{$biaya_baju+$biaya_pendaftaran}}</b></p>
 						<p style="text-align: left">Rincian Biaya sebagai berikut :
 							<ul>
-								<li style="text-align: left">Biaya Pendaftaran Rp. </li>
-								<li style="text-align: left">Baju Peserta Rp. </li>
+								<li style="text-align: left">Biaya Pendaftaran Rp{{$biaya_pendaftaran}}</li>
+								<li style="text-align: left">Baju Peserta Rp{{$biaya_baju}}</li>
 							</ul>
 						</p><br>
 						<p><b>INGAT! Nominal harus sesuai dengan yang disebutkan diatas. Jika tidak, maka data tidak akan diproses.</b></p>
