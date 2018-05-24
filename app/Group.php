@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class Group extends Authenticatable
 {
@@ -33,10 +34,20 @@ class Group extends Authenticatable
         'password', 'remember_token',
     ];
 
-    
-    /**
-     * Get the participants of the group.
-     */
+    public function get_shirts_cost(){
+        $result = $this->join('participants','participants.group_id','=','groups.id')
+                ->leftJoin('shirts','shirts.size','=','participants.size')
+                ->select(DB::raw('sum(IFNULL(shirts.price,0)) as shirt_total'))
+                ->where('groups.verified','!=',1)
+                ->orWhereNull('groups.verified')
+                ->first();
+
+        return $result->shirt_total;
+    }
+
+    public function get_regist_cost(){
+        return $this->competition->regist_cost;
+    }
 
     public function file(){
         return $this->hasMany('App\File');

@@ -41,7 +41,7 @@ class Participant extends Model
 
     public static function uploadPhoto($file, $file_name){
         $destinationPath = public_path(self::$dir_photo);
-        $file->move($destinationPath, $file_name);
+        return $file->move($destinationPath, $file_name);
     }
 
     public function generate_code(){

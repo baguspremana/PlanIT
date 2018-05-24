@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Input as input;
 use Illuminate\Support\Facades\Hash;
 use App\Group;
+use App\Shirt;
 
 class DashboardController extends Controller
 {
@@ -73,8 +74,11 @@ class DashboardController extends Controller
             ->where('view','=', 0)
             ->get();
         
+            
+        $biaya_baju = Shirt::find(1)->price;
+
         $data['participants'] = Auth::user()->participants;
-        return view('peserta.dashboard', $data, compact('jumlah','jumlahPesan'));
+        return view('peserta.dashboard', $data, compact('jumlah','jumlahPesan','biaya_baju'));
     }
 
     /**
@@ -95,7 +99,11 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
+        //ADD NEW PARTICIPANT
         $data = $request->all();
+        if($data['buy_shirt']==0){
+            $data['size'] = null;
+        }
         $data['captain'] = 0;
         $data['group_id'] = Auth::user()->id;
         $data['photo'] = $request->competition_id."_".$request->full_name.".".$request->file('photo')->getClientOriginalExtension();
@@ -137,16 +145,26 @@ class DashboardController extends Controller
     public function update(Request $request, $id)
     {
         $participant =  Participant::find($id);
-        $data = $request->all();
         $participant->full_name = $request->full_name;
         $participant->birthdate = $request->birthdate;
         $participant->email = $request->email;
         $participant->contact = $request->contact;
         $participant->vegetarian = $request->vegetarian;
         $participant->buy_shirt = $request->buy_shirt;
+        $participant->size = ($participant->buy_shirt==0) ? null : $request->size;
+        if($request->file('photo') != null){
+            $photo = Auth::user()->competition_id."_".$request->full_name.".".$request->file('photo')->getClientOriginalExtension();
+            try{
+                Participant::uploadPhoto($request->file('photo'), $photo);
+                $participant->photo = $photo;
+            } catch(Exception $e) {
+                $msgs['error'] = "Gagal upload gambar!";
+            }
+        }
+        $msgs['success'] = 'Berhasil mengubah data anggota';
         $participant->save();
 
-        return redirect('dashboard')->with('success', 'Berhasil mengubah data anggota');
+        return redirect('dashboard')->with($msgs);
     }
 
     /**
@@ -163,15 +181,27 @@ class DashboardController extends Controller
 
     public function showVerificationForm()
     {
+        if (Auth::user()->verified_email!=1) {
+            return redirect('dashboard')->with('warning', 'Mohon melakukan verifikasi email terlebih dahulu!');
+        }
+
         $jumlahPesan = AdminMessageTemporary::where('group_id','=', Auth::user()->id)
             ->where('view','=', 0)
             ->get();
+        
+        $biaya_pendaftaran = Auth::user()->get_regist_cost();
+        $biaya_baju = Auth::user()->get_shirts_cost();
 
-        return view('peserta.verifikasi', compact('jumlahPesan'));
+        return view('peserta.verifikasi', compact('jumlahPesan', 'biaya_baju', 'biaya_pendaftaran'));
     }
 
     public function showUploadDataForm()
     {
+        
+        if (Auth::user()->verified_email!=1) {
+            return redirect('dashboard')->with('warning', 'Mohon melakukan verifikasi email terlebih dahulu!');
+        }
+
         $jumlahPesan = AdminMessageTemporary::where('group_id','=', Auth::user()->id)
             ->where('view','=', 0)
             ->get();

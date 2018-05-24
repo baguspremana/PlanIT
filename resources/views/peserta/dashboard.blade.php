@@ -14,13 +14,24 @@
 <div class="container-fluid">
     <!-- OVERVIEW -->
 
+    @if (\Session::has('warning'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-close"></i> <strong>{{ \Session::get('warning') }}</strong>
+    </div>
+    @elseif (Auth::user()->verified_email!=1)
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa fa-warning"></i> <strong>Email Anda belum terverifikasi</strong>
+    </div>
+    @endif
+    
     @if (\Session::has('success'))
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <i class="fa fa-check"></i> <strong>{{ \Session::get('success') }}</strong>
     </div>
     @endif
-    
     <!-- END OVERVIEW -->
     <div class="row">
         <div class="col-md-6">
@@ -195,11 +206,11 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Baju Peserta</label>
                             <div class="col-md-9">
-                                <label><input type="radio" id="baju-yes" value="1" name="buy_shirt"> Ya </label> <label><input type="radio" id="baju-no" value="0" name="buy_shirt"> Tidak</label><br>
-                                <small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp....</small>
+                                <label><input type="radio" id="baju_yes_add" value="1" name="buy_shirt"> Ya </label> <label><input type="radio" id="baju_no_add" value="0" name="buy_shirt"> Tidak</label><br>
+                                <small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp{{$biaya_baju}}</small>
                             </div>
                         </div>
-                        <div class="form-group" id="ukuran-baju" style="display: none;">
+                        <div class="form-group" id="ukuran_baju_add" style="display: none;">
                             <label class="control-label col-md-3">Ukuran Baju</label>
                             <div class="col-md-9">
                                 <select id="select-ukuran" name="size" class="form-control" >
@@ -209,11 +220,11 @@
                                     <option value="l">Large</option>
                                     <option value="xl">Extra Large</option>          
                                 </select>
-                                <small>*peserta yang lolos babak penyisihan akan mendapatkan baju official ITCC 2017. Size Chart dapat dilihat</small> <a data-toggle="modal" data-target="#sizeChart">DISINI</a>
+                                <small>*peserta yang lolos babak penyisihan akan mendapatkan baju official ITCC 2018. Size Chart dapat dilihat</small> <a data-toggle="modal" data-target="#sizeChart">DISINI</a>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Daftar</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                 </div>
@@ -232,7 +243,7 @@
                     <h4 class="modal-title"><center>Edit Data Anggota Tim</center></h4>
                 </div>
                 <div class="modal-body">
-                    <form id="formUpdate" action="dashboard/" method="post" class="form-horizontal" accept-charset="utf-8">
+                    <form id="formUpdate" action="dashboard/" method="post" class="form-horizontal" accept-charset="utf-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="put" />
                         <input id="participant_id" type="hidden" name="id" />
@@ -276,25 +287,25 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Baju Peserta</label>
                             <div class="col-md-9">
-                                <label><input type="radio" id="baju_yes" value="1" name="buy_shirt"> Ya </label> <label><input type="radio" id="baju_no" value="0" name="buy_shirt"> Tidak</label><br>
-                                <small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp....</small>
+                                <label><input type="radio" id="baju_yes_edit" value="1" name="buy_shirt"> Ya </label> <label><input type="radio" id="baju_no_edit" value="0" name="buy_shirt"> Tidak</label><br>
+                                <small>Apabila Anda membeli baju peserta, akan dikenakan biaya tambahan sebesar Rp{{$biaya_baju}}</small>
                             </div>
                         </div>
-                        <div class="form-group" id="ukuran-baju" style="display: none;">
+                        <div class="form-group" id="ukuran_baju_edit" style="">
                             <label class="control-label col-md-3">Ukuran Baju</label>
                             <div class="col-md-9">
-                                <select id="size" name="size" class="form-control" >
-                                    <option disabled selected>Pilih Ukuran Baju</option>
+                                <select id="size_edit" name="size" class="form-control" >
+                                    <option>Pilih Ukuran Baju</option>
                                     <option value="s">Small</option>
                                     <option value="m">Medium</option> 
                                     <option value="l">Large</option>
                                     <option value="xl">Extra Large</option>          
                                 </select>
-                                <small>*peserta yang lolos babak penyisihan akan mendapatkan baju official ITCC 2017. Size Chart dapat dilihat</small> <a data-toggle="modal" data-target="#sizeChart">DISINI</a>
+                                <small>*peserta yang lolos babak penyisihan akan mendapatkan baju official ITCC 2018. Size Chart dapat dilihat</small> <a data-toggle="modal" data-target="#sizeChart">DISINI</a>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Daftar</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
@@ -420,7 +431,7 @@
         id = $(e).attr('data-id');
         $('#formUpdate').attr('action', "dashboard/"+id);
         $('#modalEdit').show();
-
+        
         $("#participant_id").val(id);
 
         $.ajax({
@@ -434,20 +445,23 @@
             $('#birthdate').val(data.birthdate);
             $('#email').val(data.email);
             $('#contact').val(data.contact);
-            if(data.vegetarian = 0) {
-                $('#veget_yes').prop('checked', true)
-                $('#veget_no').prop('checked', false)
-            } else {
+            if(data.vegetarian == 0) {
                 $('#veget_yes').prop('checked', false)
                 $('#veget_no').prop('checked', true)
+            } else {
+                $('#veget_yes').prop('checked', true)
+                $('#veget_no').prop('checked', false)
             }
 
-            if(data.buy_shirt = 0) {
-                $('#baju_yes').prop('checked', true)
-                $('#baju_no').prop('checked', false)
+            if(data.buy_shirt == 0) {
+                $('#baju_yes_edit').prop('checked', false)
+                $('#baju_no_edit').prop('checked', true)
+                $('#ukuran_baju_edit').hide();
             } else {
-                $('#baju_yes').prop('checked', false)
-                $('#baju_no').prop('checked', true)
+                $('#baju_yes_edit').prop('checked', true)
+                $('#baju_no_edit').prop('checked', false)
+                $('#ukuran_baju_edit').show();
+                $('#size_edit').val(data.size.toLowerCase());
             }
         })
         .fail(function() {
@@ -461,11 +475,17 @@
         $('#modalDelete').show();
     }
     
-	$('#baju-yes').click(function(e){
-		$('#ukuran-baju').show();
+	$('#baju_yes_edit').click(function(e){
+		$('#ukuran_baju_edit').show();
 	});
-	$('#baju-no').click(function(e){
-		$('#ukuran-baju').hide();
+	$('#baju_no_edit').click(function(e){
+		$('#ukuran_baju_edit').hide();
+	});
+	$('#baju_yes_add').click(function(e){
+		$('#ukuran_baju_add').show();
+	});
+	$('#baju_no_add').click(function(e){
+		$('#ukuran_baju_add').hide();
 	});
 </script>
 @endsection
