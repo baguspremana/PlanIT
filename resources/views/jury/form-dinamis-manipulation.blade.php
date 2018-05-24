@@ -20,7 +20,7 @@
 						<button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
 					</div>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body table-responsive">
 					<table class="table table-striped">
 						<tbody>
 							<tr>

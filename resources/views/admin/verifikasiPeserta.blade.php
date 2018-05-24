@@ -20,8 +20,8 @@
 					<h3 class="panel-title">Pembayaran Peserta</h3>
 				</div>
 
-				<div class="panel-body">
-					<table class="table table-striped table-bordered table-responsive data" id="example">
+				<div class="panel-body table-responsive">
+					<table class="table table-striped table-bordered data" id="example">
 						<thead>
 							<tr>
 								<th>Nama Tim</th>

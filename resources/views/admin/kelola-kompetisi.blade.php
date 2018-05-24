@@ -28,7 +28,7 @@
     				<h3 class="panel-title">Kelola Kompetisi</h3>
     			</div>
 
-    			<div class="panel-body">
+    			<div class="panel-body table-responsive">
     				<table class="table table-striped" id="example">
     					<tr>
     						<td class="col-md-3">Kode Kompetisi</td>

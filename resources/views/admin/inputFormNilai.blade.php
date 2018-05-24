@@ -24,7 +24,7 @@
 					<button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Tambah Penilaian" type="button"><i class="glyphicon glyphicon-plus"></i></button>
 					<br><br>
 					<form action="#" method="post" class="form-horizontal">
-						<table class="table table-striped table-bordered">
+						<table class="table table-striped table-bordered table-responsive">
 							<thead>
 								<tr>
 									<th>No</th>

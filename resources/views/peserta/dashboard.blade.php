@@ -32,7 +32,7 @@
                         <button type="button" class="btn-toggle-collapse"><i class="fa fa-chevron-up"></i></button>
                     </div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body table-responsive">
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -89,7 +89,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><center>Data Anggota Tim</center></h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body table-responsive">
                     
                     @if(Auth::user()->competition_id == 3 or Auth::user()->competition_id == 4 or Auth::user()->competition_id == 5)
                     @if(count($jumlah)!=3)

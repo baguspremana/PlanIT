@@ -29,7 +29,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><center>Data Peserta</center></h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body table-responsive">
                     <table class="table table-striped" id="example">
                         <thead>
                             <tr>
@@ -100,8 +100,8 @@
                 <div class="panel-heading">
                     <h4 class="panel-title"><center>Rekapan</center></h4>
                 </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-responsive">
+                <div class="panel-body table-responsive">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                <th>Berdasarkan</th>

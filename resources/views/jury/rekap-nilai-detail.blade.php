@@ -27,7 +27,7 @@
 					<div class="panel-heading">
 						<h3 class="panel-title">Rekap Seluruh Penilaian Juri</h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body table-responsive">
 						<table class="table table-stripped table-bordered" id="example">
 							<thead>
 								<tr>

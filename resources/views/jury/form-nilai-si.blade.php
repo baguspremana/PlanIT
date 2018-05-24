@@ -23,7 +23,7 @@
 						</div>
 					</div>
 					<div class="panel-body">
-						<table class="table table-striped">
+						<table class="table table-striped table-responsive">
 							<tbody>
 								<tr>
 									<td>Nama Tim</td>
@@ -80,7 +80,7 @@
 						</div>
 
 						<form action="#" class="form-horizontal" method="post" id="form-penilaian">
-							<table class="table table-bordered table-striped">
+							<table class="table table-bordered table-striped table-responsive">
 								<thead>
 									<th class="col-xs-1 col-sm-1">No</th>
 									<th class="col-xs-8 col-sm-9">Aspek Penilaian</th>

@@ -135,7 +135,8 @@ class AdminController extends Controller
             $participant->code = $participant->generate_code();
             $participant->save();
         }
-        
+
+        Group::find($request->group_id)->notify(new NotifToInboxAfterVerification);
         return redirect('/admin')->with('success', 'Berhasil melakukan verifikasi peserta');
     }
 

@@ -27,7 +27,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Pesan Masuk</h3>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body table-responsive">
 					<!--button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambah" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-plus"></i></button>
 					<!--Modal Tambah Pesan-->
 				    <!--div class="modal fade" id="modalTambah" role="dialog">
